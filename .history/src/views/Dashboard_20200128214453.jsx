@@ -1,5 +1,9 @@
 import React from "react";
+// react plugin used to create charts
+import { Line, Pie } from "react-chartjs-2";
+// reactstrap components
 import { Row, Col } from "reactstrap";
+// core components
 
 class Dashboard extends React.Component {
   render() {

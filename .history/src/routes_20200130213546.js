@@ -1,33 +1,33 @@
 import Dashboard from "views/Dashboard.jsx";
 import Notifications from "views/Notifications.jsx";
-import Presentation from "views/Presentation.jsx";
-import Liens from "views/Liens.jsx";
-import Article from "views/Article.jsx";
-import Evenement from "views/Evenement.jsx";
+import Icons from "views/Icons.jsx";
+import Typography from "views/Typography.jsx";
+import TableList from "views/Tables.jsx";
+import Maps from "views/Map.jsx";
 import UserPage from "views/User.jsx";
-import Contact from "views/Contact.jsx";
+import UpgradeToPro from "views/Upgrade.jsx";
 import FindUs from "views/FindUs";
 
 var routes = [
   {
     path: "/dashboard",
     name: "Accueil",
-    icon: "nc-icon nc-sun-fog-29",
+    icon: "nc-icon nc-bank",
     component: Dashboard,
     layout: "/admin"
   },
   {
-    path: "/Presentation",
+    path: "/icons",
     name: "Présentation de l'association",
     icon: "nc-icon nc-zoom-split",
-    component: Presentation,
+    component: Icons,
     layout: "/admin"
   },
   {
-    path: "/evenements",
-    name: "Evenements",
+    path: "/maps",
+    name: "Evènements",
     icon: "nc-icon nc-alert-circle-i",
-    component: Evenement,
+    component: Maps,
     layout: "/admin"
   },
   {
@@ -45,32 +45,32 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/articles",
+    path: "/tables",
     name: "Articles et dossiers",
     icon: "nc-icon nc-paper",
-    component: Article,
+    component: TableList,
     layout: "/admin"
   },
   {
-    path: "/liens",
-    name: "Liens utiles",
-    icon: "nc-icon nc-bullet-list-67",
-    component: Liens,
+    path: "/typography",
+    name: "Liens",
+    icon: "nc-icon nc-align-left-2",
+    component: Typography,
     layout: "/admin"
   },
   {
     path: "/findus",
     name: "Nous trouver",
-    icon: "nc-icon nc-pin-3",
+    icon: "nc-icon email-85",
     component: FindUs,
     layout: "/admin"
   },
   {
     pro: true,
-    path: "/contactus",
+    path: "/upgrade",
     name: "Nous contacter",
-    icon: "nc-icon nc-chat-33",
-    component: Contact,
+    icon: "nc-icon nc-spaceship",
+    component: UpgradeToPro,
     layout: "/admin"
   }
 ];

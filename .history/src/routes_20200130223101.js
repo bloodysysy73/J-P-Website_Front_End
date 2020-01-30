@@ -1,11 +1,11 @@
 import Dashboard from "views/Dashboard.jsx";
 import Notifications from "views/Notifications.jsx";
 import Presentation from "views/Presentation.jsx";
-import Liens from "views/Liens.jsx";
+import Typography from "views/Typography.jsx";
 import Article from "views/Article.jsx";
 import Evenement from "views/Evenement.jsx";
 import UserPage from "views/User.jsx";
-import Contact from "views/Contact.jsx";
+import UpgradeToPro from "views/Upgrade.jsx";
 import FindUs from "views/FindUs";
 
 var routes = [
@@ -52,10 +52,10 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/liens",
+    path: "/typography",
     name: "Liens utiles",
     icon: "nc-icon nc-bullet-list-67",
-    component: Liens,
+    component: Typography,
     layout: "/admin"
   },
   {
@@ -67,10 +67,10 @@ var routes = [
   },
   {
     pro: true,
-    path: "/contactus",
+    path: "/upgrade",
     name: "Nous contacter",
     icon: "nc-icon nc-chat-33",
-    component: Contact,
+    component: UpgradeToPro,
     layout: "/admin"
   }
 ];

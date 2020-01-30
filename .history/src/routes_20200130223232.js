@@ -5,7 +5,7 @@ import Liens from "views/Liens.jsx";
 import Article from "views/Article.jsx";
 import Evenement from "views/Evenement.jsx";
 import UserPage from "views/User.jsx";
-import Contact from "views/Contact.jsx";
+import UpgradeToPro from "views/Upgrade.jsx";
 import FindUs from "views/FindUs";
 
 var routes = [
@@ -67,10 +67,10 @@ var routes = [
   },
   {
     pro: true,
-    path: "/contactus",
+    path: "/upgrade",
     name: "Nous contacter",
     icon: "nc-icon nc-chat-33",
-    component: Contact,
+    component: UpgradeToPro,
     layout: "/admin"
   }
 ];

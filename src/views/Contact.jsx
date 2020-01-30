@@ -1,0 +1,31 @@
+import React from "react";
+
+// reactstrap components
+import { Card, CardHeader, CardBody, CardTitle, Row, Col } from "reactstrap";
+
+class Contact extends React.Component {
+  render() {
+    return (
+      <>
+        <div className="content">
+          <Row>
+            <Col className="ml-auto mr-auto" md="8">
+              <Card className="card-upgrade">
+                <CardHeader className="text-center">
+                  <CardTitle tag="h4">Nous contacter</CardTitle>
+                  <p className="card-category">
+                    Are you looking for more components? Please check our
+                    Premium Version of Paper Dashboard PRO.
+                  </p>
+                </CardHeader>
+                <CardBody></CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+      </>
+    );
+  }
+}
+
+export default Contact;

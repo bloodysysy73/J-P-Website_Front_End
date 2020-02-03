@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GoogleAuth from "apis/GoolgeAuth";
 import {
   Collapse,
   Navbar,
@@ -158,7 +159,7 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  <i className="nc-icon nc-bell-55" />
+                  <i className="nc-icon nc-atom" />
                   <p>
                     <span className="d-lg-none d-md-block">Some Actions</span>
                   </p>
@@ -170,7 +171,7 @@ class Header extends React.Component {
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
-                <Link to="#pablo" className="nav-link btn-rotate">
+                <Link to="/" className="nav-link btn-rotate">
                   <i className="nc-icon nc-settings-gear-65" />
                   <p>
                     <span className="d-lg-none d-md-block">Account</span>
@@ -178,6 +179,7 @@ class Header extends React.Component {
                 </Link>
               </NavItem>
             </Nav>
+            <GoogleAuth></GoogleAuth>
           </Collapse>
         </Container>
       </Navbar>

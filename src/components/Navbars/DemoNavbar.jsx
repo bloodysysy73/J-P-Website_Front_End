@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GoogleAuth from "apis/GoolgeAuth";
+import GoolgeAuth from "components/authentification/GoolgeAuth";
 import {
   Collapse,
   Navbar,
@@ -20,6 +20,7 @@ import {
 } from "reactstrap";
 
 import routes from "routes.js";
+import AuthentificationForm from "components/authentification/AutentificationForm";
 
 class Header extends React.Component {
   constructor(props) {
@@ -165,21 +166,28 @@ class Header extends React.Component {
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
-                  <DropdownItem tag="a">Another Action</DropdownItem>
-                  <DropdownItem tag="a">Something else here</DropdownItem>
+                  <DropdownItem header>Connexion</DropdownItem>
+                  <DropdownItem toggle={false}>
+                    <GoolgeAuth></GoolgeAuth>
+                  </DropdownItem>
+                  <DropdownItem disabled>Action (disabled)</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Foo Action</DropdownItem>
+                  <DropdownItem>Bar Action</DropdownItem>
+                  <DropdownItem toggle={false}>
+                    <AuthentificationForm></AuthentificationForm>
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
                 <Link to="/" className="nav-link btn-rotate">
                   <i className="nc-icon nc-settings-gear-65" />
                   <p>
-                    <span className="d-lg-none d-md-block">Account</span>
+                    <span className="d-lg-none d-md-block">Reglage</span>
                   </p>
                 </Link>
               </NavItem>
             </Nav>
-            <GoogleAuth></GoogleAuth>
           </Collapse>
         </Container>
       </Navbar>

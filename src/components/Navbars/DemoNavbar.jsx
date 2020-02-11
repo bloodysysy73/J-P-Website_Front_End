@@ -20,7 +20,9 @@ import {
 } from "reactstrap";
 
 import routes from "routes.js";
-import AuthentificationForm from "components/authentification/AutentificationForm";
+import SignUpForm from "components/authentification/SignUpForm";
+import LoginEmailForm from "components/authentification/LoginEmailForm";
+import MyButton from "components/other/MyButton";
 
 class Header extends React.Component {
   constructor(props) {
@@ -170,12 +172,16 @@ class Header extends React.Component {
                   <DropdownItem toggle={false}>
                     <GoolgeAuth></GoolgeAuth>
                   </DropdownItem>
-                  <DropdownItem disabled>Action (disabled)</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Foo Action</DropdownItem>
-                  <DropdownItem>Bar Action</DropdownItem>
                   <DropdownItem toggle={false}>
-                    <AuthentificationForm></AuthentificationForm>
+                    <LoginEmailForm></LoginEmailForm>
+                  </DropdownItem>
+                  <DropdownItem toggle={false}>
+                    <SignUpForm></SignUpForm>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem toggle={false}>
+                    <MyButton></MyButton>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>

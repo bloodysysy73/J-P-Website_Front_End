@@ -11,10 +11,14 @@ import "assets/demo/demo.css";
 import history from "./history";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import AdminLayout from "layouts/Admin.jsx";
-import ModalHelper from "./components/authentification/ModalHelper";
+
+import reduxThunk from "redux-thunk";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware()));
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(reduxThunk))
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,7 +26,6 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/admin" render={props => <AdminLayout {...props} />} />
-          <Route path="/authentification" component={ModalHelper} />
           <Redirect to="/admin/dashboard" />
         </Switch>
       </div>

@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { signOut } from "../../actions/actionLogin";
+import { logoutEmail } from "../../actions/actionLogin";
+import history from "../../history";
 
 class MyButton extends React.Component {
   //connect permet au fonction de dispacth when called. + les fonction sont dans le props du composant
   onSubmit = () => {
-    this.props.signOut();
+    this.props.logoutEmail();
+    history.push("/");
   };
 
   render() {
@@ -19,4 +21,4 @@ class MyButton extends React.Component {
   }
 }
 
-export default connect(null, { signOut })(MyButton);
+export default connect(null, { logoutEmail })(MyButton);

@@ -162,27 +162,40 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  <i className="nc-icon nc-atom" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Some Actions</span>
-                  </p>
+                  <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem header>Connexion</DropdownItem>
-                  <DropdownItem toggle={false}>
-                    <GoolgeAuth></GoolgeAuth>
-                  </DropdownItem>
+                  {localStorage.getItem("isSignedInEmail") === "true" ? null : (
+                    <DropdownItem toggle={false}>
+                      <GoolgeAuth></GoolgeAuth>
+                    </DropdownItem>
+                  )}
                   <DropdownItem divider />
-                  <DropdownItem toggle={false}>
-                    <LoginEmailForm></LoginEmailForm>
-                  </DropdownItem>
-                  <DropdownItem toggle={false}>
-                    <SignUpForm></SignUpForm>
-                  </DropdownItem>
+
+                  {(localStorage.getItem("isSignedIn") !== "true") &
+                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                    <DropdownItem toggle={false}>
+                      <LoginEmailForm></LoginEmailForm>
+                    </DropdownItem>
+                  ) : null}
                   <DropdownItem divider />
-                  <DropdownItem toggle={false}>
-                    <MyButton></MyButton>
-                  </DropdownItem>
+                  {(localStorage.getItem("isSignedIn") !== "true") &
+                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                    <DropdownItem header>inscription</DropdownItem>
+                  ) : null}
+                  {(localStorage.getItem("isSignedIn") !== "true") &
+                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                    <DropdownItem toggle={false}>
+                      <SignUpForm></SignUpForm>
+                    </DropdownItem>
+                  ) : null}
+                  {(localStorage.getItem("isSignedIn") !== "true") &
+                  (localStorage.getItem("isSignedInEmail") === "true") ? (
+                    <DropdownItem toggle={false}>
+                      <MyButton></MyButton>
+                    </DropdownItem>
+                  ) : null}
                 </DropdownMenu>
               </Dropdown>
               <NavItem>

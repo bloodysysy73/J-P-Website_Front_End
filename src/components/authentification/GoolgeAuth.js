@@ -4,6 +4,8 @@ import { signIn, signOut } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
+import history from "../../history";
+
 class GoogleAuth extends React.Component {
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
@@ -31,23 +33,25 @@ class GoogleAuth extends React.Component {
 
   onSignInClick = () => {
     this.auth.signIn();
+    history.push("/");
   };
 
   onSignOutClick = () => {
     this.auth.signOut();
+    history.push("/");
   };
 
   renderAuthButton() {
     if (this.props.isSignedIn) {
       return (
         <button onClick={this.onSignOutClick} className="ui red google button">
-          <FontAwesomeIcon icon={faGoogle} /> sign out
+          <FontAwesomeIcon icon={faGoogle} /> déconnexion
         </button>
       );
     } else {
       return (
         <button onClick={this.onSignInClick} className="ui red google button">
-          <FontAwesomeIcon icon={faGoogle} /> sign in with google
+          <FontAwesomeIcon icon={faGoogle} /> connexion google
         </button>
       );
     }

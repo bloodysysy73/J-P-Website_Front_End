@@ -1,16 +1,28 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import MySlider from "components/other/MySlider";
 
 class Dashboard extends React.Component {
+  // settings = {
+  //   arrowsScroll: 3,
+  //   autoplay: true,
+  //   centerMode: true,
+  //   centerPadding: 50,
+  //   dotsScroll: 5,
+  //   initialSlide: true,
+  //   slidesPerRow: 1,
+  //   wheelScroll: 3,
+  //   dots: true,
+  //   wheel: true
+  // };
+  setting = { autoPlay: true };
+
   render() {
     return (
       <>
         <div className="content">
           <Row>
-            <Col lg="3" md="6" sm="6"></Col>
-            <Col lg="3" md="6" sm="6"></Col>
-            <Col lg="3" md="6" sm="6"></Col>
-            <Col lg="3" md="6" sm="6"></Col>
+            <Col ><MySlider props={this.settings} ></MySlider></Col>
           </Row>
           <Row>
             <Col md="12"></Col>

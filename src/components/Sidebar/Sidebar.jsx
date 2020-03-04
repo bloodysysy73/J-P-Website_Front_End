@@ -40,7 +40,7 @@ class Sidebar extends React.Component {
       >
         <div className="logo">
           <a
-            href="https://www.creative-tim.com"
+            href="http://www.jumeaux-et-plus.fr/"
             className="simple-text logo-mini"
           >
             <div className="logo-img">
@@ -48,7 +48,7 @@ class Sidebar extends React.Component {
             </div>
           </a>
           <a
-            href="https://www.creative-tim.com"
+            href="http://www.jumeaux-et-plus.fr/"
             className="simple-text logo-normal"
           >
             Jumeaux et plus

@@ -1,46 +1,53 @@
 import React from 'react';
-// import Slider from 'infinite-react-carousel';
-import { Carousel } from 'react-responsive-carousel';
-import "../../../src/assets/css/carousel.css";
+
+import Carousel from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
+
+//import "../../../src/assets/css/carousel.css";
+
 
 class MySlider extends React.Component {
 
-    render() {
-        return (<Carousel {...this.props.props}>
-            <div>
-                <img
-                    alt="..."
-                    src={require("assets/img/logo-small.png")}
-                />
-                <p className="legend">Legend 1</p>
-            </div>
-            <div>
-                <img
-                    alt="..."
-                    src={require("assets/img/logoJP.jpg")}
-                />
-                <p className="legend">Legend 2</p>
-            </div>
-            <div>
-                <img
-                    alt="..."
-                    src={require("assets/img/jan-sendereks.jpg")}
-                />
-            </div>
-            <div>
-                <img
-                    alt="..."
-                    src={require("assets/img/bg5.jpg")}
-                />
-            </div>
-            <div>
-                <img
-                    alt="..."
-                    src={require("assets/img/header.jpg")}
-                />
-            </div>
-        </Carousel>);
+    constructor() {
+        super()
+        this.state = {
+            value: 0,
+            slides: [
+                (<img alt="" src={require("../../assets/img/jumeaux1.jpg")} />),
+                (<img alt="" src={require("../../assets/img/jumeaux2.jpg")} />),
+                (<img alt="" src={require("../../assets/img/jumeaux3.jpg")} />),
+                (<img alt="" src={require("../../assets/img/jumeaux4.jpg")} />),
+                (<img alt="" src={require("../../assets/img/jumeaux5.jpg")} />)
+
+            ],
+        }
     }
 
+    // we check if we got event from input (and it has target property) or just value from Carousel 
+    onchange(value) {
+        this.setState({ value });
+    }
+    render() {
+
+        return (
+            <div>
+                <Carousel
+                    infinite
+                    keepDirectionWhenDragging
+                    animationSpeed={2500}
+                    autoPlay={2500}
+                    stopAutoPlayOnHover
+                    offset={10}
+                    itemWidth={250}
+                    centered
+                    slides={this.state.slides}
+                    dots
+                >
+                </Carousel>
+            </div >
+        );
+    }
 }
-export default MySlider;
+
+export default MySlider

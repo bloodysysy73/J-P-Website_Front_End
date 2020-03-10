@@ -15,7 +15,8 @@ class FindUs extends React.Component {
                 <div className="image">
                   <img
                     alt="..."
-                    src={require("assets/img/logoJP.jpg")}
+                    src={require("assets/img/logojp.jpg")}
+                    width="250"
                   />
                 </div>
                 <CardHeader className="text-center">

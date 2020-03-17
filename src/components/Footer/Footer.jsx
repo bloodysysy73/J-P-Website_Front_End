@@ -16,25 +16,29 @@ class Footer extends React.Component {
               <ul>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/sylvain-guehria-ab9737134/"
+                    href=""
                     target="_blank"
                   >
-                    Sylvain Guehria
-                  </a>
+                    Jumeaux et Plus
+
+                </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/sylvain-guehria-ab9737134/"
+                    href=""
                     target="_blank"
                   >
-                    LinkedIn
+                    04-79-85-40-61
                   </a>
                 </li>
               </ul>
             </nav>
             <div className="credits ml-auto">
               <div className="copyright">
-                &copy; {1900 + new Date().getYear()}, made by Sylvain Guehria
+                <a
+                  href="https://www.linkedin.com/in/sylvain-guehria-ab9737134/"
+                  target="_blank"
+                > &copy; {1900 + new Date().getYear()}, made by Sylvain Guehria</a>
               </div>
             </div>
           </Row>

@@ -21,103 +21,128 @@ import { connect } from 'react-redux'
 
 class MytimeLine extends React.Component {
 
+    position = "right";
+    temoin = 2;
+
     componentDidMount() {
         this.props.fetchTimeLineCards();
     }
 
 
-    render() {
-        return (
-            <>
-                <VerticalTimeline>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2011 - present"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<Brightness3OutlinedIcon />}
-                    >
+    renderTimeLine = () => {
+        return this.props.timeLineCards.map(timeLineCard => {
 
-                        <TimeLineCard description="evenement 1 de rencontre" title="xxxxxx" date="vendredi 4 juin" horaire="12h" imgname="logojp.jpg">
-                        </TimeLineCard>
+            if (this.temoin % 2 == 0) {
+                this.position = "right";
+                this.temoin++;
+            } else if (this.temoin % 2 !== 0) {
+                this.position = "left";
+                this.temoin++;
+            }
 
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2010 - 2011"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<SportsTennisOutlinedIcon />}
-                    >
+            return (
+                <>
+                    <VerticalTimeline>
+                        <VerticalTimelineElement
+                            position={this.position}
+                            key={timeLineCard.id}
+                            className="vertical-timeline-element--work"
+                            date={timeLineCard.poste_le}
+                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                            icon={<Brightness3OutlinedIcon />}
+                        >
 
-                        <TimeLineCard description="evenement 2 de rencontre" title="EVENT2" date="mardi 12 juin" horaire="12h" imgname="logojp.jpg">
-                        </TimeLineCard>
+                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imgname={timeLineCard.imageName}>
+                            </TimeLineCard>
 
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2008 - 2010"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<FilterVintageOutlinedIcon />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-                        <p>
-                            User Experience, Visual Design
+                        </VerticalTimelineElement>
+                        {/*<VerticalTimelineElement
+                            key={timeLineCard.id}
+                            className="vertical-timeline-element--work"
+                            date={timeLineCard.date}
+                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                            icon={<Brightness3OutlinedIcon />}
+                        >
+
+                            <TimeLineCard description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire="12h" imgname={timeLineCard.imageName}>
+                            </TimeLineCard>
+
+                        </VerticalTimelineElement>
+                         <VerticalTimelineElement
+                            className="vertical-timeline-element--work"
+                            date="2008 - 2010"
+                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                            icon={<FilterVintageOutlinedIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                            <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+                            <p>
+                                User Experience, Visual Design
         </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2006 - 2008"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<MusicNoteOutlinedIcon />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                        <p>
-                            User Experience, Visual Design
+                        </VerticalTimelineElement>
+                        <VerticalTimelineElement
+                            className="vertical-timeline-element--work"
+                            date="2006 - 2008"
+                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                            icon={<MusicNoteOutlinedIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                            <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                            <p>
+                                User Experience, Visual Design
         </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="April 2013"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<SportsEsportsOutlinedIcon />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-                        <p>
-                            Strategy, Social Media
+                        </VerticalTimelineElement>
+                        <VerticalTimelineElement
+                            className="vertical-timeline-element--education"
+                            date="April 2013"
+                            iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                            icon={<SportsEsportsOutlinedIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
+                            <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
+                            <p>
+                                Strategy, Social Media
         </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="November 2012"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<SentimentSatisfiedAltOutlinedIcon />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-                        <p>
-                            Creative Direction, User Experience, Visual Design
+                        </VerticalTimelineElement>
+                        <VerticalTimelineElement
+                            className="vertical-timeline-element--education"
+                            date="November 2012"
+                            iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                            icon={<SentimentSatisfiedAltOutlinedIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
+                            <h4 className="vertical-timeline-element-subtitle">Certification</h4>
+                            <p>
+                                Creative Direction, User Experience, Visual Design
         </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="2002 - 2006"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<RowingOutlinedIcon />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-                        <p>
-                            Creative Direction, Visual Design
+                        </VerticalTimelineElement>
+                        <VerticalTimelineElement
+                            className="vertical-timeline-element--education"
+                            date="2002 - 2006"
+                            iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                            icon={<RowingOutlinedIcon />}
+                        >
+                            <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
+                            <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
+                            <p>
+                                Creative Direction, Visual Design
         </p>
-                    </VerticalTimelineElement>
-                </VerticalTimeline>
-            </>
-        );
+                        </VerticalTimelineElement> */}
+                    </VerticalTimeline>
+                </>)
+        })
 
     }
+
+    render() {
+        return (
+            <div>
+                <h2 align="center" >TimeLine</h2>
+                <div>{this.renderTimeLine()}</div>
+            </div>)
+    }
 }
+
 
 
 const mapStateToProps = state => {

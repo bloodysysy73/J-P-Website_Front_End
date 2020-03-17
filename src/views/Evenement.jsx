@@ -1,5 +1,5 @@
 import React from "react";
-import MytimeLine from "components/other/MyTimeLine";
+import MytimeLine from "components/TimeLineCard/MyTimeLine";
 
 class Evenement extends React.Component {
   render() {

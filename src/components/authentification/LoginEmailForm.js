@@ -8,6 +8,12 @@ import history from "../../history";
 //dans les props de cee composant on a param qui a la variable id qu'on a passé dans le router
 
 class LoginEmailForm extends React.Component {
+  state = { isSignedInEmail: null }
+
+  componentDidMount() {
+    //this.auth.isSignedInEmail = localStorage.getItem('isSignedInEmail');
+  }
+
   onSubmit2 = formValues => {
     this.props.connexionEmail(formValues);
     history.push("/");
@@ -29,6 +35,10 @@ class LoginEmailForm extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {};
+const mapStateToProps = state => {
+  return {
+    isSignedInEmail: state.auth.isSignedInEmail
+  }
+};
 
 export default connect(mapStateToProps, { connexionEmail })(LoginEmailForm);

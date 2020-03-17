@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import { Col } from "reactstrap";
 import MySlider from "components/other/MySlider";
 import Actualitees from "components/other/Actualitees";
 

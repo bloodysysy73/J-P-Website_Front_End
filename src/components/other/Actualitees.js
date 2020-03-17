@@ -10,7 +10,7 @@ import SportsEsportsOutlinedIcon from '@material-ui/icons/SportsEsportsOutlined'
 import SportsTennisOutlinedIcon from '@material-ui/icons/SportsTennisOutlined';
 
 
-import TimeLineElement from "./TimeLineElement";
+import TimeLineCard from "../TimeLineCard/TimeLineCard";
 
 class Actualitees extends React.Component {
 
@@ -25,10 +25,10 @@ class Actualitees extends React.Component {
                         icon={<Brightness3OutlinedIcon />}
                     >
 
-                        <TimeLineElement description="Notre association fondée en 1994 par quelques parents de multiples s’appelait initialement ADEPM Association d’entraide des parents de multiples… si le nom a changé c’est toujours sa vocation ! Agrément par l’UDAF (Union départementale des associations familiales), reconnaissance d’utilité publique via notre fédération nationale, autant de preuves que notre travail est nécessaire !
+                        <TimeLineCard description="Notre association fondée en 1994 par quelques parents de multiples s’appelait initialement ADEPM Association d’entraide des parents de multiples… si le nom a changé c’est toujours sa vocation ! Agrément par l’UDAF (Union départementale des associations familiales), reconnaissance d’utilité publique via notre fédération nationale, autant de preuves que notre travail est nécessaire !
 
 Gérée uniquement par des bénévoles, nous avons la volonté d’être un relais pour les parents. Avoir des jumeaux peut paraître courant, idéal pour certains même, par expérience, nous nous dirions plutôt : c’est probablement deux fois plus de boulot mais c’est aussi deux fois plus de bonheur !" title="Editorial" date="vendredi 4 juin" horaire="12h" imgname="logojp.jpg">
-                        </TimeLineElement>
+                        </TimeLineCard>
 
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
@@ -38,10 +38,10 @@ Gérée uniquement par des bénévoles, nous avons la volonté d’être un rela
                         icon={<SportsTennisOutlinedIcon />}
                     >
 
-                        <TimeLineElement description="Pour le prochain numéro de la gazette, Mathilde voudrait aborder le sujet :  Les bêtises de vos multiples.
+                        <TimeLineCard description="Pour le prochain numéro de la gazette, Mathilde voudrait aborder le sujet :  Les bêtises de vos multiples.
 A bientôt ! Quand vous le pouvez,
- faites parvenir vos textes par e-mail à Mélanie et à Caroline." title="Appel à volontaires"  imgname="logojp.jpg">
-                        </TimeLineElement>
+ faites parvenir vos textes par e-mail à Mélanie et à Caroline." title="Appel à volontaires" imgname="logojp.jpg">
+                        </TimeLineCard>
 
                     </VerticalTimelineElement>
                     <VerticalTimelineElement

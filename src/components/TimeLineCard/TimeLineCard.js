@@ -2,20 +2,19 @@ import React from 'react';
 import {
     Card,
     CardHeader,
-    CardBody,
     CardFooter,
     CardTitle,
     Row,
     Col
 } from "reactstrap";
 
-class TimeLineElement extends React.Component {
+class TimeLineCard extends React.Component {
 
     render() {
         return (< div >
             <Card className="card-user">
                 <div className="image">
-                    <img src={require(`../../assets/img/${this.props.imgname.toLowerCase()}`)} width="auto" />
+                    <img alt="" src={require(`../../assets/img/${this.props.imgname.toLowerCase()}`)} width="auto" />
 
                 </div>
                 <CardHeader className="text-center">
@@ -43,4 +42,4 @@ class TimeLineElement extends React.Component {
     }
 }
 
-export default TimeLineElement;
+export default TimeLineCard;

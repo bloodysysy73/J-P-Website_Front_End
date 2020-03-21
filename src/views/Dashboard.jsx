@@ -1,7 +1,16 @@
 import React from "react";
-import { Col } from "reactstrap";
 import MySlider from "components/other/MySlider";
-import Actualitees from "components/other/Actualitees";
+import MyPublicationLine from "components/PublicationLine/MyPublicationLine";
+
+
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  Row,
+  Col
+} from "reactstrap";
 
 class Dashboard extends React.Component {
   // settings = {
@@ -22,10 +31,31 @@ class Dashboard extends React.Component {
     return (
       <>
         <div className="content">
+          <Card className="card-user">
+            <div className="image">
+              <img
+                alt="..."
+                src={require("assets/img/logojp.jpg")}
+                width="250"
+              />
+            </div>
+            <CardHeader className="text-center">
+              <CardTitle tag="h4">L'actualité jumeaux et plus Savoie</CardTitle>
 
-          <Col><MySlider></MySlider></Col>
+            </CardHeader>
 
-          <Actualitees></Actualitees>
+            <CardFooter>
+              <hr />
+              <div className="button-container">
+                <Row>
+                  <Col><MySlider></MySlider></Col>
+                </Row>
+              </div>
+            </CardFooter>
+          </Card>
+
+
+          <MyPublicationLine></MyPublicationLine>
 
         </div>
       </>

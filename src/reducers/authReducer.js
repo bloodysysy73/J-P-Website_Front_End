@@ -23,7 +23,8 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSignedIn: false,
-        userId: null
+        userId: null,
+        role: null
       };
     //s'inscrire avec email
     case SIGN_UP_EMAIL:
@@ -40,7 +41,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isSignedInEmail: true,
         login: action.user.sub,
-        token: action.payload
+        token: action.payload,
+        role: action.user.roles[0].authority
       };
     //se déconnecter avec email
     case LOGOUT_EMAIL:

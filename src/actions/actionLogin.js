@@ -16,6 +16,8 @@ export const signIn = userId => {
 //se déconnecter de google
 export const signOut = () => {
   localStorage.removeItem("isSignedIn");
+  localStorage.removeItem("isAdmin");
+
   return {
     type: SIGN_OUT
   };
@@ -29,12 +31,15 @@ export const connexionEmail = formValues => async dispatch => {
 
   const token = response.headers.authorization;
 
-  console.log("je suis dans la connexion et toekn " + token);
-
   localStorage.setItem("token", token);
   localStorage.setItem("isSignedInEmail", true);
 
   const user = jwt(token);
+  console.log('user  info :', user);
+
+  if (user.roles[0].authority === "ROLE_ADMIN") {
+    localStorage.setItem("isAdmin", "true");
+  }
 
   dispatch({ type: LOGIN_EMAIL, payload: response, user });
 

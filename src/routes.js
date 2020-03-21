@@ -1,5 +1,5 @@
 import Dashboard from "views/Dashboard.jsx";
-import Notifications from "views/Notifications.jsx";
+import Administration from "views/Administration.jsx";
 import Presentation from "views/Presentation.jsx";
 import Liens from "views/Liens.jsx";
 import Article from "views/Article.jsx";
@@ -28,13 +28,6 @@ var routes = [
     name: "Evenements",
     icon: "nc-icon nc-alert-circle-i",
     component: Evenement,
-    layout: "/admin"
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "nc-icon nc-bell-55",
-    component: Notifications,
     layout: "/admin"
   },
   {
@@ -72,6 +65,13 @@ var routes = [
     icon: "nc-icon nc-chat-33",
     component: Contact,
     layout: "/admin"
-  }
+  },
+  {
+    path: "/administration",
+    name: "Administration",
+    icon: "nc-icon nc-bell-55",
+    component: Administration,
+    layout: "/admin"
+  },
 ];
 export default routes;

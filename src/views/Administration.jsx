@@ -4,8 +4,6 @@ import React from "react";
 import NotificationAlert from "react-notification-alert";
 // reactstrap components
 import {
-  UncontrolledAlert,
-  Alert,
   Button,
   Card,
   CardHeader,
@@ -14,6 +12,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+import UtilisateurList from "components/Utilisateur/UtilisateurList";
 
 class Notifications extends React.Component {
   state = {
@@ -68,7 +67,7 @@ class Notifications extends React.Component {
             <Col md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h5">Notifications</CardTitle>
+                  <CardTitle tag="h5">Administration</CardTitle>
                   <p className="card-category">
                     Handcrafted by our colleague{" "}
                     <a
@@ -91,91 +90,20 @@ class Notifications extends React.Component {
                     <Col md="6">
                       <Card className="card-plain">
                         <CardHeader>
-                          <CardTitle tag="h5">Notifications Style</CardTitle>
+                          <CardTitle tag="h5">utilisateur</CardTitle>
                         </CardHeader>
                         <CardBody>
-                          <Alert color="info">
-                            <span>This is a plain notification</span>
-                          </Alert>
-                          <UncontrolledAlert color="info" fade={false}>
-                            <span>
-                              This is a notification with close button.
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert
-                            className="alert-with-icon"
-                            color="info"
-                            fade={false}
-                          >
-                            <span
-                              data-notify="icon"
-                              className="nc-icon nc-bell-55"
-                            />
-                            <span data-notify="message">
-                              This is a notification with close button and icon.
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert
-                            className="alert-with-icon"
-                            color="info"
-                            fade={false}
-                          >
-                            <span
-                              data-notify="icon"
-                              className="nc-icon nc-chart-pie-36"
-                            />
-                            <span data-notify="message">
-                              This is a notification with close button and icon
-                              and have many lines. You can see that the icon and
-                              the close button are always vertically aligned.
-                              This is a beautiful notification. So you don't
-                              have to worry about the style.
-                            </span>
-                          </UncontrolledAlert>
+                          <UtilisateurList></UtilisateurList>
                         </CardBody>
                       </Card>
                     </Col>
                     <Col md="6">
                       <Card className="card-plain">
                         <CardHeader>
-                          <CardTitle tag="h5">Notification states</CardTitle>
+                          <CardTitle tag="h5">Publication</CardTitle>
                         </CardHeader>
                         <CardBody>
-                          <UncontrolledAlert color="primary" fade={false}>
-                            <span>
-                              <b>Primary - </b>
-                              This is a regular notification made with
-                              color="primary"
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert color="info" fade={false}>
-                            <span>
-                              <b>Info - </b>
-                              This is a regular notification made with
-                              color="info"
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert color="success" fade={false}>
-                            <span>
-                              <b>Success - </b>
-                              This is a regular notification made with
-                              color="success"
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert color="warning" fade={false}>
-                            <span>
-                              <b>Warning - </b>
-                              This is a regular notification made with
-                              color="warning"
-                            </span>
-                          </UncontrolledAlert>
-                          <UncontrolledAlert color="danger" fade={false}>
-                            <span>
-                              <b>Danger - </b>
-                              This is a regular notification made with
-                              color="danger"
-                            </span>
-                          </UncontrolledAlert>
+
                         </CardBody>
                       </Card>
                     </Col>

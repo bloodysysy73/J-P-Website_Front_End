@@ -7,6 +7,9 @@ import Evenement from "views/Evenement.jsx";
 import UserPage from "views/User.jsx";
 import Contact from "views/Contact.jsx";
 import FindUs from "views/FindUs";
+import UtilisateurDelete from "components/Utilisateur/UtilisateurDelete";
+import UtilisateurEdit from "components/Utilisateur/UtilisateurEdit";
+
 
 var routes = [
   {
@@ -71,6 +74,20 @@ var routes = [
     name: "Administration",
     icon: "nc-icon nc-bell-55",
     component: Administration,
+    layout: "/admin"
+  },
+  {
+    path: "/utilisateurdelete/:id",
+    name: "UtilisateurDelete",
+    icon: "nc-icon nc-bell-55",
+    component: UtilisateurDelete,
+    layout: "/admin"
+  },
+  {
+    path: "/utilisateuredit/:id",
+    name: "UtilisateurEdit",
+    icon: "nc-icon nc-bell-55",
+    component: UtilisateurEdit,
     layout: "/admin"
   },
 ];

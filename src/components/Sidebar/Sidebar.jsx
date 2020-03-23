@@ -5,7 +5,6 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 
 var ps;
-var isAdmin = false;
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -18,7 +17,6 @@ class Sidebar extends React.Component {
     return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   }
   componentDidMount() {
-    this.isAdmin = localStorage.getItem("isAdmin");
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.sidebar.current, {
         suppressScrollX: true,
@@ -58,8 +56,7 @@ class Sidebar extends React.Component {
           <Nav>
             {this.props.routes.map((prop, key) => {
 
-
-              if (prop.name !== "Administration") {
+              if (prop.name !== "Administration" && prop.name !== "UtilisateurDelete" && prop.name !== "UtilisateurEdit") {
 
                 return (
                   <li
@@ -79,7 +76,7 @@ class Sidebar extends React.Component {
                     </NavLink>
                   </li>
                 );
-              } else if (prop.name === "Administration" && isAdmin) {
+              } else if (prop.name === "Administration" && localStorage.getItem("isAdmin")) {
 
                 return (
                   <li

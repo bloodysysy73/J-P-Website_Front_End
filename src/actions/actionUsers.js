@@ -1,9 +1,12 @@
 import { SIGN_UP_EMAIL } from "./types";
+import { FETCH_UTILISATEURS, EDIT_UTILISATEUR, DELETE_UTILISATEUR, FETCH_UTILISATEUR } from "./types";
+
 import history from "../history";
 
 const axios = require("axios").default;
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
-export const getAll = () => {};
+export const getAll = () => { };
 
 //se créer un compte avec email
 export const createUser = formValues => async dispatch => {
@@ -15,3 +18,27 @@ export const createUser = formValues => async dispatch => {
 
   history.push("/");
 };
+
+export const fetchUtilisateurs = () => async dispatch => {
+  const response = await axios.get('http://localhost:8080/user/list')
+
+  dispatch({ type: FETCH_UTILISATEURS, payload: response.data })
+}
+
+export const editUtilisateur = (formValues) => async dispatch => {
+  const response = await axios.post(`http://localhost:8080/user/edit`, formValues)
+
+  dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+}
+
+export const deleteUtilisateur = id => async dispatch => {
+  await axios.delete(`http://localhost:8080/user/delete/${id}`)
+
+  dispatch({ type: DELETE_UTILISATEUR, payload: id })
+}
+
+export const fetchUtilisateur = id => async dispatch => {
+  const response = await axios.get(`http://localhost:8080/user/findbyid/${id}`)
+
+  dispatch({ type: FETCH_UTILISATEUR, payload: response.data })
+}

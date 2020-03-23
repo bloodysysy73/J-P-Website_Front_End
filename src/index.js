@@ -8,8 +8,6 @@ import { Provider } from "react-redux";
 import reducers from "./reducers";
 import history from "./history";
 import AdminLayout from "layouts/Admin.jsx";
-import TimeLineCardEdit from './components/TimeLineCard/TimeLineCardEdit';
-import TimeLineCardDelete from './components/TimeLineCard/TimeLineCardDelete';
 
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.1.0";
@@ -29,8 +27,6 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/admin" render={props => <AdminLayout {...props} />} />
-          <Route path="/timelinecard/edit/:id" exact component={TimeLineCardEdit} />
-          <Route path="/timelinecard/delete/:id" exact component={TimeLineCardDelete} />
           <Redirect to="/admin/dashboard" />
         </Switch>
       </div>

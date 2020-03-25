@@ -1,7 +1,6 @@
-import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchUtilisateur, editUtilisateur } from '../../actions/actionUsers'
+import { createUser } from '../../actions/actionUsers'
 import UtilisateurForm from './UtilisateurForm'
 
 import {
@@ -11,14 +10,13 @@ import {
     CardTitle,
 } from "reactstrap";
 
-class UtilisateurEdit extends React.Component {
+class UtilisateurCreate extends React.Component {
     componentDidMount() {
-        this.props.fetchUtilisateur(this.props.match.params.id)
     }
 
     onSubmit = formValues => {
-        console.log("formvalues : ", formValues);
-        this.props.editUtilisateur(formValues)
+        console.log("formvalues creation : ", formValues);
+        this.props.createUser(formValues)
     }
 
     render() {
@@ -30,11 +28,11 @@ class UtilisateurEdit extends React.Component {
                     <div className="container">
                         <Card className="card-user">
                             <CardHeader className="text-center">
-                                <CardTitle tag="h4"> Modifier l'utilisateur </CardTitle>
+                                <CardTitle tag="h4"> Créer l'utilisateur </CardTitle>
 
                                 <UtilisateurForm
-                                    initialValues={_.pick(this.props.utilisateur, 'id', 'login', 'pseudo', 'nom', 'prenom', 'adresse', 'dateInscription', 'adherent')}
                                     onSubmit={this.onSubmit}
+                                    isCreation={true}
                                 />
                             </CardHeader>
                             <CardFooter>
@@ -51,10 +49,10 @@ class UtilisateurEdit extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { utilisateur: state.utilisateurs[ownProps.match.params.id] }
+    return "";
 }
 
 export default connect(
     mapStateToProps,
-    { fetchUtilisateur, editUtilisateur }
-)(UtilisateurEdit)
+    { createUser }
+)(UtilisateurCreate)

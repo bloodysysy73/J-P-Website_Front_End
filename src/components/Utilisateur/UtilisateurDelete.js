@@ -31,19 +31,18 @@ class UtilisateurDelete extends React.Component {
 
   render() {
     return (
-      <div></div>
-      // <Modal
-      //   title="Supprimer l'Utilisateur ? "
-      //   content={this.renderContent()}
-      //   actions={this.renderActions()}
-      //   onDismiss={() => history.push('/')}
-      // />
+      <Modal
+        title="Supprimer l'Utilisateur ? "
+        content={this.renderContent()}
+        actions={this.renderActions()}
+        onDismiss={() => history.push('/')}
+      />
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return "";//{ utilisateur: state.utilisateur[ownProps.match.params.id] }
+  return { utilisateur: state.utilisateurs[ownProps.match.params.id] }
 }
 
 export default connect(

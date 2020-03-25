@@ -11,13 +11,61 @@ class UtilisateurForm extends React.Component {
       )
     }
   }
-  renderInput = ({ input, label, meta }) => {
+  renderInput = ({ input, label, meta, disabled }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+    console.log("input simple", input);
+
+    return (
+      <div className={className}>
+        <label>{label}</label>
+        <input disabled={disabled} {...input} autoComplete="off" />
+        {this.renderError(meta)}
+      </div>
+    )
+  }
+
+  renderInputPassword = ({ input, label, meta, disabled, isCreation }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+    console.log("input simple", input);
+
+    if (isCreation) {
+      return (
+        <div className={className}>
+          <label>{label}</label>
+          <input disabled={disabled} {...input} autoComplete="off" />
+          {this.renderError(meta)}
+        </div>
+      )
+    } else { return <div></div> }
+  }
+
+
+  renderSelect = ({ input, label, meta, option1, option2 }) => {
     const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
     return (
       <div className={className}>
         <label>{label}</label>
-        <input {...input} autoComplete="off" />
+        <select {...input} autoComplete="off">
+          <option value="true">{option1}</option>
+          <option value="false">{option2}</option>
+        </select>
+        {this.renderError(meta)}
+      </div>
+    )
+  }
+
+  renderCheckBox = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+
+    console.log("checkbox input", input);
+    console.log("checkbox value", input.value);
+
+    return (
+      <div className={className}>
+        <label>{label}</label>
+        <input  {...input} type="checkbox" >
+        </input>
         {this.renderError(meta)}
       </div>
     )
@@ -28,22 +76,23 @@ class UtilisateurForm extends React.Component {
   }
 
   render() {
+    console.log("props du form : ", this.props)
+    // console.log("la value que j'envoie : ", this.props.initialValues.adherent)
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
         className="ui form error"
       >
-        <Field name="login" component={this.renderInput} label="Entrez le nouveau login" />
+        <Field name="id" component={this.renderInput} label="id de l'utilisateur" disabled />
+        <Field name="login" component={this.renderInput} label="Entrez le nouveau login (obligatoire)" required />
         <Field name="pseudo" component={this.renderInput} label="Enter le nouveau pseudo" />
         <Field name="nom" component={this.renderInput} label="nom" />
         <Field name="prenom" component={this.renderInput} label="prenom" />
         <Field name="adresse" component={this.renderInput} label="adresse" />
         <Field name="dateInscription" component={this.renderInput} label="Date d'inscription" />
-        <Field name="isAdherent" component={this.renderInput} label="Est-ce un adhérent ?" />
+        <Field name="adherent" component={this.renderCheckBox} label="Est-ce un adhérent ?" />
 
-
-
-
+        <Field name="password" isCreation={this.props.isCreation} component={this.renderInputPassword} label="password (obligatoire)" required />
 
         <button className="ui button primary">Valider</button>
       </form>
@@ -54,13 +103,10 @@ class UtilisateurForm extends React.Component {
 const validate = formValues => {
   const errors = {}
 
-  if (!formValues.title) {
-    errors.title = 'You must enter a title'
+  if (!formValues.login) {
+    errors.login = 'login obligatoire'
   }
 
-  if (!formValues.description) {
-    errors.description = 'You must enter a description'
-  }
 
   return errors
 }

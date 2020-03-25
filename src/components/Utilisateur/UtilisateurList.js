@@ -18,7 +18,7 @@ class UtilisateurList extends React.Component {
     return (
       <div className="right floated content">
         <Link to={`/admin/utilisateuredit/${utilisateur.id}`} className="ui button primary">Edit</Link>
-        <Link to={`/admin/utilisateurdelete`} className="ui button negative">Delete</Link>
+        <Link to={`/admin/utilisateurdelete/${utilisateur.id}`} className="ui button negative">Delete</Link>
       </div>
     )
 
@@ -31,10 +31,11 @@ class UtilisateurList extends React.Component {
           {this.renderButton(utilisateur)}
           <i className="large middle aligned icon camera" />
           <div className="content">
-            <Link to={`/utilisateur/${utilisateur.id}`} className="header">
+            <div className="description">login : {utilisateur.login}</div>
+            <p className="header">
               {utilisateur.dateInscription}
-            </Link>
-            <div className="description">{utilisateur.login}</div>
+            </p>
+            <div className="description">Pseudo : {utilisateur.pseudo}</div>
           </div>
         </div>
       )
@@ -42,23 +43,21 @@ class UtilisateurList extends React.Component {
   }
 
   renderCreate = () => {
-    if (this.props.isSignedIn) {
-      return (
-        <div style={{ textAlign: 'right' }}>
-          {/* <Link to="/utilisateur/save" className="ui button primary">
-            Create utilisateur
-                  </Link> */}
-        </div>
-      )
-    }
+    return (
+      <div style={{ textAlign: 'right' }}>
+        <Link to={`/admin/utilisateurcreate`} className="ui button primary">
+          Créer utilisateur
+                  </Link>
+      </div>
+    )
+
   }
 
   render() {
     return (
       <div>
-        <h2>utilisateurs</h2>
         <div className="ui celled list">{this.renderList()}</div>
-        {/* {this.renderCreate()} */}
+        {this.renderCreate()}
       </div>
     )
   }

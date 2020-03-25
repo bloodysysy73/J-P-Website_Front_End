@@ -16,6 +16,7 @@ export const createUser = formValues => async dispatch => {
 
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
+  window.alert("Profil créé !");
   history.push("/");
 };
 
@@ -26,9 +27,10 @@ export const fetchUtilisateurs = () => async dispatch => {
 }
 
 export const editUtilisateur = (formValues) => async dispatch => {
-  const response = await axios.post(`http://localhost:8080/user/edit`, formValues)
+  const response = await axios.put(`http://localhost:8080/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  window.alert("Profil modifié !");
 }
 
 export const deleteUtilisateur = id => async dispatch => {

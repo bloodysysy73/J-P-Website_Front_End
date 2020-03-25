@@ -9,6 +9,7 @@ import Contact from "views/Contact.jsx";
 import FindUs from "views/FindUs";
 import UtilisateurDelete from "components/Utilisateur/UtilisateurDelete";
 import UtilisateurEdit from "components/Utilisateur/UtilisateurEdit";
+import UtilisateurCreate from "components/Utilisateur/UtilisateurCreate";
 
 
 var routes = [
@@ -88,6 +89,13 @@ var routes = [
     name: "UtilisateurEdit",
     icon: "nc-icon nc-bell-55",
     component: UtilisateurEdit,
+    layout: "/admin"
+  },
+  {
+    path: "/utilisateurcreate",
+    name: "UtilisateurCreate",
+    icon: "nc-icon nc-bell-55",
+    component: UtilisateurCreate,
     layout: "/admin"
   },
 ];

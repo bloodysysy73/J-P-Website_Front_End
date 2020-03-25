@@ -42,8 +42,7 @@ export const connexionEmail = formValues => async dispatch => {
   }
 
   dispatch({ type: LOGIN_EMAIL, payload: response, user });
-
-  //history.push("/");
+  alert("vous etes connecté");
 };
 
 // se déconneceter email
@@ -51,6 +50,7 @@ export const logoutEmail = () => {
   localStorage.removeItem("isSignedInEmail");
   localStorage.removeItem("token");
   localStorage.removeItem("isSignedIn");
+  alert("vous etes déconnecté");
   return {
     type: LOGOUT_EMAIL
   };

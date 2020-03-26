@@ -34,9 +34,12 @@ export const editUtilisateur = (formValues) => async dispatch => {
 }
 
 export const deleteUtilisateur = id => async dispatch => {
-  await axios.delete(`http://localhost:8080/user/delete/${id}`)
 
+  await axios.get(`http://localhost:8080/user/delete/${id}`)
   dispatch({ type: DELETE_UTILISATEUR, payload: id })
+  history.push('/admin/administration')
+  window.alert("utilisateur supprimé !");
+
 }
 
 export const fetchUtilisateur = id => async dispatch => {

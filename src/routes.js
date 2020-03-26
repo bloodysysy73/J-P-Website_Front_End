@@ -10,6 +10,9 @@ import FindUs from "views/FindUs";
 import UtilisateurDelete from "components/Utilisateur/UtilisateurDelete";
 import UtilisateurEdit from "components/Utilisateur/UtilisateurEdit";
 import UtilisateurCreate from "components/Utilisateur/UtilisateurCreate";
+import TimeLineCardDelete from "components/TimeLineCard/TimeLineCardDelete";
+import TimeLineCardEdit from "components/TimeLineCard/TimeLineCardEdit";
+import TimeLineCardCreate from "components/TimeLineCard/TimeLineCardCreate";
 
 
 var routes = [
@@ -96,6 +99,27 @@ var routes = [
     name: "UtilisateurCreate",
     icon: "nc-icon nc-bell-55",
     component: UtilisateurCreate,
+    layout: "/admin"
+  },
+  {
+    path: "/timelinecarddelete/:id",
+    name: "TimeLineCardDelete",
+    icon: "nc-icon nc-bell-55",
+    component: TimeLineCardDelete,
+    layout: "/admin"
+  },
+  {
+    path: "/timelinecardedit/:id",
+    name: "TimeLineCardEdit",
+    icon: "nc-icon nc-bell-55",
+    component: TimeLineCardEdit,
+    layout: "/admin"
+  },
+  {
+    path: "/timelinecardcreate",
+    name: "TimeLineCardCreate",
+    icon: "nc-icon nc-bell-55",
+    component: TimeLineCardCreate,
     layout: "/admin"
   },
 ];

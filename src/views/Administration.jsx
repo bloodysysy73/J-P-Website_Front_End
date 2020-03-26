@@ -11,6 +11,7 @@ import {
   Col
 } from "reactstrap";
 import UtilisateurList from "components/Utilisateur/UtilisateurList";
+import TimeLineCardList from "components/TimeLineCard/TimeLineCardList";
 
 class Administration extends React.Component {
 
@@ -24,7 +25,7 @@ class Administration extends React.Component {
                 <CardHeader>
                   <CardTitle tag="h5">Administration</CardTitle>
                   <p className="card-category">
-                    ici vous pouvez retrouver la liste des utilisteurs ainsi que l'historique des publications et des évènements du site{" "}
+                    ici vous pouvez retrouver la liste des utilisteurs ainsi que l'historique des publications et des évènements du site pour les modifier ou les supprimer.{" "}
                   </p>
                 </CardHeader>
                 <CardBody>
@@ -47,7 +48,7 @@ class Administration extends React.Component {
                           <p className="category">historique</p>
                         </CardHeader>
                         <CardBody>
-
+                          <TimeLineCardList></TimeLineCardList>
                         </CardBody>
                       </Card>
                     </Col>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTimeLineCard, editTimeLineCard } from '../../actions/actionTimeLineCard'
+import { createTimeLineCard } from '../../actions/actionTimeLineCard'
 import TimeLineCardForm from './TimeLineCardForm'
 
 import {
@@ -10,19 +10,16 @@ import {
     CardTitle,
 } from "reactstrap";
 
-class TimeLineCardEdit extends React.Component {
-
+class TimeLineCardCreate extends React.Component {
     componentDidMount() {
-        this.props.fetchTimeLineCard(this.props.match.params.id)
     }
 
     onSubmit = formValues => {
-        console.log("formvalues : ", formValues);
-        this.props.editTimeLineCard(formValues)
+        console.log("formvalues creation : ", formValues);
+        this.props.createTimeLineCard(formValues)
     }
 
     render() {
-        // if (!this.props.timeLineCard) return <div>Loading...</div>
 
         return (
             <>
@@ -30,11 +27,11 @@ class TimeLineCardEdit extends React.Component {
                     <div className="container">
                         <Card className="card-user">
                             <CardHeader className="text-center">
-                                <CardTitle tag="h4"> Modifier l'timeLineCard </CardTitle>
+                                <CardTitle tag="h4"> Créer un évenement </CardTitle>
 
                                 <TimeLineCardForm
-                                    initialValues={(this.props.timeLineCard)}
                                     onSubmit={this.onSubmit}
+                                    isCreation={true}
                                 />
                             </CardHeader>
                             <CardFooter>
@@ -51,9 +48,10 @@ class TimeLineCardEdit extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { timeLineCard: state.timeLineCards[ownProps.match.params.id] }
+    return "";
 }
+
 export default connect(
     mapStateToProps,
-    { fetchTimeLineCard, editTimeLineCard }
-)(TimeLineCardEdit)
+    { createTimeLineCard }
+)(TimeLineCardCreate)

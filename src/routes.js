@@ -14,6 +14,10 @@ import TimeLineCardDelete from "components/TimeLineCard/TimeLineCardDelete";
 import TimeLineCardEdit from "components/TimeLineCard/TimeLineCardEdit";
 import TimeLineCardCreate from "components/TimeLineCard/TimeLineCardCreate";
 
+import publicationLineCardDelete from "components/PublicationLineCard/PublicationLineCardDelete";
+import publicationLineCardEdit from "components/PublicationLineCard/PublicationLineCardEdit";
+import publicationLineCardCreate from "components/PublicationLineCard/PublicationLineCardCreate";
+
 
 var routes = [
   {
@@ -120,6 +124,27 @@ var routes = [
     name: "TimeLineCardCreate",
     icon: "nc-icon nc-bell-55",
     component: TimeLineCardCreate,
+    layout: "/admin"
+  },
+  {
+    path: "/publicationdelete/:id",
+    name: "PublicationLineCardDelete",
+    icon: "nc-icon nc-bell-55",
+    component: publicationLineCardDelete,
+    layout: "/admin"
+  },
+  {
+    path: "/publicationedit/:id",
+    name: "PublicationLineCardEdit",
+    icon: "nc-icon nc-bell-55",
+    component: publicationLineCardEdit,
+    layout: "/admin"
+  },
+  {
+    path: "/publicationcreate",
+    name: "PublicationLineCardCreate",
+    icon: "nc-icon nc-bell-55",
+    component: publicationLineCardCreate,
     layout: "/admin"
   },
 ];

@@ -1,4 +1,5 @@
-import { FETCH_PUBLICATIONLINECARDS, EDIT_PUBLICATIONLINECARD, DELETE_PUBLICATIONLINECARD, FETCH_PUBLICATIONLINECARD } from "./types";
+import { FETCH_PUBLICATIONLINECARDS, EDIT_PUBLICATIONLINECARD, DELETE_PUBLICATIONLINECARD, FETCH_PUBLICATIONLINECARD, CREATE_PUBLICATIONLINECARD } from "./types";
+import history from "../history";
 
 
 const axios = require("axios").default;
@@ -10,16 +11,23 @@ export const fetchPublicationLineCards = () => async dispatch => {
   dispatch({ type: FETCH_PUBLICATIONLINECARDS, payload: response.data })
 }
 
-export const editPublicationLineCard = (id, formValues) => async dispatch => {
-  const response = await axios.patch(`http://localhost:8080/publication/edit/${id}`, formValues)
+export const editPublicationLineCard = (formValues) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/publication/edit`, formValues)
 
   dispatch({ type: EDIT_PUBLICATIONLINECARD, payload: response.data })
+  window.alert("Publication modifié !");
+  history.push('/admin/administration')
+
 }
 
 export const deletePublicationLineCard = id => async dispatch => {
-  await axios.delete(`http://localhost:8080/publication/delete/${id}`)
+  await axios.get(`http://localhost:8080/publication/delete/${id}`)
 
   dispatch({ type: DELETE_PUBLICATIONLINECARD, payload: id })
+  window.alert("Publication supprimé !");
+  history.push('/admin/administration')
+
+
 }
 
 export const fetchPublicationLineCard = id => async dispatch => {
@@ -27,3 +35,15 @@ export const fetchPublicationLineCard = id => async dispatch => {
 
   dispatch({ type: FETCH_PUBLICATIONLINECARD, payload: response.data })
 }
+
+export const createPublicationLineCard = formValues => async dispatch => {
+  const response = await axios.post("http://localhost:8080/publication/save", {
+    ...formValues
+  });
+
+  dispatch({ type: CREATE_PUBLICATIONLINECARD, payload: response.data });
+
+  window.alert("Publication créé !");
+  history.push('/admin/administration')
+
+};

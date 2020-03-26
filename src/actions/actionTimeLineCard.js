@@ -11,11 +11,12 @@ export const fetchTimeLineCards = () => async dispatch => {
   dispatch({ type: FETCH_TIMELINECARDS, payload: response.data })
 }
 
-export const editTimeLineCard = (id, formValues) => async dispatch => {
-  const response = await axios.patch(`http://localhost:8080/timelinecard/edit`, formValues)
+export const editTimeLineCard = (formValues) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/timelinecard/edit`, formValues)
 
   dispatch({ type: EDIT_TIMELINECARD, payload: response.data })
   window.alert("Evenement modifié !");
+  history.push('/admin/administration')
 
 }
 
@@ -43,4 +44,6 @@ export const createTimeLineCard = formValues => async dispatch => {
   dispatch({ type: CREATE_TIMELINECARD, payload: response.data });
 
   window.alert("Evenement créé !");
+  history.push('/admin/administration')
+
 };

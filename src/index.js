@@ -28,7 +28,6 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/admin" render={props => <AdminLayout {...props} />} />
-          {/* <Route path="/admin/utilisateurdelete/:id" exact component={UtilisateurDelete} /> */}
           <Redirect to="/admin/dashboard" />
         </Switch>
       </div>

@@ -1,18 +1,6 @@
 import React from "react";
 import 'react-vertical-timeline-component/style.min.css';
 
-
-// import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-// import Brightness3OutlinedIcon from '@material-ui/icons/Brightness3Outlined';
-// import FilterVintageOutlinedIcon from '@material-ui/icons/FilterVintageOutlined';
-// import MusicNoteOutlinedIcon from '@material-ui/icons/MusicNoteOutlined';
-// import RowingOutlinedIcon from '@material-ui/icons/RowingOutlined';
-// import SentimentSatisfiedAltOutlinedIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
-// import SportsEsportsOutlinedIcon from '@material-ui/icons/SportsEsportsOutlined';
-// import SportsTennisOutlinedIcon from '@material-ui/icons/SportsTennisOutlined';
-
-//import TimeLineCard from "./TimeLineCard";
-
 import { fetchTimeLineCards } from "../../actions/actionTimeLineCard";
 import { Link } from 'react-router-dom'
 
@@ -25,28 +13,28 @@ class TimeLineCardList extends React.Component {
     this.props.fetchTimeLineCards();
   }
 
-  renderAdmin = timeLineCard => {
-    if (timeLineCard.userId === this.props.currentUserId) {
-      return (
-        <div className="right floated content">
-          <Link to={`/timelinecard/edit/${timeLineCard.id}`} className="ui button primary">Edit</Link>
-          <Link to={`/timelinecard/delete/${timeLineCard.id}`} className="ui button negative">Delete</Link>
-        </div>
-      )
-    }
+  renderButton = timeLineCard => {
+
+    return (
+      <div className="right floated content">
+        <Link to={`/admin/timelinecardedit/${timeLineCard.id}`} className="ui button primary">Edit</Link>
+        <Link to={`/admin/timelinecarddelete/${timeLineCard.id}`} className="ui button negative">Delete</Link>
+      </div>
+    )
+
   }
 
   renderList = () => {
     return this.props.timeLineCards.map(timeLineCard => {
       return (
         <div className="item" key={timeLineCard.id}>
-          {this.renderAdmin(timeLineCard)}
+          {this.renderButton(timeLineCard)}
           <i className="large middle aligned icon camera" />
           <div className="content">
-            <Link to={`/timelinecard/${timeLineCard.id}`} className="header">
-              {timeLineCard.title}
-            </Link>
-            <div className="description">{timeLineCard.description}</div>
+            <div className="description">titre : {timeLineCard.title}</div>
+            <p className="header">
+              créé le : {timeLineCard.poste_le}
+            </p>
           </div>
         </div>
       )
@@ -54,28 +42,26 @@ class TimeLineCardList extends React.Component {
   }
 
   renderCreate = () => {
-    if (this.props.isSignedIn) {
-      return (
-        <div style={{ textAlign: 'right' }}>
-          <Link to="/timelinecard/save" className="ui button primary">
-            Create timeLineCard
+    return (
+      <div style={{ textAlign: 'right' }}>
+        <Link to={`/admin/timelinecardcreate`} className="ui button primary">
+          Créer un evènement
                   </Link>
-        </div>
-      )
-    }
+      </div>
+    )
+
   }
 
   render() {
     return (
       <div>
-        <h2>timeLineCards</h2>
-        <div className="ui celled list">{this.renderList()}</div>
         {this.renderCreate()}
+        <div className="ui celled list">{this.renderList()}</div>
+
       </div>
     )
   }
 }
-
 
 const mapStateToProps = state => {
   return {

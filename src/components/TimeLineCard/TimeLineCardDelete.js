@@ -16,33 +16,29 @@ class TimeLineCardDelete extends React.Component {
     return (
       <React.Fragment>
         <button onClick={() => this.props.deleteTimeLineCard(id)} className="ui button negative">Delete</button>
-        <Link to="/" className="ui button">Cancel</Link>
+        <Link to="/admin/administration" className="ui button">Cancel</Link>
       </React.Fragment>
     )
   }
 
   renderContent = () => {
-    if (!this.props.stream) {
-      return 'Are you sure you want to delete this card?'
-    }
-
-    return `Are you sure you want to delete the stream with title: ${this.props.timelinecard.title}?`
+    return `Voulez vraiment supprimer cet timeLineCard` // :${this.props.timeLineCard.title} ?`
   }
 
   render() {
     return (
       <Modal
-        title="Delete Stream"
+        title="Supprimer l'évènement ? "
         content={this.renderContent()}
         actions={this.renderActions()}
-        onDismiss={() => history.push('/')}
+        onDismiss={() => history.push('/admin/administration')}
       />
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.timelinecard[ownProps.match.params.id] }
+  return { timeLineCard: state.timeLineCards[ownProps.match.params.id] }
 }
 
 export default connect(

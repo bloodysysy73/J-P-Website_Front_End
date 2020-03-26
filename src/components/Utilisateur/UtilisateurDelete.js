@@ -16,17 +16,13 @@ class UtilisateurDelete extends React.Component {
     return (
       <React.Fragment>
         <button onClick={() => this.props.deleteUtilisateur(id)} className="ui button negative">Delete</button>
-        <Link to="/" className="ui button">Cancel</Link>
+        <Link to="/admin/administration" className="ui button">Cancel</Link>
       </React.Fragment>
     )
   }
 
   renderContent = () => {
-    if (!this.props.utilisateur) {
-      return 'Are you sure you want to delete this card?'
-    }
-
-    return `Are you sure you want to delete the stream with title: ${this.props.utilisateur.login}?`
+    return `Voulez vraiment supprimer cet utilisateur`// : ${this.props.utilisateur.login}?`
   }
 
   render() {
@@ -35,7 +31,7 @@ class UtilisateurDelete extends React.Component {
         title="Supprimer l'Utilisateur ? "
         content={this.renderContent()}
         actions={this.renderActions()}
-        onDismiss={() => history.push('/')}
+        onDismiss={() => history.push('/admin/administration')}
       />
     )
   }

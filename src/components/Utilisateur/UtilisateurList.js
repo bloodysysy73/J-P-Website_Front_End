@@ -33,7 +33,7 @@ class UtilisateurList extends React.Component {
           <div className="content">
             <div className="description">login : {utilisateur.login}</div>
             <p className="header">
-              {utilisateur.dateInscription}
+              inscrit le : {utilisateur.dateInscription}
             </p>
             <div className="description">Pseudo : {utilisateur.pseudo}</div>
           </div>
@@ -46,7 +46,7 @@ class UtilisateurList extends React.Component {
     return (
       <div style={{ textAlign: 'right' }}>
         <Link to={`/admin/utilisateurcreate`} className="ui button primary">
-          Créer utilisateur
+          Créer un utilisateur
                   </Link>
       </div>
     )
@@ -56,8 +56,9 @@ class UtilisateurList extends React.Component {
   render() {
     return (
       <div>
-        <div className="ui celled list">{this.renderList()}</div>
         {this.renderCreate()}
+        <div className="ui celled list">{this.renderList()}</div>
+
       </div>
     )
   }

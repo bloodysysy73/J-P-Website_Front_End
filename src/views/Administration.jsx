@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import UtilisateurList from "components/Utilisateur/UtilisateurList";
 import TimeLineCardList from "components/TimeLineCard/TimeLineCardList";
+import PublicationLineCardList from "components/PublicationLineCard/PublicationLineCardList";
 
 class Administration extends React.Component {
 
@@ -71,7 +72,7 @@ class Administration extends React.Component {
                     <Row>
                       <Col className="ml-auto mr-auto" lg="8">
                         <Row>
-
+                          <PublicationLineCardList></PublicationLineCardList>
                         </Row>
                       </Col>
                     </Row>

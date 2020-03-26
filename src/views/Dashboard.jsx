@@ -1,6 +1,6 @@
 import React from "react";
 import MySlider from "components/other/MySlider";
-import MyPublicationLine from "components/PublicationLine/MyPublicationLine";
+import MyPublicationLine from "components/PublicationLineCard/MyPublicationLine";
 
 
 import {

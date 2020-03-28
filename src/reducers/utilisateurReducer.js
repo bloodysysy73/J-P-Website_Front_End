@@ -4,7 +4,9 @@ import {
     FETCH_UTILISATEUR,
     FETCH_UTILISATEURS,
     EDIT_UTILISATEUR,
-    DELETE_UTILISATEUR
+    DELETE_UTILISATEUR,
+    SORT_BY_LOGIN_USER,
+    SORT_BY_DATE_USER
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -19,6 +21,10 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload }
         case DELETE_UTILISATEUR:
             return _.omit(state, action.payload)
+        case SORT_BY_LOGIN_USER:
+            return { ..._.mapKeys(action.payload, 'login') }
+        case SORT_BY_DATE_USER:
+            return { ..._.mapKeys(action.payload, 'id') }
         default:
             return state
     }

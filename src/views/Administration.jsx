@@ -35,7 +35,7 @@ class Administration extends React.Component {
                       <Card className="card-plain">
                         <CardHeader>
                           <CardTitle tag="h5">utilisateur</CardTitle>
-                          <p className="category">Dans la base de donnée jumeaux et plus savoie</p>
+                          <p className="category">Dans la base de donnée jumeaux et plus savoie</p><br />
                         </CardHeader>
                         <CardBody>
                           <UtilisateurList></UtilisateurList>
@@ -46,7 +46,7 @@ class Administration extends React.Component {
                       <Card className="card-plain">
                         <CardHeader>
                           <CardTitle tag="h5">Evenements</CardTitle>
-                          <p className="category">historique</p>
+                          <p className="category">historique</p><br />
                         </CardHeader>
                         <CardBody>
                           <TimeLineCardList></TimeLineCardList>
@@ -66,7 +66,7 @@ class Administration extends React.Component {
                     <Row>
                       <Col className="ml-auto mr-auto text-center" md="6">
                         <CardTitle tag="h5">Publications</CardTitle>
-                        <p className="category">historique</p>
+                        <p className="category">historique</p><br />
                       </Col>
                     </Row>
                     <Row>

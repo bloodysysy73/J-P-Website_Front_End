@@ -10,11 +10,18 @@ import {
 
 class PublicationLineCard extends React.Component {
 
+    // componentDidMount() {
+    //     if (!this.props.imageName) {
+    //         this.props.imageName = 'bg5.jpg'
+    //     }
+
+    // }
+
     render() {
         return (< div >
             <Card className="card-user">
                 <div className="image">
-                    <img alt="" src={require(`../../assets/img/${this.props.imgname.toLowerCase()}`)} width="auto" />
+                    <img alt="" src={require(`../../assets/img/${this.props.imageName || 'logojp.jpg'}`)} width="auto" />
 
                 </div>
                 <CardHeader className="text-center">

@@ -1,4 +1,13 @@
-import { FETCH_PUBLICATIONLINECARDS, EDIT_PUBLICATIONLINECARD, DELETE_PUBLICATIONLINECARD, FETCH_PUBLICATIONLINECARD, CREATE_PUBLICATIONLINECARD } from "./types";
+import {
+  FETCH_PUBLICATIONLINECARDS,
+  EDIT_PUBLICATIONLINECARD,
+  DELETE_PUBLICATIONLINECARD,
+  FETCH_PUBLICATIONLINECARD,
+  CREATE_PUBLICATIONLINECARD,
+  SORT_BY_DATE_PUBLICATIONLINECARD,
+  SORT_BY_TITLE_PUBLICATIONLINECARD
+} from "./types";
+
 import history from "../history";
 
 
@@ -47,3 +56,24 @@ export const createPublicationLineCard = formValues => async dispatch => {
   history.push('/admin/administration')
 
 };
+
+export const sortList = (wtd, publicationList) => {
+
+  if (wtd === 1) {
+    //trier la liste par titre
+    publicationList.sort((a, b) => (a.title > b.title) ? 1 : (a.title === b.title) ? ((a.title2 > b.title2) ? 1 : -1) : -1)
+
+    return {
+      type: SORT_BY_TITLE_PUBLICATIONLINECARD,
+      payload: publicationList
+    }
+  } else if (wtd === 2) {
+    //trier la liste par date 
+    publicationList.sort((a, b) => (a.id > b.id) ? 1 : -1)
+
+    return {
+      type: SORT_BY_DATE_PUBLICATIONLINECARD,
+      payload: publicationList
+    }
+  }
+}

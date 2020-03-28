@@ -1,4 +1,13 @@
-import { FETCH_TIMELINECARDS, EDIT_TIMELINECARD, DELETE_TIMELINECARD, FETCH_TIMELINECARD, CREATE_TIMELINECARD } from "./types";
+import {
+  FETCH_TIMELINECARDS,
+  EDIT_TIMELINECARD,
+  DELETE_TIMELINECARD,
+  FETCH_TIMELINECARD,
+  CREATE_TIMELINECARD,
+  SORT_BY_TITLE_TIMELINECARD,
+  SORT_BY_DATE_TIMELINECARD
+} from "./types";
+
 import history from "../history";
 
 
@@ -47,3 +56,25 @@ export const createTimeLineCard = formValues => async dispatch => {
   history.push('/admin/administration')
 
 };
+
+export const sortList = (wtd, timeLineCardList) => {
+
+  if (wtd === 1) {
+    //trier la liste par titre
+    console.log("je suis dans l'action de sort ", timeLineCardList)
+    timeLineCardList.sort((a, b) => (a.title > b.title) ? 1 : (a.title === b.title) ? ((a.title2 > b.title2) ? 1 : -1) : -1)
+
+    return {
+      type: SORT_BY_TITLE_TIMELINECARD,
+      payload: timeLineCardList
+    }
+  } else if (wtd === 2) {
+    //trier la liste par date 
+    timeLineCardList.sort((a, b) => (a.id > b.id) ? 1 : -1)
+
+    return {
+      type: SORT_BY_DATE_TIMELINECARD,
+      payload: timeLineCardList
+    }
+  }
+}

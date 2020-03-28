@@ -1,5 +1,12 @@
 import { SIGN_UP_EMAIL } from "./types";
-import { FETCH_UTILISATEURS, EDIT_UTILISATEUR, DELETE_UTILISATEUR, FETCH_UTILISATEUR } from "./types";
+import {
+  FETCH_UTILISATEURS,
+  EDIT_UTILISATEUR,
+  DELETE_UTILISATEUR,
+  FETCH_UTILISATEUR,
+  SORT_BY_LOGIN_USER,
+  SORT_BY_DATE_USER
+} from "./types";
 
 import history from "../history";
 
@@ -17,7 +24,7 @@ export const createUser = formValues => async dispatch => {
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
   window.alert("Profil créé !");
-  history.push("/");
+  history.push('/admin/administration')
 };
 
 export const fetchUtilisateurs = () => async dispatch => {
@@ -30,6 +37,7 @@ export const editUtilisateur = (formValues) => async dispatch => {
   const response = await axios.put(`http://localhost:8080/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  history.push('/admin/administration')
   window.alert("Profil modifié !");
 }
 
@@ -46,4 +54,25 @@ export const fetchUtilisateur = id => async dispatch => {
   const response = await axios.get(`http://localhost:8080/user/findbyid/${id}`)
 
   dispatch({ type: FETCH_UTILISATEUR, payload: response.data })
+}
+
+export const sortList = (wtd, userList) => {
+
+  if (wtd === 1) {
+    //trier la liste par login
+    userList.sort((a, b) => (a.login > b.login) ? 1 : (a.login === b.login) ? ((a.pseudo > b.pseudo) ? 1 : -1) : -1)
+
+    return {
+      type: SORT_BY_LOGIN_USER,
+      payload: userList
+    }
+  } else if (wtd === 2) {
+    //trier la liste par date d'inscription
+    userList.sort((a, b) => (a.id > b.id) ? 1 : -1)
+
+    return {
+      type: SORT_BY_DATE_USER,
+      payload: userList
+    }
+  }
 }

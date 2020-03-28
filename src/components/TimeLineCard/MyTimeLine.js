@@ -52,7 +52,7 @@ class MytimeLine extends React.Component {
                             icon={<Brightness3OutlinedIcon />}
                         >
 
-                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imgname={timeLineCard.imageName}>
+                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imageName={timeLineCard.imageName}>
                             </TimeLineCard>
 
                         </VerticalTimelineElement>
@@ -65,7 +65,6 @@ class MytimeLine extends React.Component {
     render() {
         return (
             <div>
-                <h2 align="center" >TimeLine</h2>
                 <div>{this.renderTimeLine()}</div>
             </div>)
     }

@@ -1,10 +1,20 @@
 import React from "react";
 import 'react-vertical-timeline-component/style.min.css';
 
-import { fetchPublicationLineCards } from "../../actions/actionPublication";
+import { fetchPublicationLineCards, sortList } from "../../actions/actionPublication";
 import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
+
+var style1 = {
+  display: 'inline-block',
+  marginLeft: '50px',
+  marginRight: '50px',
+};
+
+var style2 = {
+  display: 'inline-block',
+};
 
 
 class PublicationLineCardList extends React.Component {
@@ -17,8 +27,11 @@ class PublicationLineCardList extends React.Component {
 
     return (
       <div className="right floated content">
-        <Link to={`/admin/publicationedit/${publicationLineCard.id}`} className="ui button primary">Edit</Link>
-        <Link to={`/admin/publicationdelete/${publicationLineCard.id}`} className="ui button negative">Delete</Link>
+        <div className="ui buttons">
+          <Link to={`/admin/publicationedit/${publicationLineCard.id}`} className="ui button ">Modifier</Link>
+          <div className="or"></div>
+          <Link to={`/admin/publicationdelete/${publicationLineCard.id}`} className="ui button negative">Supprimer</Link>
+        </div>
       </div>
     )
 
@@ -44,20 +57,42 @@ class PublicationLineCardList extends React.Component {
   renderCreate = () => {
     return (
       <div style={{ textAlign: 'right' }}>
-        <Link to={`/admin/publicationcreate`} className="ui button primary">
+        <Link to={`/admin/publicationcreate`} className="ui button grey">
           Créer une publication
                   </Link>
       </div>
     )
-
   }
+
+  renderSort = () => {
+    return (
+      <div style={{ textAlign: 'left' }}>
+        <div className="ui buttons">
+          <button onClick={() => this.props.sortList(1, this.props.publicationLineCards)} className="ui button grey">
+            trier par titre
+           </button>
+          <div className="or"></div>
+          <button onClick={() => this.props.sortList(2, this.props.publicationLineCards)} className="ui button grey">
+            trier par date
+           </button>
+        </div>
+      </div>
+    )
+  }
+
+
 
   render() {
     return (
       <div>
-        {this.renderCreate()}
-        <div className="ui celled list">{this.renderList()}</div>
-
+        <div className="ui top attached button" tabIndex="0">
+          <div>
+            <div style={style1}>{this.renderSort()}</div>{" "}<div style={style2}>{this.renderCreate()}</div>
+          </div>
+        </div>
+        <div className="ui attached segment">
+          <div className="ui celled list">{this.renderList()}</div>
+        </div>
       </div>
     )
   }
@@ -75,5 +110,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchPublicationLineCards }
+  { fetchPublicationLineCards, sortList }
 )(PublicationLineCardList)

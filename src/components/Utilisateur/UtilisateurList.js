@@ -1,10 +1,20 @@
 import React from "react";
 import 'react-vertical-timeline-component/style.min.css';
 
-import { fetchUtilisateurs } from "../../actions/actionUsers";
+import { fetchUtilisateurs, sortList } from "../../actions/actionUsers";
 import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
+
+var style1 = {
+  display: 'inline-block',
+  marginLeft: '50px',
+  marginRight: '50px',
+};
+
+var style2 = {
+  display: 'inline-block',
+};
 
 
 class UtilisateurList extends React.Component {
@@ -17,8 +27,11 @@ class UtilisateurList extends React.Component {
 
     return (
       <div className="right floated content">
-        <Link to={`/admin/utilisateuredit/${utilisateur.id}`} className="ui button primary">Edit</Link>
-        <Link to={`/admin/utilisateurdelete/${utilisateur.id}`} className="ui button negative">Delete</Link>
+        <div className="ui buttons">
+          <Link to={`/admin/utilisateuredit/${utilisateur.id}`} className="ui button ">Modifier</Link>
+          <div className="or"></div>
+          <Link to={`/admin/utilisateurdelete/${utilisateur.id}`} className="ui button negative">Supprimer</Link>
+        </div>
       </div>
     )
 
@@ -45,7 +58,7 @@ class UtilisateurList extends React.Component {
   renderCreate = () => {
     return (
       <div style={{ textAlign: 'right' }}>
-        <Link to={`/admin/utilisateurcreate`} className="ui button primary">
+        <Link to={`/admin/utilisateurcreate`} className="ui button grey">
           Créer un utilisateur
                   </Link>
       </div>
@@ -53,12 +66,33 @@ class UtilisateurList extends React.Component {
 
   }
 
+  renderSort = () => {
+    return (
+      <div style={{ textAlign: 'left' }}>
+        <div className="ui buttons">
+          <button onClick={() => this.props.sortList(1, this.props.utilisateurs)} className="ui button grey">
+            trier par login
+           </button>
+          <div className="or"></div>
+          <button onClick={() => this.props.sortList(2, this.props.utilisateurs)} className="ui button grey">
+            trier par date
+           </button>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
-        {this.renderCreate()}
-        <div className="ui celled list">{this.renderList()}</div>
-
+        <div className="ui top attached button" tabIndex="0">
+          <div>
+            <div style={style1}>{this.renderSort()}</div>{" "}<div style={style2}>{this.renderCreate()}</div>
+          </div>
+        </div>
+        <div className="ui attached segment">
+          <div className="ui celled list">{this.renderList()}</div>
+        </div>
       </div>
     )
   }
@@ -77,5 +111,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchUtilisateurs }
+  { fetchUtilisateurs, sortList }
 )(UtilisateurList)

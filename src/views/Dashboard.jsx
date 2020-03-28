@@ -32,14 +32,14 @@ class Dashboard extends React.Component {
       <>
         <div className="content">
           <Card className="card-user">
-            <div className="image">
+            {/* <div className="image">
+            </div> */}
+            <CardHeader className="text-center">
               <img
                 alt="..."
                 src={require("assets/img/logojp.jpg")}
                 width="250"
               />
-            </div>
-            <CardHeader className="text-center">
               <CardTitle tag="h4">L'actualité jumeaux et plus Savoie</CardTitle>
 
             </CardHeader>

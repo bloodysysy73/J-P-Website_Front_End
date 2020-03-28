@@ -1,13 +1,24 @@
 import React from "react";
 import 'react-vertical-timeline-component/style.min.css';
 
-import { fetchTimeLineCards } from "../../actions/actionTimeLineCard";
+import { fetchTimeLineCards, sortList } from "../../actions/actionTimeLineCard";
 import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
 
+var style1 = {
+  display: 'inline-block',
+  marginLeft: '50px',
+  marginRight: '50px',
+};
+
+var style2 = {
+  display: 'inline-block',
+};
+
 class TimeLineCardList extends React.Component {
+
 
   componentDidMount() {
     this.props.fetchTimeLineCards();
@@ -17,9 +28,13 @@ class TimeLineCardList extends React.Component {
 
     return (
       <div className="right floated content">
-        <Link to={`/admin/timelinecardedit/${timeLineCard.id}`} className="ui button primary">Edit</Link>
-        <Link to={`/admin/timelinecarddelete/${timeLineCard.id}`} className="ui button negative">Delete</Link>
+        <div className="ui buttons">
+          <Link to={`/admin/timelinecardedit/${timeLineCard.id}`} className="ui button ">Modifier</Link>
+          <div className="or"></div>
+          <Link to={`/admin/timelinecarddelete/${timeLineCard.id}`} className="ui button negative">Supprimer</Link>
+        </div>
       </div>
+
     )
 
   }
@@ -44,20 +59,40 @@ class TimeLineCardList extends React.Component {
   renderCreate = () => {
     return (
       <div style={{ textAlign: 'right' }}>
-        <Link to={`/admin/timelinecardcreate`} className="ui button primary">
+        <Link to={`/admin/timelinecardcreate`} className="ui button grey">
           Créer un evènement
                   </Link>
       </div>
     )
+  }
 
+  renderSort = () => {
+    return (
+      <div style={{ textAlign: 'left' }}>
+        <div className="ui buttons">
+          <button onClick={() => this.props.sortList(1, this.props.timeLineCards)} className="ui button grey">
+            trier par titre
+           </button>
+          <div className="or"></div>
+          <button onClick={() => this.props.sortList(2, this.props.timeLineCards)} className="ui button grey">
+            trier par date
+           </button>
+        </div>
+      </div>
+    )
   }
 
   render() {
     return (
       <div>
-        {this.renderCreate()}
-        <div className="ui celled list">{this.renderList()}</div>
-
+        <div className="ui top attached button" tabIndex="0">
+          <div>
+            <div style={style1}>{this.renderSort()}</div>{" "}<div style={style2}>{this.renderCreate()}</div>
+          </div>
+        </div>
+        <div className="ui attached segment">
+          <div className="ui celled list">{this.renderList()}</div>
+        </div>
       </div>
     )
   }
@@ -75,5 +110,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchTimeLineCards }
+  { fetchTimeLineCards, sortList }
 )(TimeLineCardList)

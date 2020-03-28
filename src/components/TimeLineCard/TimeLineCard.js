@@ -14,7 +14,7 @@ class TimeLineCard extends React.Component {
         return (< div >
             <Card className="card-user">
                 <div className="image">
-                    <img alt="" src={require(`../../assets/img/${this.props.imgname.toLowerCase()}`)} width="auto" />
+                    <img alt="" src={require(`../../assets/img/${this.props.imageName || 'logojp.jpg'}`)} width="auto" />
 
                 </div>
                 <CardHeader className="text-center">

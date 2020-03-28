@@ -84,7 +84,7 @@ class TimeLineCardForm extends React.Component {
         className="ui form error"
       >
         <Field name="id" component={this.renderInput} label="id de l'évenement timeLineCard" disabled />
-        <Field name="title" component={this.renderInput} label="Titre" />
+        <Field name="title" component={this.renderInput} label="Titre (obligatoire)" required />
         <Field name="description" component={this.renderInput} label="Description" />
         <Field name="imageName" component={this.renderInput} label="image" />
         <Field name="title2" component={this.renderInput} label="Titre 2" />
@@ -102,8 +102,8 @@ class TimeLineCardForm extends React.Component {
 const validate = formValues => {
   const errors = {}
 
-  if (!formValues.login) {
-    errors.login = 'login obligatoire'
+  if (!formValues.title) {
+    errors.title = 'titre obligatoire'
   }
 
 

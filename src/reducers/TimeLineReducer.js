@@ -4,7 +4,9 @@ import {
     FETCH_TIMELINECARDS,
     FETCH_TIMELINECARD,
     DELETE_TIMELINECARD,
-    EDIT_TIMELINECARD
+    EDIT_TIMELINECARD,
+    SORT_BY_TITLE_TIMELINECARD,
+    SORT_BY_DATE_TIMELINECARD
 } from "../actions/types";
 
 
@@ -22,6 +24,10 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload }
         case DELETE_TIMELINECARD:
             return _.omit(state, action.payload)
+        case SORT_BY_TITLE_TIMELINECARD:
+            return { ..._.mapKeys(action.payload, 'title') }
+        case SORT_BY_DATE_TIMELINECARD:
+            return { ..._.mapKeys(action.payload, 'id') }
         default:
             return state
     }

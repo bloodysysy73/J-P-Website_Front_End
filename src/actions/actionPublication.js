@@ -25,7 +25,7 @@ export const editPublicationLineCard = (formValues) => async dispatch => {
 
   dispatch({ type: EDIT_PUBLICATIONLINECARD, payload: response.data })
   window.alert("Publication modifié !");
-  history.push('/admin/administration')
+  history.push(`/admin/publicationedit/${formValues.id}`)
 
 }
 

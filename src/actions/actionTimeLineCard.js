@@ -25,8 +25,7 @@ export const editTimeLineCard = (formValues) => async dispatch => {
 
   dispatch({ type: EDIT_TIMELINECARD, payload: response.data })
   window.alert("Evenement modifié !");
-  history.push('/admin/administration')
-
+  history.push(`/admin/timelinecardedit/${formValues.id}`)
 }
 
 export const deleteTimeLineCard = id => async dispatch => {

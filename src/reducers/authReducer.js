@@ -9,7 +9,7 @@ import {
 const INITIAL_STATE = { isSignedIn: null, userId: null };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log("je suis dans le reducer, payload : " + action.payload);
+  // console.log("je suis dans le reducer, payload : " + action.payload);
   switch (action.type) {
     //se connecter avec google
     case SIGN_IN:

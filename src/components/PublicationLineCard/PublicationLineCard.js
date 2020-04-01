@@ -20,11 +20,11 @@ class PublicationLineCard extends React.Component {
     render() {
         return (< div >
             <Card className="card-user">
-                <div className="image">
-                    <img alt="" src={require(`../../assets/img/${this.props.imageName || 'logojp.jpg'}`)} width="auto" />
 
-                </div>
                 <CardHeader className="text-center">
+                    <div className="image"> {/*enlever classname pour image complete  */}
+                        <img alt="" src={require(`../../assets/img/${this.props.imageName || 'logojp.jpg'}`)} width="auto" />
+                    </div>
                     <CardTitle tag="h4"> {this.props.title}</CardTitle>
                     <p className="card-category">
                         {this.props.description} <br />
@@ -36,8 +36,8 @@ class PublicationLineCard extends React.Component {
                         <Row>
                             <Col >
                                 <h5>
-                                    {this.props.date} <br />
-                                    <small>{this.props.horaire}</small>
+                                    {this.props.title2} <br />
+                                    <small>{this.props.description2}</small>
                                 </h5>
                             </Col>
                         </Row>

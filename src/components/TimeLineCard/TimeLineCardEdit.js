@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { fetchTimeLineCard, editTimeLineCard } from '../../actions/actionTimeLineCard'
 import TimeLineCardForm from './TimeLineCardForm'
 
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import TimeLineCard from './TimeLineCard';
+
+import Brightness3OutlinedIcon from '@material-ui/icons/Brightness3Outlined';
+
 import {
     Card,
     CardHeader,
@@ -13,7 +18,9 @@ import {
 class TimeLineCardEdit extends React.Component {
 
     componentDidMount() {
-        this.props.fetchTimeLineCard(this.props.match.params.id)
+        const { id } = this.props.match.params;
+
+        this.props.fetchTimeLineCard(id)
     }
 
     onSubmit = formValues => {
@@ -23,30 +30,52 @@ class TimeLineCardEdit extends React.Component {
 
     render() {
         // if (!this.props.timeLineCard) return <div>Loading...</div>
+        if (this.props.timeLineCard) {
+            return (
+                <>
+                    <div className="content">
+                        <div className="container">
+                            <Card className="card-user">
+                                <CardHeader className="text-center">
+                                    <CardTitle tag="h4"> Modifier l'évènement</CardTitle>
 
-        return (
-            <>
-                <div className="content">
-                    <div className="container">
-                        <Card className="card-user">
-                            <CardHeader className="text-center">
-                                <CardTitle tag="h4"> Modifier l'timeLineCard </CardTitle>
+                                    <TimeLineCardForm
+                                        initialValues={(this.props.timeLineCard)}
+                                        onSubmit={this.onSubmit}
+                                    />
+                                </CardHeader>
+                                <CardFooter>
 
-                                <TimeLineCardForm
-                                    initialValues={(this.props.timeLineCard)}
-                                    onSubmit={this.onSubmit}
-                                />
-                            </CardHeader>
-                            <CardFooter>
+                                </CardFooter>
 
-                            </CardFooter>
+                            </Card>
+                            <div >
+                                <div className="text-center">Prévisualtion de l'évènement : </div> <br />
+                                {/* publicationLineCard était ici */}
+                            </div>
+                        </div>
+                        <VerticalTimeline>
+                            <VerticalTimelineElement
+                                className="vertical-publicationline-element--work"
+                                date={this.props.timeLineCard.poste_le}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<Brightness3OutlinedIcon />}
+                            >
 
-                        </Card>
+                                <TimeLineCard
+                                    title={this.props.timeLineCard.title}
+                                    date={this.props.timeLineCard.date}
+                                    description={this.props.timeLineCard.description}
+                                    horaire={this.props.timeLineCard.horaire} >
+                                </TimeLineCard>
+                            </VerticalTimelineElement>
+                        </VerticalTimeline>
+
                     </div>
-                </div>
 
-            </>
-        )
+                </>
+            )
+        } return <div></div>
     }
 }
 

@@ -13,7 +13,7 @@ class PublicationLineCardForm extends React.Component {
   }
   renderInput = ({ input, label, meta, disabled }) => {
     const className = `field ${meta.error && meta.touched ? 'error' : ''}`
-    console.log("input simple", input);
+    // console.log("input simple", input);
 
     return (
       <div className={className}>
@@ -26,7 +26,7 @@ class PublicationLineCardForm extends React.Component {
 
   renderInputPassword = ({ input, label, meta, disabled, isCreation }) => {
     const className = `field ${meta.error && meta.touched ? 'error' : ''}`
-    console.log("input simple", input);
+    // console.log("input simple", input);
 
     if (isCreation) {
       return (
@@ -58,8 +58,8 @@ class PublicationLineCardForm extends React.Component {
   renderCheckBox = ({ input, label, meta }) => {
     const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
-    console.log("checkbox input", input);
-    console.log("checkbox value", input.value);
+    // console.log("checkbox input", input);
+    // console.log("checkbox value", input.value);
 
     return (
       <div className={className}>
@@ -76,7 +76,7 @@ class PublicationLineCardForm extends React.Component {
   }
 
   render() {
-    console.log("props du form : ", this.props)
+    // console.log("props du form : ", this.props)
     // console.log("la value que j'envoie : ", this.props.initialValues.adherent)
     return (
       <form

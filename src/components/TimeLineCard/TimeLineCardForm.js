@@ -83,7 +83,7 @@ class TimeLineCardForm extends React.Component {
         onSubmit={this.props.handleSubmit(this.onSubmit)}
         className="ui form error"
       >
-        <Field name="id" component={this.renderInput} label="id de l'évenement timeLineCard" disabled />
+        <Field name="id" component={this.renderInput} label="id de l'évenement" disabled />
         <Field name="title" component={this.renderInput} label="Titre (obligatoire)" required />
         <Field name="description" component={this.renderInput} label="Description" />
         <Field name="imageName" component={this.renderInput} label="image" />

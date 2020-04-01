@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPublicationLineCard, editPublicationLineCard } from '../../actions/actionPublication'
 import PublicationLineCardForm from './PublicationLineCardForm'
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import PublicationLineCard from './PublicationLineCard';
+
+import Brightness3OutlinedIcon from '@material-ui/icons/Brightness3Outlined';
 
 import {
     Card,
@@ -10,10 +14,13 @@ import {
     CardTitle,
 } from "reactstrap";
 
+
 class PublicationLineCardEdit extends React.Component {
 
     componentDidMount() {
-        this.props.fetchPublicationLineCard(this.props.match.params.id)
+        const { id } = this.props.match.params;
+
+        this.props.fetchPublicationLineCard(id);
     }
 
     onSubmit = formValues => {
@@ -22,36 +29,56 @@ class PublicationLineCardEdit extends React.Component {
     }
 
     render() {
-        // if (!this.props.publicationLineCard) return <div>Loading...</div>
+        if (this.props.publicationLineCard) {
+            return (
+                <>
+                    <div className="content">
+                        <div className="container">
+                            <Card className="card-user">
+                                <CardHeader className="text-center">
+                                    <CardTitle tag="h4"> Modifier la publication </CardTitle>
 
-        return (
-            <>
-                <div className="content">
-                    <div className="container">
-                        <Card className="card-user">
-                            <CardHeader className="text-center">
-                                <CardTitle tag="h4"> Modifier la publication </CardTitle>
+                                    <PublicationLineCardForm
+                                        initialValues={(this.props.publicationLineCard)}
+                                        onSubmit={this.onSubmit}
+                                    />
+                                </CardHeader>
+                                <CardFooter></CardFooter>
+                            </Card>
 
-                                <PublicationLineCardForm
-                                    initialValues={(this.props.publicationLineCard)}
-                                    onSubmit={this.onSubmit}
-                                />
-                            </CardHeader>
-                            <CardFooter>
+                            <div >
+                                <div className="text-center">Prévisualtion de la publication : </div> <br />
+                                {/* publicationLineCard était ici */}
+                            </div>
+                        </div>
+                        <VerticalTimeline>
+                            <VerticalTimelineElement
+                                className="vertical-publicationline-element--work"
+                                date={this.props.publicationLineCard.poste_le || ' '}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<Brightness3OutlinedIcon />}
+                            >
 
-                            </CardFooter>
-
-                        </Card>
+                                <PublicationLineCard
+                                    title={this.props.publicationLineCard.title}
+                                    title2={this.props.publicationLineCard.title2}
+                                    description={this.props.publicationLineCard.description}
+                                    description2={this.props.publicationLineCard.description2} >
+                                </PublicationLineCard>
+                            </VerticalTimelineElement>
+                        </VerticalTimeline>
                     </div>
-                </div>
 
-            </>
-        )
+                </>
+            )
+        } return <div></div>
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { publicationLineCard: state.publicationLineCards[ownProps.match.params.id] }
+    return {
+        publicationLineCard: state.publicationLineCards[ownProps.match.params.id],
+    }
 }
 export default connect(
     mapStateToProps,

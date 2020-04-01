@@ -32,6 +32,3 @@ export default (state = {}, action) => {
             return state
     }
 }
-
-//publicationLineCards : action.payload
-// ..._.mapKeys(action.payload, 'id')

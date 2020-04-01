@@ -52,7 +52,7 @@ class MyPublicationLine extends React.Component {
                             icon={<Brightness3OutlinedIcon />}
                         >
 
-                            <PublicationLineCard key={publicationLineCard.id} description={publicationLineCard.description} title={publicationLineCard.title} date={publicationLineCard.date} horaire={publicationLineCard.heure} imageName={publicationLineCard.imageName}>
+                            <PublicationLineCard key={publicationLineCard.id} description2={publicationLineCard.description2} description={publicationLineCard.description} title={publicationLineCard.title} title2={publicationLineCard.title2} date={publicationLineCard.date} horaire={publicationLineCard.heure} imageName={publicationLineCard.imageName}>
                             </PublicationLineCard>
 
                         </VerticalTimelineElement>

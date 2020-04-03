@@ -59,6 +59,7 @@ class Sidebar extends React.Component {
               if (prop.name !== "Administration" && prop.name !== "UtilisateurDelete" && prop.name !== "UtilisateurEdit" && prop.name !== "UtilisateurCreate"
                 && prop.name !== "TimeLineCardCreate" && prop.name !== "TimeLineCardEdit" && prop.name !== "TimeLineCardDelete"
                 && prop.name !== "PublicationLineCardCreate" && prop.name !== "PublicationLineCardEdit" && prop.name !== "PublicationLineCardDelete"
+                && prop.name !== "SignUpForm"
               ) {
 
                 return (

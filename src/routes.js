@@ -18,6 +18,8 @@ import publicationLineCardDelete from "components/PublicationLineCard/Publicatio
 import publicationLineCardEdit from "components/PublicationLineCard/PublicationLineCardEdit";
 import publicationLineCardCreate from "components/PublicationLineCard/PublicationLineCardCreate";
 
+import SignUpForm from './components/authentification/SignUpForm'
+
 
 var routes = [
   {
@@ -145,6 +147,13 @@ var routes = [
     name: "PublicationLineCardCreate",
     icon: "nc-icon nc-bell-55",
     component: publicationLineCardCreate,
+    layout: "/admin"
+  },
+  {
+    path: "/signupform",
+    name: "SignUpForm",
+    icon: "nc-icon nc-bell-55",
+    component: SignUpForm,
     layout: "/admin"
   },
 ];

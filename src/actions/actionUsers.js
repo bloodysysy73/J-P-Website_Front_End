@@ -24,7 +24,7 @@ export const createUser = formValues => async dispatch => {
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
   window.alert("Profil créé !");
-  history.push('/admin/administration')
+  history.push('/admin/dashboard')
 };
 
 export const fetchUtilisateurs = () => async dispatch => {

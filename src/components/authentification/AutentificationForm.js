@@ -5,7 +5,7 @@ class AuthentificationForm extends React.Component {
   renderInput = formProps => {
     const className = `field ${
       formProps.meta.touched && formProps.meta.error ? "error" : ""
-    }`;
+      }`;
 
     return (
       <div className={className}>
@@ -46,7 +46,7 @@ class AuthentificationForm extends React.Component {
           component={this.renderInput}
           label="Entrez votre password"
         ></Field>
-        <button className="ui button primary">{this.props.buttonName}</button>
+        <button className="ui button">{this.props.buttonName}</button>
       </form>
     );
   }

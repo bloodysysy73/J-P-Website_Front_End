@@ -50,6 +50,7 @@ export const logoutEmail = () => {
   localStorage.removeItem("isSignedInEmail");
   localStorage.removeItem("token");
   localStorage.removeItem("isSignedIn");
+  localStorage.removeItem("isAdmin");
   alert("vous etes déconnecté");
   return {
     type: LOGOUT_EMAIL

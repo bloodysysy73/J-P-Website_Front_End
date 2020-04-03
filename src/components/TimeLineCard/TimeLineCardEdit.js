@@ -66,7 +66,7 @@ class TimeLineCardEdit extends React.Component {
                                     title={this.props.timeLineCard.title}
                                     date={this.props.timeLineCard.date}
                                     description={this.props.timeLineCard.description}
-                                    horaire={this.props.timeLineCard.horaire} >
+                                    horaire={this.props.timeLineCard.heure} >
                                 </TimeLineCard>
                             </VerticalTimelineElement>
                         </VerticalTimeline>

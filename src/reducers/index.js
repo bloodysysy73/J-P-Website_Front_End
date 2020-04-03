@@ -7,10 +7,11 @@ import publicationLineReducer from "./PublicationLineReducer";
 import utilisateurReducer from "./utilisateurReducer";
 
 
+
 export default combineReducers({
   auth: authReducer,
   form: formReducer,
   timeLineCards: timeLineReducer,
   publicationLineCards: publicationLineReducer,
-  utilisateurs: utilisateurReducer
+  utilisateurs: utilisateurReducer,
 });

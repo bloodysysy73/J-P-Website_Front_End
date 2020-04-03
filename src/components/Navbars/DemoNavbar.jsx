@@ -20,7 +20,6 @@ import {
 } from "reactstrap";
 
 import routes from "routes.js";
-import SignUpForm from "components/authentification/SignUpForm";
 import LoginEmailForm from "components/authentification/LoginEmailForm";
 import MyButton from "components/other/MyButton";
 
@@ -108,7 +107,7 @@ class Header extends React.Component {
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+            (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
         <Container fluid>
@@ -174,28 +173,33 @@ class Header extends React.Component {
                   <DropdownItem divider />
 
                   {(localStorage.getItem("isSignedIn") !== "true") &
-                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                    <DropdownItem toggle={false}>
-                      <LoginEmailForm></LoginEmailForm>
-                    </DropdownItem>
-                  ) : null}
+                    (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                      <DropdownItem toggle={false}>
+                        <LoginEmailForm></LoginEmailForm>
+                      </DropdownItem>
+                    ) : null}
                   <DropdownItem divider />
                   {(localStorage.getItem("isSignedIn") !== "true") &
-                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                    <DropdownItem header>inscription</DropdownItem>
-                  ) : null}
+                    (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                      <DropdownItem header>inscription</DropdownItem>
+                    ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
-                  (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                    <DropdownItem toggle={false}>
-                      <SignUpForm></SignUpForm>
-                    </DropdownItem>
-                  ) : null}
+                    (localStorage.getItem("isSignedInEmail") !== "true") ? (
+                      <DropdownItem toggle={false}>
+                        {/* <SignUpForm></SignUpForm> */}
+                        <div className="right floated content">
+                          <div className="ui buttons">
+                            <Link to="/admin/signupform/" className="ui button">inscription</Link>
+                          </div>
+                        </div>
+                      </DropdownItem>
+                    ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
-                  (localStorage.getItem("isSignedInEmail") === "true") ? (
-                    <DropdownItem toggle={false}>
-                      <MyButton></MyButton>
-                    </DropdownItem>
-                  ) : null}
+                    (localStorage.getItem("isSignedInEmail") === "true") ? (
+                      <DropdownItem toggle={false}>
+                        <MyButton></MyButton>
+                      </DropdownItem>
+                    ) : null}
                 </DropdownMenu>
               </Dropdown>
               <NavItem>

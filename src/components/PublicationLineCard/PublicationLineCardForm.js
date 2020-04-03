@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import MyUploader from 'components/other/MyUploader'
 
 class PublicationLineCardForm extends React.Component {
   renderError = ({ error, touched }) => {
@@ -24,19 +25,13 @@ class PublicationLineCardForm extends React.Component {
     )
   }
 
-  renderInputPassword = ({ input, label, meta, disabled, isCreation }) => {
-    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
-    // console.log("input simple", input);
-
-    if (isCreation) {
-      return (
-        <div className={className}>
-          <label>{label}</label>
-          <input disabled={disabled} {...input} autoComplete="off" />
-          {this.renderError(meta)}
-        </div>
-      )
-    } else { return <div></div> }
+  renderInputImage = ({ input, label, meta, disabled }) => {
+    return (
+      <div className="field">
+        <label>{label}</label>
+        <MyUploader></MyUploader>
+      </div>
+    )
   }
 
 
@@ -86,9 +81,9 @@ class PublicationLineCardForm extends React.Component {
         <Field name="id" component={this.renderInput} label="id de la publication" disabled />
         <Field name="title" component={this.renderInput} label="Titre (obligatoire)" required />
         <Field name="description" component={this.renderInput} label="Description" />
-        <Field name="imageName" component={this.renderInput} label="image" />
         <Field name="title2" component={this.renderInput} label="Titre 2" />
         <Field name="description2" component={this.renderInput} label="Description2" />
+        <Field name="imageName" component={this.renderInput} label="image" />
         <Field name="poste_le" component={this.renderInput} label="Publication posté le" disabled />
 
         <button className="ui button primary">Valider</button>

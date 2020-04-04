@@ -1,6 +1,8 @@
 import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL } from "./types";
 
 import jwt from "jwt-decode";
+import history from "../history";
+
 
 const axios = require("axios").default;
 
@@ -43,6 +45,7 @@ export const connexionEmail = formValues => async dispatch => {
 
   dispatch({ type: LOGIN_EMAIL, payload: response, user });
   alert("vous etes connecté");
+  history.push('/admin/dashboard')
 };
 
 // se déconneceter email

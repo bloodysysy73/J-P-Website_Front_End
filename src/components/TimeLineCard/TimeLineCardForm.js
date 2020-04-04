@@ -1,5 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import history from '../../history'
+
 
 class TimeLineCardForm extends React.Component {
   renderError = ({ error, touched }) => {
@@ -93,6 +95,7 @@ class TimeLineCardForm extends React.Component {
         <Field name="heure" component={this.renderInput} label="Heure de l'évènement" />
         <Field name="poste_le" component={this.renderInput} label="Evenement posté le" disabled />
 
+        <button className="ui button primary" onClick={() => history.push('/admin/administration')}>Retour </button>
         <button className="ui button primary">Valider</button>
       </form>
     )

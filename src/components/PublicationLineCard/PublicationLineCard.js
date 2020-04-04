@@ -10,13 +10,6 @@ import {
 
 class PublicationLineCard extends React.Component {
 
-    // componentDidMount() {
-    //     if (!this.props.imageName) {
-    //         this.props.imageName = 'bg5.jpg'
-    //     }
-
-    // }
-
     render() {
         return (< div >
             <Card className="card-user">

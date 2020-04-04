@@ -1,5 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import history from '../../history'
+
 
 class UtilisateurForm extends React.Component {
   renderError = ({ error, touched }) => {
@@ -91,9 +93,9 @@ class UtilisateurForm extends React.Component {
         <Field name="adresse" component={this.renderInput} label="adresse" />
         <Field name="dateInscription" component={this.renderInput} label="Date d'inscription" />
         <Field name="adherent" component={this.renderCheckBox} label="Est-ce un adhérent ?" />
-
         <Field name="password" isCreation={this.props.isCreation} component={this.renderInputPassword} label="password (obligatoire)" required />
 
+        <button className="ui button primary" onClick={() => history.push('/admin/administration')}>Retour </button>
         <button className="ui button primary">Valider</button>
       </form>
     )

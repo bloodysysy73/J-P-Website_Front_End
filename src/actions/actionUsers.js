@@ -5,7 +5,8 @@ import {
   DELETE_UTILISATEUR,
   FETCH_UTILISATEUR,
   SORT_BY_LOGIN_USER,
-  SORT_BY_DATE_USER
+  SORT_BY_DATE_USER,
+  FETCH_UTILISATEUR_LOGIN
 } from "./types";
 
 import history from "../history";
@@ -41,6 +42,16 @@ export const editUtilisateur = (formValues) => async dispatch => {
   window.alert("Profil modifié !");
 }
 
+export const editUtilisateurpage = (formValues) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/user/edit`, formValues)
+
+  dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  window.alert("Profil modifié !");
+  //history.push('/admin/user-page')
+  //TODO : essayer de reload
+  //window.location.reload(false);
+}
+
 export const deleteUtilisateur = id => async dispatch => {
 
   await axios.get(`http://localhost:8080/user/delete/${id}`)
@@ -54,6 +65,12 @@ export const fetchUtilisateur = id => async dispatch => {
   const response = await axios.get(`http://localhost:8080/user/findbyid/${id}`)
 
   dispatch({ type: FETCH_UTILISATEUR, payload: response.data })
+}
+
+export const fetchUtilisateurbylogin = login => async dispatch => {
+  const response = await axios.get(`http://localhost:8080/user/findbylogin/${login}`)
+
+  dispatch({ type: FETCH_UTILISATEUR_LOGIN, payload: response.data })
 }
 
 export const sortList = (wtd, userList) => {

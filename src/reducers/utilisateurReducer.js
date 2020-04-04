@@ -6,7 +6,8 @@ import {
     EDIT_UTILISATEUR,
     DELETE_UTILISATEUR,
     SORT_BY_LOGIN_USER,
-    SORT_BY_DATE_USER
+    SORT_BY_DATE_USER,
+    FETCH_UTILISATEUR_LOGIN
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -15,6 +16,8 @@ export default (state = {}, action) => {
             return { ...state, ..._.mapKeys(action.payload, 'id') }
         case FETCH_UTILISATEUR:
             return { ...state, [action.payload.id]: action.payload }
+        case FETCH_UTILISATEUR_LOGIN:
+            return { ...state, utilisateur: action.payload }
         case CREATE_UTILISATEUR:
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_UTILISATEUR:

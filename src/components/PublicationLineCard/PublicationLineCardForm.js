@@ -1,6 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import MyUploader from 'components/other/MyUploader'
+import history from '../../history'
+
 
 class PublicationLineCardForm extends React.Component {
   renderError = ({ error, touched }) => {
@@ -86,6 +88,7 @@ class PublicationLineCardForm extends React.Component {
         <Field name="imageName" component={this.renderInput} label="image" />
         <Field name="poste_le" component={this.renderInput} label="Publication posté le" disabled />
 
+        <button className="ui button primary" onClick={() => history.push('/admin/administration')}>Retour </button>
         <button className="ui button primary">Valider</button>
       </form>
     )

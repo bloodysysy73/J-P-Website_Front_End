@@ -44,13 +44,6 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/user-page",
-    name: "User Profile",
-    icon: "nc-icon nc-single-02",
-    component: UserPage,
-    layout: "/admin"
-  },
-  {
     path: "/articles",
     name: "Articles et dossiers",
     icon: "nc-icon nc-paper",
@@ -72,7 +65,6 @@ var routes = [
     layout: "/admin"
   },
   {
-    pro: true,
     path: "/contactus",
     name: "Nous contacter",
     icon: "nc-icon nc-chat-33",
@@ -154,6 +146,14 @@ var routes = [
     name: "SignUpForm",
     icon: "nc-icon nc-bell-55",
     component: SignUpForm,
+    layout: "/admin"
+  },
+  {
+    pro: true,
+    path: "/user-page",
+    name: "UserProfile",
+    icon: "nc-icon nc-single-02",
+    component: UserPage,
     layout: "/admin"
   },
 ];

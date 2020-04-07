@@ -53,11 +53,11 @@ class UtilisateurPasswordEdit extends React.Component {
                     </CardHeader>
                     <CardBody>
                         <label>mot de passe actuel</label><br />
-                        <Field name="password" component={this.renderInput} label="" required />
+                        <Field name="former_password" component={this.renderInput} label="" required />
                         <label>nouveau mot de passe</label><br />
-                        <Field name="nouveaupassword1" component={this.renderInput} label="" required />
+                        <Field name="new_password1" component={this.renderInput} label="" required />
                         <label>confirmez votre nouveau mot de passe</label><br />
-                        <Field name="nouveaupassword2" component={this.renderInput} label="" required />
+                        <Field name="new_password2" component={this.renderInput} label="" required />
                         <Row>
                             <div className="update ml-auto mr-auto">
                                 <button className="ui button ">Valider</button>
@@ -72,15 +72,24 @@ class UtilisateurPasswordEdit extends React.Component {
 }
 
 const validate = formValues => {
-    const errors = {}
+    // const errors = {};
+    // let former_password;
+    // let new_password2;
 
-    if (!formValues.title) {
-        errors.title = 'titre obligatoire'
-    }
+    // if (!formValues.former_password) {
+    //   errors.former_password = "Mot de passe obligatoire";
+    // } else {
+    //   errors.former_password = emailValid ? "" : "email invalide";
+    // }
 
-
-    return errors
-}
+    // if (!formValues.password) {
+    //   errors.password = "Password obligatoire";
+    // } else {
+    //   passwordValid = formValues.password.length >= 5 ? true : false;
+    //   errors.password = passwordValid ? "" : "password trop court";
+    // }
+    // return errors;
+};
 
 export default reduxForm({
     form: 'utilisateurPasswordEdit',

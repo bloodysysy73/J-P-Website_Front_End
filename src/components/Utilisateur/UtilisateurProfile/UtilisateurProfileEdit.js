@@ -4,7 +4,6 @@ import jwt from "jwt-decode";
 import { fetchUtilisateurbylogin, editUtilisateurpage } from 'actions/actionUsers';
 import { connect } from 'react-redux'
 
-
 // reactstrap components
 import {
     Row,
@@ -14,6 +13,8 @@ import UtlisateurProfileForm from "components/Utilisateur/UtilisateurProfile/Utl
 import UtilisateurCard from "components/Utilisateur/UtilisateurProfile/UtilisateurCard";
 import UtilisateurPasswordEdit from "./UtilisateurPasswordEdit";
 
+const axios = require("axios").default;
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 class UtilisateurProfileEdit extends React.Component {
 
@@ -31,6 +32,41 @@ class UtilisateurProfileEdit extends React.Component {
         //console.log("formvalues : ", formValues);
         this.props.editUtilisateurpage(formValues)
     }
+
+    onSubmit2 = formValues => {
+        //console.log("formvalues : ", formValues);
+        let login = localStorage.getItem("login");
+        let password = formValues.former_password;
+
+        //Test di le mot de passe rentré est le bon
+        axios.post("http://localhost:8080/login", {
+            login, password
+        }).then(res => {
+
+            console.log("response", res);
+
+
+            if (res.status === 200) {
+                console.log("bon code");
+                let userupdate = this.props.utilisateur;
+
+                userupdate = {
+                    ...userupdate,
+                    password: formValues.new_password2
+                }
+                this.props.editUtilisateurpage(userupdate);
+
+            } else {
+                console.log("error http request")
+
+            }
+
+        })
+
+
+
+    }
+
 
     render() {
 
@@ -51,7 +87,10 @@ class UtilisateurProfileEdit extends React.Component {
                                     nbEnfant={this.props.utilisateur.nbenfant}
                                     adherent={this.props.utilisateur.adherent}
                                 ></UtilisateurCard>
-                                <UtilisateurPasswordEdit></UtilisateurPasswordEdit>
+                                <UtilisateurPasswordEdit
+                                    initialValues={(this.props.utilisateur)}
+                                    onSubmit={this.onSubmit2}
+                                ></UtilisateurPasswordEdit>
 
                             </Col>
                             <Col md="8">
@@ -73,3 +112,28 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { fetchUtilisateurbylogin, editUtilisateurpage })(UtilisateurProfileEdit);
+
+
+// const checkmypassword = (login, password) => {
+
+//     var test;
+
+//     axios.post("http://localhost:8080/login", {
+//         login, password
+//     }).then(res => {
+
+//         console.log("response", res);
+
+
+//         if (res.status === 200) {
+//             console.log("bon code");
+//             test = true;
+//         } else {
+//             console.log("error http request")
+//             test = false;
+//         }
+//         console.log("test = ", test)
+//         return test;
+//     })
+
+// }

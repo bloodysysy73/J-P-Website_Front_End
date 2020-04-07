@@ -21,12 +21,12 @@ class UtilisateurProfileForm extends React.Component {
             )
         }
     }
-    renderInput = ({ input, meta, disabled }) => {
+    renderInput = ({ input, meta, disabled, maxLength }) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
         return (
             <div className={className}>
-                <input disabled={disabled} {...input} autoComplete="off" />
+                <input disabled={disabled} {...input} autoComplete="off" maxLength={maxLength} />
                 {this.renderError(meta)}
             </div>
         )
@@ -114,7 +114,7 @@ class UtilisateurProfileForm extends React.Component {
                             </Col>
                             <Col className="px-1" md="3">
                                 <label>pseudo</label>
-                                <Field name="pseudo" component={this.renderInput} />
+                                <Field name="pseudo" component={this.renderInput} maxLength="20" />
                             </Col>
                             <Col className="pl-1" md="4">
                                 <label htmlFor="exampleInputEmail1">
@@ -126,11 +126,11 @@ class UtilisateurProfileForm extends React.Component {
                         <Row>
                             <Col className="pr-1" md="6">
                                 <label>Prenom</label>
-                                <Field name="prenom" component={this.renderInput} />
+                                <Field name="prenom" component={this.renderInput} maxLength="20" />
                             </Col>
                             <Col className="pl-1" md="6">
                                 <label>nom de famille</label>
-                                <Field name="nom" component={this.renderInput} />
+                                <Field name="nom" component={this.renderInput} maxLength="20" />
                             </Col>
                         </Row><br />
                         <Row>
@@ -150,13 +150,13 @@ class UtilisateurProfileForm extends React.Component {
                             </Col>
                             <Col className="pl-1" md="4">
                                 <label>Nombre d'enfant</label>
-                                <Field name="nbenfant" component={this.renderInput} />
+                                <Field name="nbenfant" component={this.renderInput} maxLength="20" />
                             </Col>
                         </Row><br />
                         <Row>
                             <Col md="12">
                                 <label>About Me</label>
-                                <Field name="description" component={this.renderInput} />
+                                <Field name="description" component={this.renderInput} maxLength="150" />
                             </Col>
                         </Row><br />
                         <Row>

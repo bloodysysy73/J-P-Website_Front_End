@@ -37,7 +37,9 @@ export const connexionEmail = formValues => async dispatch => {
   localStorage.setItem("isSignedInEmail", true);
 
   const user = jwt(token);
-  console.log('user  info :', user);
+
+  localStorage.setItem("login", user.sub);
+  retrievePseudo(user.sub);
 
   if (user.roles[0].authority === "ROLE_ADMIN") {
     localStorage.setItem("isAdmin", "true");
@@ -54,8 +56,22 @@ export const logoutEmail = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("isSignedIn");
   localStorage.removeItem("isAdmin");
+  localStorage.removeItem("login");
+  localStorage.removeItem("pseudo");
+
+
   alert("vous etes déconnecté");
   return {
     type: LOGOUT_EMAIL
   };
+};
+
+//retrieve pseudo of user with the login
+
+const retrievePseudo = async login => {
+  const response = await axios.get(`http://localhost:8080/user/retrievepseudo/${login}`);
+
+  localStorage.setItem("pseudo", response.data);
+
+
 };

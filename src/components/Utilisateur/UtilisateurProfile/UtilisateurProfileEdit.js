@@ -4,6 +4,7 @@ import jwt from "jwt-decode";
 import { fetchUtilisateurbylogin, editUtilisateurpage } from 'actions/actionUsers';
 import { connect } from 'react-redux'
 
+
 // reactstrap components
 import {
     Row,
@@ -38,7 +39,7 @@ class UtilisateurProfileEdit extends React.Component {
         let login = localStorage.getItem("login");
         let password = formValues.former_password;
 
-        //Test di le mot de passe rentré est le bon
+        //Test si le mot de passe rentré est le bon
         axios.post("http://localhost:8080/login", {
             login, password
         }).then(res => {
@@ -54,14 +55,35 @@ class UtilisateurProfileEdit extends React.Component {
                     ...userupdate,
                     password: formValues.new_password2
                 }
+                console.log("j'édit ");
                 this.props.editUtilisateurpage(userupdate);
-
-            } else {
-                console.log("error http request")
 
             }
 
-        })
+        }).catch((error) => {
+            // Error 😨
+            if (error.response) {
+                /*
+                 * The request was made and the server responded with a
+                 * status code that falls out of the range of 2xx
+                 */
+                console.log("error 1 : request http ", error.response.data, "cacth1 ", error.response.status);
+                window.alert("Votre mot de passe est erroné. Veuillez réessayer");
+            } else if (error.request) {
+                console.log("error 2 : no response request http ", error.response.data);
+                window.alert("Une erreur est survenue. Veuillez réessayer plus tard");
+
+                /*
+                 * The request was made but no response was received, `error.request`
+                 * is an instance of XMLHttpRequest in the browser and an instance
+                 * of http.ClientRequest in Node.js
+                 */
+            } else {
+                // Something happened in setting up the request and triggered an Error
+                console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);
+            }
+            console.log("bilan de l'erreur :", error.config);
+        });
 
 
 
@@ -112,28 +134,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { fetchUtilisateurbylogin, editUtilisateurpage })(UtilisateurProfileEdit);
-
-
-// const checkmypassword = (login, password) => {
-
-//     var test;
-
-//     axios.post("http://localhost:8080/login", {
-//         login, password
-//     }).then(res => {
-
-//         console.log("response", res);
-
-
-//         if (res.status === 200) {
-//             console.log("bon code");
-//             test = true;
-//         } else {
-//             console.log("error http request")
-//             test = false;
-//         }
-//         console.log("test = ", test)
-//         return test;
-//     })
-
-// }

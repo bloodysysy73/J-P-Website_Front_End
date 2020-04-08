@@ -47,9 +47,7 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   window.alert("Profil modifié !");
-  //history.push('/admin/user-page')
-  //TODO : essayer de reload
-  //window.location.reload(false);
+  document.location.reload(true);
 }
 
 export const deleteUtilisateur = id => async dispatch => {

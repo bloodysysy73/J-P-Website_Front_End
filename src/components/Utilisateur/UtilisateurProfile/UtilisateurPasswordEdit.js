@@ -24,14 +24,14 @@ class UtilisateurPasswordEdit extends React.Component {
         }
     }
 
-    renderInput = ({ input, label, meta, disabled }) => {
+    renderInput = ({ input, label, meta, disabled, required, password }) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         // console.log("input simple", input);
 
         return (
             <div className={className}>
                 <label>{label}</label>
-                <input disabled={disabled} {...input} autoComplete="off" />
+                <input type="password" disabled={disabled} password={password} required={required} {...input} autoComplete="off" />
                 {this.renderError(meta)}
             </div>
         )
@@ -72,23 +72,23 @@ class UtilisateurPasswordEdit extends React.Component {
 }
 
 const validate = formValues => {
-    // const errors = {};
-    // let former_password;
-    // let new_password2;
+    const errors = {};
+    let passwordValid;
 
-    // if (!formValues.former_password) {
-    //   errors.former_password = "Mot de passe obligatoire";
-    // } else {
-    //   errors.former_password = emailValid ? "" : "email invalide";
-    // }
+    if (!formValues.former_password) {
+        errors.former_password = "Vous devez rentrer votre ancien mot de passe.";
+    }
 
-    // if (!formValues.password) {
-    //   errors.password = "Password obligatoire";
-    // } else {
-    //   passwordValid = formValues.password.length >= 5 ? true : false;
-    //   errors.password = passwordValid ? "" : "password trop court";
-    // }
-    // return errors;
+    if (formValues.new_password2) {
+
+        if (formValues.new_password1 !== formValues.new_password2) {
+            errors.new_password2 = "Vos 2 mots de passes ne sont pas identique.";
+        } else {
+            passwordValid = formValues.new_password2.length >= 5 ? true : false;
+            errors.new_password2 = passwordValid ? "" : "password trop court";
+        }
+        return errors;
+    }
 };
 
 export default reduxForm({

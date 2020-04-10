@@ -1,14 +1,12 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import Articles from "components/other/Articles"
 
 class Article extends React.Component {
   render() {
     return (
       <>
         <div className="content">
-          <Row>
-            <Col md="12"></Col>
-          </Row>
+          <Articles></Articles>
         </div>
       </>
     );

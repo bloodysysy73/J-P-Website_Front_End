@@ -15,7 +15,7 @@ import TimeLineCardList from "components/TimeLineCard/TimeLineCardList";
 import PublicationLineCardList from "components/PublicationLineCard/PublicationLineCardList";
 
 class Administration extends React.Component {
-
+  //TODO : essayer un toggle pour cacher la remiere card
   render() {
     return (
       <>
@@ -33,7 +33,7 @@ class Administration extends React.Component {
                   <Row>
                     <Col md="6">
                       <Card className="card-plain">
-                        <CardHeader>
+                        <CardHeader><hr />
                           <CardTitle tag="h5">utilisateur</CardTitle>
                           <p className="category">Dans la base de donnée jumeaux et plus savoie</p><br />
                         </CardHeader>
@@ -44,7 +44,7 @@ class Administration extends React.Component {
                     </Col>
                     <Col md="6">
                       <Card className="card-plain">
-                        <CardHeader>
+                        <CardHeader><hr />
                           <CardTitle tag="h5">Evenements</CardTitle>
                           <p className="category">historique</p><br />
                         </CardHeader>
@@ -64,7 +64,7 @@ class Administration extends React.Component {
                 <CardBody>
                   <div className="places-buttons">
                     <Row>
-                      <Col className="ml-auto mr-auto text-center" md="6">
+                      <Col className="ml-auto mr-auto text-center" md="6"><hr />
                         <CardTitle tag="h5">Publications</CardTitle>
                         <p className="category">historique</p><br />
                       </Col>

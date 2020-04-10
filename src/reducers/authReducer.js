@@ -42,7 +42,8 @@ export default (state = INITIAL_STATE, action) => {
         isSignedInEmail: true,
         login: action.user.sub,
         token: action.payload,
-        role: action.user.roles[0].authority
+        role: action.user.roles[0].authority,
+        pseudo: action.pseudo
       };
     //se déconnecter avec email
     case LOGOUT_EMAIL:

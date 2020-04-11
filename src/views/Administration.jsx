@@ -1,86 +1,28 @@
-/*eslint-disable*/
 import React from "react";
-// reactstrap components
+import AdministrationChoice from "components/other/AdministrationChoice"
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
   CardTitle,
-  Row,
-  Col
 } from "reactstrap";
-import UtilisateurList from "components/Utilisateur/UtilisateurList";
-import TimeLineCardList from "components/TimeLineCard/TimeLineCardList";
-import PublicationLineCardList from "components/PublicationLineCard/PublicationLineCardList";
 
 class Administration extends React.Component {
-  //TODO : essayer un toggle pour cacher la remiere card
   render() {
     return (
       <>
         <div className="content">
-          <Row>
-            <Col md="12">
-              <Card>
-                <CardHeader>
-                  <CardTitle tag="h5">Administration</CardTitle>
-                  <p className="card-category">
-                    ici vous pouvez retrouver la liste des utilisteurs ainsi que l'historique des publications et des évènements du site pour les modifier ou les supprimer.{" "}
-                  </p>
-                </CardHeader>
-                <CardBody>
-                  <Row>
-                    <Col md="6">
-                      <Card className="card-plain">
-                        <CardHeader><hr />
-                          <CardTitle tag="h5">utilisateur</CardTitle>
-                          <p className="category">Dans la base de donnée jumeaux et plus savoie</p><br />
-                        </CardHeader>
-                        <CardBody>
-                          <UtilisateurList></UtilisateurList>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                    <Col md="6">
-                      <Card className="card-plain">
-                        <CardHeader><hr />
-                          <CardTitle tag="h5">Evenements</CardTitle>
-                          <p className="category">historique</p><br />
-                        </CardHeader>
-                        <CardBody>
-                          <TimeLineCardList></TimeLineCardList>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col md="12">
-              <Card>
-                <CardBody>
-                  <div className="places-buttons">
-                    <Row>
-                      <Col className="ml-auto mr-auto text-center" md="6"><hr />
-                        <CardTitle tag="h5">Publications</CardTitle>
-                        <p className="category">historique</p><br />
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <PublicationLineCardList></PublicationLineCardList>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+          <Card>
+            <CardHeader>
+              <CardTitle tag="h5">Administration des evenements, des publications et des utilisteurs.</CardTitle>
+              <p className="card-category">
+                ici vous pouvez retrouver la liste des utilisteurs ainsi que l'historique des publications et des évènements du site pour les modifier ou les supprimer.{" "}
+              </p>
+            </CardHeader><hr />
+            <CardBody>
+              <AdministrationChoice></AdministrationChoice>
+            </CardBody>
+          </Card>
         </div>
       </>
     );

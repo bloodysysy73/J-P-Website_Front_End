@@ -63,8 +63,7 @@ export default function ControlledExpansionPanels() {
                 >
                     <Typography className={classes.heading}>RISQUES/CHANCES D'AVOIR DES JUMEAUX</Typography>
                     <Typography className={classes.secondaryHeading}>
-                        You are currently not an owner
-          </Typography>
+                    </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <div className="container">
@@ -82,8 +81,7 @@ export default function ControlledExpansionPanels() {
                 >
                     <Typography className={classes.heading}>ATTENDRE DES JUMEAUX : DES PRÉCAUTIONS À PRENDRE</Typography>
                     <Typography className={classes.secondaryHeading}>
-                        Filtering has been entirely disabled for whole web server
-          </Typography>
+                    </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <div className="container">
@@ -109,10 +107,10 @@ export default function ControlledExpansionPanels() {
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+            <ExpansionPanel expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
+                    aria-controls="panel5bh-content"
                     id="panel4bh-header"
                 >
                     <Typography className={classes.heading}>PRÊT DE VÊTEMENTS ET PETIT MATÉRIEL</Typography>
@@ -125,10 +123,10 @@ export default function ControlledExpansionPanels() {
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+            <ExpansionPanel expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
+                    aria-controls="panel6bh-content"
                     id="panel4bh-header"
                 >
                     <Typography className={classes.heading}>RÉDUCTIONS / PARTENAIRES</Typography>

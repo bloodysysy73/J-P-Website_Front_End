@@ -16,6 +16,17 @@ class AuthentificationForm extends React.Component {
     );
   };
 
+  renderInputP = formProps => {
+
+    return (
+      <div className="field" >
+        <label>{formProps.label}</label>
+        <input {...formProps.input} type="password" autoComplete="off"></input>
+        {this.renderError(formProps.meta)}
+      </div>
+    );
+  };
+
   renderError(meta) {
     if (meta.touched && meta.error) {
       return (
@@ -43,7 +54,7 @@ class AuthentificationForm extends React.Component {
         ></Field>
         <Field
           name="password"
-          component={this.renderInput}
+          component={this.renderInputP}
           label="Entrez votre password"
         ></Field>
         <button className="ui button">{this.props.buttonName}</button>
@@ -66,7 +77,6 @@ const validate = formValues => {
   }
 
   if (!formValues.password) {
-    errors.password = "Password obligatoire";
   } else {
     passwordValid = formValues.password.length >= 5 ? true : false;
     errors.password = passwordValid ? "" : "password trop court";

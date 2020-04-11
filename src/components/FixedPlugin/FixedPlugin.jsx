@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-//import { Button } from "reactstrap";
+import { Button } from "reactstrap";
 
 class Reglage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classes: "dropdown show"
+      classes: "dropdown"
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,12 +20,12 @@ class Reglage extends Component {
   render() {
     return (
       <div className="fixed-plugin">
-        {/* <div className={this.state.classes}>
+        <div className={this.state.classes}>
           <div onClick={this.handleClick}>
             <i className="fa fa-cog fa-2x" />
           </div>
           <ul className="dropdown-menu show">
-            <li className="header-title">SIDEBAR BACKGROUND</li>
+            <li className="header-title">Couleur de fond menu</li>
             <li className="adjustments-line">
               <div className="badge-colors text-center">
                 <span
@@ -52,7 +52,7 @@ class Reglage extends Component {
                 />
               </div>
             </li>
-            <li className="header-title">SIDEBAR ACTIVE COLOR</li>
+            <li className="header-title">couleur des items</li>
             <li className="adjustments-line">
               <div className="badge-colors text-center">
                 <span
@@ -112,13 +112,8 @@ class Reglage extends Component {
                 />
               </div>
             </li>
-            <li className="button-container">
-              <Button href="" color="primary" block className="btn-round">
-                Download now
-              </Button>
-            </li>
           </ul>
-        </div> */}
+        </div>
       </div>
     );
   }

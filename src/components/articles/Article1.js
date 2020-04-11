@@ -6,7 +6,6 @@ import {
     CardTitle,
     CardFooter,
     Row,
-    Col
 } from "reactstrap";
 
 
@@ -17,7 +16,7 @@ class Article1 extends React.Component {
             <div>
                 <Card className="card-user">
                     <CardHeader className="text-center">
-                        <div className="image">
+                        <div >
                             <img
                                 alt="..."
                                 src={require("assets/img/jumeaux1.jpg")}
@@ -53,7 +52,7 @@ class Article1 extends React.Component {
                             <img
                                 alt="..."
                                 src={require("assets/img/type_grossesse.png")}
-                                width="1000"
+                                width="700"
                             />
                         </div>
                         <hr />

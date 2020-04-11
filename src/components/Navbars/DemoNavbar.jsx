@@ -7,16 +7,15 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Container,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-  Input
+  // InputGroup,
+  // InputGroupText,
+  // InputGroupAddon,
+  // Input
 } from "reactstrap";
 
 import routes from "routes.js";
@@ -68,7 +67,6 @@ class Header extends React.Component {
     document.documentElement.classList.toggle("nav-open");
     this.sidebarToggle.current.classList.toggle("toggled");
   }
-  // function that adds color dark/transparent to the navbar on resize (this is for the collapse)
   updateColor() {
     if (window.innerWidth < 993 && this.state.isOpen) {
       this.setState({
@@ -95,7 +93,6 @@ class Header extends React.Component {
   }
   render() {
     return (
-      // add or remove classes depending if we are on full-screen-maps page or not
       <Navbar
         color={
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
@@ -136,7 +133,7 @@ class Header extends React.Component {
             navbar
             className="justify-content-end"
           >
-            <form>
+            {/* <form>
               <InputGroup className="no-border">
                 <Input placeholder="Search..." />
                 <InputGroupAddon addonType="append">
@@ -145,16 +142,16 @@ class Header extends React.Component {
                   </InputGroupText>
                 </InputGroupAddon>
               </InputGroup>
-            </form>
+            </form> */}
             <Nav navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="#pablo" className="nav-link btn-magnify">
                   <i className="nc-icon nc-layout-11" />
                   <p>
                     <span className="d-lg-none d-md-block">Stats</span>
                   </p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
@@ -186,8 +183,7 @@ class Header extends React.Component {
                     ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
                     (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                      <DropdownItem toggle={false}>
-                        {/* <SignUpForm></SignUpForm> */}
+                      <DropdownItem header toggle={false}>
                         <div className="right floated content">
                           <div className="ui buttons">
                             <Link to="/admin/signupform/" className="ui button">inscription</Link>
@@ -203,14 +199,6 @@ class Header extends React.Component {
                     ) : null}
                 </DropdownMenu>
               </Dropdown>
-              <NavItem>
-                <Link to="/" className="nav-link btn-rotate">
-                  <i className="nc-icon nc-settings-gear-65" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Reglage</span>
-                  </p>
-                </Link>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>

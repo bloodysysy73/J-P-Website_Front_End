@@ -6,10 +6,10 @@ import MyPublicationLine from "components/PublicationLineCard/MyPublicationLine"
 import {
   Card,
   CardHeader,
-  CardFooter,
   CardTitle,
   Row,
-  Col
+  Col,
+  CardBody
 } from "reactstrap";
 
 class Dashboard extends React.Component {
@@ -44,14 +44,13 @@ class Dashboard extends React.Component {
 
             </CardHeader>
 
-            <CardFooter>
-              <hr />
+            <CardBody>
               <div className="button-container">
                 <Row>
                   <Col><MySlider></MySlider></Col>
                 </Row>
               </div>
-            </CardFooter>
+            </CardBody>
           </Card>
 
 

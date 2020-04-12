@@ -19,6 +19,10 @@ export const signIn = userId => {
 export const signOut = () => {
   localStorage.removeItem("isSignedIn");
   localStorage.removeItem("isAdmin");
+  localStorage.removeItem("isSignedInEmail");
+  localStorage.removeItem("token");
+  localStorage.removeItem("login");
+  localStorage.removeItem("pseudo");
 
   return {
     type: SIGN_OUT

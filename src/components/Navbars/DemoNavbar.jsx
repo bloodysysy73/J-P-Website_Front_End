@@ -164,7 +164,7 @@ class Header extends React.Component {
                 <DropdownMenu right>
                   <DropdownItem header>Connexion</DropdownItem>
                   {localStorage.getItem("isSignedInEmail") === "true" ? null : (
-                    <DropdownItem toggle={false}>
+                    <DropdownItem header toggle={false}>
                       <GoolgeAuth></GoolgeAuth>
                     </DropdownItem>
                   )}
@@ -193,7 +193,7 @@ class Header extends React.Component {
                     ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
                     (localStorage.getItem("isSignedInEmail") === "true") ? (
-                      <DropdownItem toggle={false}>
+                      <DropdownItem header toggle={false}>
                         <MyButton></MyButton>
                       </DropdownItem>
                     ) : null}

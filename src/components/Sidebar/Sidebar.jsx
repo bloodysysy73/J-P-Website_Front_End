@@ -37,22 +37,20 @@ class Sidebar extends React.Component {
         data-active-color={this.props.activeColor}
       >
         <div className="logo">
-          <a
-            href="http://localhost:3000/admin/dashboard"
-            className="simple-text logo-mini"
-          >
-            <div className="logo-img">
-              <i className="fas fa-venus-mars" />
+
+          <div className="logo-img simple-text logo-mini ">
+
+
+            <a
+              href="http://localhost:3000/admin/dashboard"
+              className="simple-text logo-normal"
+            >
+
+              <div className="simple-text logo-normal">
+                <img style={{ width: '50px' }} alt="" src={require("../../assets/img/logojpblanc.png")} /> Jumeaux et plus
             </div>
-          </a>
-          <a
-            href="http://localhost:3000/admin/dashboard"
-            className="simple-text logo-normal"
-          >
-            <div className="simple-text logo-normal">
-              Jumeaux et plus
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
           <Nav>

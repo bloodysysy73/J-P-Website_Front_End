@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL } from "./types";
+import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL } from "./types";
 
 import jwt from "jwt-decode";
 import history from "../history";
@@ -54,10 +54,8 @@ export const connexionEmail = formValues => async dispatch => {
   // axios pour récuperer le pseudo de l'tilisateur, le finnaly assure qu'on dispatch no matter what
   axios.get(`http://localhost:8080/user/retrievepseudo/${login}`).then(res => {
 
-    console.log("response", res);
-
     if (res.status === 200) {
-      console.log(" réponse 200, la le pseudo est :", res.data)
+      //console.log(" réponse 200, la le pseudo est :", res.data)
       pseudo = res.data;
       localStorage.setItem("pseudo", pseudo);
 
@@ -76,14 +74,13 @@ export const connexionEmail = formValues => async dispatch => {
     console.log("bilan de l'erreur :", error.config);
   }).finally(() => {
 
-    console.log("la 2 pseudo est : ", pseudo);
+    //console.log("la 2 pseudo est : ", pseudo);
     dispatch({ type: LOGIN_EMAIL, payload: response, user, pseudo });
+
     alert("vous etes connecté");
+
     history.push('/admin/dashboard')
-
   });
-
-
 };
 
 // se déconneceter email
@@ -95,10 +92,87 @@ export const logoutEmail = () => {
   localStorage.removeItem("login");
   localStorage.removeItem("pseudo");
 
-
   alert("vous etes déconnecté");
   return {
     type: LOGOUT_EMAIL
   };
 };
+
+//action de création via une connexion google
+export const createUserGoogle = login => async dispatch => {
+  let password = null;
+  await axios.post("http://localhost:8080/user/save", {
+    login, password
+  }).then(response => {
+
+    console.log("response", response);
+    dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
+
+  }).catch((error) => {
+    // Error 😨
+    if (error.response) {
+      console.log("error 1 : request http USER/SAVE : duplicate entry", error.response.data, "cacth1 ", error.response.status);
+    } else if (error.request) {
+      console.log("error 2 : no response request http ", error.response.data);
+    } else {
+      console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);
+    }
+    console.log("bilan de l'erreur :", error.config);
+  });
+
+};
+
+// CONNEXION EMAIL + GOOGLE 
+export const connexionEmailGoogle = formValues => async dispatch => {
+  const response = await axios.post("http://localhost:8080/login", {
+    ...formValues
+  });
+
+  const token = response.headers.authorization;
+
+  localStorage.setItem("token", token);
+  localStorage.setItem("isSignedInEmail", true);
+
+  const user = jwt(token);
+
+  if (user.roles[0].authority === "ROLE_ADMIN") {
+    localStorage.setItem("isAdmin", "true");
+  }
+
+  localStorage.setItem("login", user.sub);
+
+  let pseudo;
+  let login = user.sub;
+
+  // axios pour récuperer le pseudo de l'tilisateur, le finnaly assure qu'on dispatch no matter what
+  axios.get(`http://localhost:8080/user/retrievepseudo/${login}`).then(res => {
+
+    if (res.status === 200) {
+      //console.log(" réponse 200, la le pseudo est :", res.data)
+      pseudo = res.data;
+      localStorage.setItem("pseudo", pseudo);
+
+    }
+
+  }).catch((error) => {
+    // Error 😨
+    if (error.response) {
+
+      console.log("error 1 : request http recup pseudo", error.response.data, "cacth1 ", error.response.status);
+    } else if (error.request) {
+      console.log("error 2 : no response request http ", error.response.data);
+    } else {
+      console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);
+    }
+    console.log("bilan de l'erreur :", error.config);
+  }).finally(() => {
+
+    //console.log("la 2 pseudo est : ", pseudo);
+    dispatch({ type: LOGIN_EMAIL, payload: response, user, pseudo });
+
+    history.push('/admin/dashboard')
+  });
+};
+
+
 

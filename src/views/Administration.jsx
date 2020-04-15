@@ -7,7 +7,23 @@ import {
   CardTitle,
 } from "reactstrap";
 
+import jwt from "jwt-decode";
+import history from "../history";
+
 class Administration extends React.Component {
+
+  componentDidMount() {
+    const axios = require("axios").default;
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+    let token = localStorage.getItem("token");
+    const user = jwt(token);
+
+    if (user.roles[0].authority !== "ROLE_ADMIN") {
+      history.push('/admin/dashboard')
+    }
+
+  }
+
   render() {
     return (
       <>
@@ -18,7 +34,8 @@ class Administration extends React.Component {
               <p className="card-category">
                 ici vous pouvez retrouver la liste des utilisteurs ainsi que l'historique des publications et des évènements du site pour les modifier ou les supprimer.{" "}
               </p>
-            </CardHeader><hr />
+              <hr />
+            </CardHeader>
             <CardBody>
               <AdministrationChoice></AdministrationChoice>
             </CardBody>

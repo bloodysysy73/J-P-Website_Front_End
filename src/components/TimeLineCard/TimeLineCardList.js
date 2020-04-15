@@ -9,8 +9,8 @@ import { connect } from 'react-redux'
 
 var style1 = {
   display: 'inline-block',
-  marginLeft: '50px',
-  marginRight: '50px',
+  marginLeft: '0',
+  marginRight: '0',
 };
 
 var style2 = {

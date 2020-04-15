@@ -6,6 +6,7 @@ import Article from "views/Article.jsx";
 import Evenement from "views/Evenement.jsx";
 import UserPage from "views/User.jsx";
 import Contact from "views/Contact.jsx";
+import Faq from "views/Faq.jsx";
 import FindUs from "views/FindUs";
 import UtilisateurDelete from "components/Utilisateur/UtilisateurDelete";
 import UtilisateurEdit from "components/Utilisateur/UtilisateurEdit";
@@ -55,6 +56,13 @@ var routes = [
     name: "Liens utiles",
     icon: "nc-icon nc-bullet-list-67",
     component: Liens,
+    layout: "/admin"
+  },
+  {
+    path: "/faq",
+    name: "FAQ / questions",
+    icon: "nc-icon nc-hat-3",
+    component: Faq,
     layout: "/admin"
   },
   {

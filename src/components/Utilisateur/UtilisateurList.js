@@ -59,7 +59,7 @@ class UtilisateurList extends React.Component {
     return (
       <div style={{ textAlign: 'right' }}>
         <Link to={`/admin/utilisateurcreate`} className="ui button grey">
-          Créer un utilisateur
+          new user
                   </Link>
       </div>
     )
@@ -71,11 +71,11 @@ class UtilisateurList extends React.Component {
       <div style={{ textAlign: 'left' }}>
         <div className="ui buttons">
           <button onClick={() => this.props.sortList(1, this.props.utilisateurs)} className="ui button grey">
-            trier par login
+            trier login
            </button>
           <div className="or"></div>
           <button onClick={() => this.props.sortList(2, this.props.utilisateurs)} className="ui button grey">
-            trier par date
+            trier chronologique
            </button>
         </div>
       </div>

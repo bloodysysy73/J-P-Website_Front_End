@@ -3,6 +3,7 @@ import React from "react";
 import jwt from "jwt-decode";
 import { fetchUtilisateurbylogin, editUtilisateurpage } from 'actions/actionUsers';
 import { connect } from 'react-redux'
+import history from "../../../history";
 
 
 // reactstrap components
@@ -15,17 +16,21 @@ import UtilisateurCard from "components/Utilisateur/UtilisateurProfile/Utilisate
 import UtilisateurPasswordEdit from "./UtilisateurPasswordEdit";
 
 const axios = require("axios").default;
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+//axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 class UtilisateurProfileEdit extends React.Component {
 
     componentDidMount() {
-
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
         let token = localStorage.getItem("token");
-        let user = jwt(token);
 
-        let login = user.sub;
-        this.props.fetchUtilisateurbylogin(login);
+        if (token) {
+            let user = jwt(token);
+            let login = user.sub;
+            this.props.fetchUtilisateurbylogin(login);
+        } else {
+            history.push('/admin/dashboard')
+        }
 
     }
 

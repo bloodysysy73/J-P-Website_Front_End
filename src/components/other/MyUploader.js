@@ -1,31 +1,42 @@
-import React from "react";
-import ImageUploader from "react-images-upload";
+import * as React from "react";
 
+import ImageUploading from "react-images-uploading";
 
+const maxNumber = 1;
+const maxMbFileSize = 5;
 
 class MyUploader extends React.Component {
+    onChange = (imageList) => {
+        console.log("image list : ", imageList);
+    };
 
-    constructor(props) {
-        super(props);
-        this.state = { pictures: [] };
-        this.onDrop = this.onDrop.bind(this);
-    }
-
-    onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
+    onSubmitImg = (image) => {
+        this.props.onSubmitImg(image);
     }
 
     render() {
         return (
-            <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
+            <ImageUploading
+                onChange={this.onChange}
+                maxNumber={maxNumber}
+                maxFileSize={maxMbFileSize}
+                acceptType={["jpg", "gif", "png"]}
+            >
+                {({ imageList, onImageUpload, onImageRemoveAll }) => (
+
+                    <div>
+                        <button disabled={imageList.length > 0 ? true : false} className="ui button" onClick={onImageUpload}>choisir une photo</button><br /><br />
+
+                        {imageList.map((image) => (
+                            <div key={image.key}>
+                                <img src={image.dataURL} alt="" /><br /><br />
+                                <button className="ui button" onClick={image.onRemove}>Remove</button>
+                                <button className="ui button" onClick={() => this.onSubmitImg(image)}>Valider</button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </ImageUploading>
         );
     }
 }

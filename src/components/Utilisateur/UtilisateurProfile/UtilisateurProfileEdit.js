@@ -1,7 +1,7 @@
 
 import React from "react";
 import jwt from "jwt-decode";
-import { fetchUtilisateurbylogin, editUtilisateurpage } from 'actions/actionUsers';
+import { fetchUtilisateurbylogin, editUtilisateurpage, editUtilisateurImg } from 'actions/actionUsers';
 import { connect } from 'react-redux'
 import history from "../../../history";
 
@@ -36,7 +36,19 @@ class UtilisateurProfileEdit extends React.Component {
 
     onSubmit = formValues => {
         //console.log("formvalues : ", formValues);
+        localStorage.setItem("pseudo", formValues.pseudo);
         this.props.editUtilisateurpage(formValues)
+    }
+
+    onSubmit3 = formValues => {
+        console.log("data 3 : ", formValues);
+        let user = {
+            image: formValues.dataURL,
+            login: localStorage.getItem("login"),
+            nom: formValues.file.name
+        }
+        console.log("user 3 : ", user);
+        this.props.editUtilisateurImg(user);
     }
 
     onSubmit2 = formValues => {
@@ -113,6 +125,7 @@ class UtilisateurProfileEdit extends React.Component {
                                     description={this.props.utilisateur.description}
                                     nbEnfant={this.props.utilisateur.nbenfant}
                                     adherent={this.props.utilisateur.adherent}
+                                    image={this.props.utilisateur.imgFile}
                                 ></UtilisateurCard>
                                 <UtilisateurPasswordEdit
                                     initialValues={(this.props.utilisateur)}
@@ -124,6 +137,7 @@ class UtilisateurProfileEdit extends React.Component {
                                 <UtlisateurProfileForm
                                     initialValues={(this.props.utilisateur)}
                                     onSubmit={this.onSubmit}
+                                    onSubmit3={this.onSubmit3}
                                 ></UtlisateurProfileForm>
                             </Col>
                         </Row>
@@ -138,4 +152,4 @@ const mapStateToProps = (state) => {
     return { utilisateur: state.utilisateurs.utilisateur }
 }
 
-export default connect(mapStateToProps, { fetchUtilisateurbylogin, editUtilisateurpage })(UtilisateurProfileEdit);
+export default connect(mapStateToProps, { fetchUtilisateurbylogin, editUtilisateurpage, editUtilisateurImg })(UtilisateurProfileEdit);

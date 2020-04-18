@@ -9,6 +9,10 @@ import {
 
 class UtilisateurCard extends React.Component {
 
+    componentDidMount() {
+        console.log("img fil : ", this.props.image)
+    }
+
     render() {
         return (< div >
             <Card className="card-user">
@@ -21,7 +25,8 @@ class UtilisateurCard extends React.Component {
                             <img
                                 alt="..."
                                 className="avatar border-gray"
-                                src={require(`../../../assets/img/${this.props.image || 'mike.jpg'}`)}
+                                src={require(`../../../assets/img/mike.jpg`)}
+                            //src={require("/home/sysy/Documents/projets/projet_JP/back/J-P-Website_Back_End/Back_End/grossesse.png")}
                             />
                             <h5 className="title">{this.props.pseudo}</h5>
                         </a>

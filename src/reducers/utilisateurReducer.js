@@ -7,7 +7,8 @@ import {
     DELETE_UTILISATEUR,
     SORT_BY_LOGIN_USER,
     SORT_BY_DATE_USER,
-    FETCH_UTILISATEUR_LOGIN
+    FETCH_UTILISATEUR_LOGIN,
+    EDIT_UTILISATEURIMG
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -21,6 +22,8 @@ export default (state = {}, action) => {
         case CREATE_UTILISATEUR:
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_UTILISATEUR:
+            return { ...state, [action.payload.id]: action.payload }
+        case EDIT_UTILISATEURIMG:
             return { ...state, [action.payload.id]: action.payload }
         case DELETE_UTILISATEUR:
             return _.omit(state, action.payload)

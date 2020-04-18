@@ -2,6 +2,7 @@ import { SIGN_UP_EMAIL } from "./types";
 import {
   FETCH_UTILISATEURS,
   EDIT_UTILISATEUR,
+  EDIT_UTILISATEURIMG,
   DELETE_UTILISATEUR,
   FETCH_UTILISATEUR,
   SORT_BY_LOGIN_USER,
@@ -47,6 +48,14 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   window.alert("Profil modifié !");
+  document.location.reload(true);
+}
+
+export const editUtilisateurImg = (user) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/user/updateImg`, user)
+
+  dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
+  window.alert("Photo de profile modifiée !");
   document.location.reload(true);
 }
 

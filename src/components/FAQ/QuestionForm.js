@@ -24,24 +24,43 @@ class QuestionForm extends React.Component {
         formeValue = {
             ...this.state,
             user: {
-                'id': 0,
                 'login': localStorage.getItem('login')
             }
         };
         console.log("FORMEVALUE", formeValue);
-        const response = await axios.post("http://localhost:8080/question/save", {
-            formeValue
+
+        axios({
+            method: "POST",
+            url: "http://localhost:8080/question/save",
+            data: formeValue,
+        }).then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+                alert("Votre question a été postée.");
+                this.resetForm()
+            } else {
+                alert("Echec du post, veuillez rééssayer plus tard.")
+            }
+        }).catch((error) => {
+            // Error 😨
+            if (error.response.status === 403) {
+                alert("Vous devez être connecté pour poster une question.");
+            } else if (error.response) {
+                console.log("error 1 : request ", error.response.data, "cacth1 ", error.response.status);
+            } else if (error.request) {
+                console.log("error 2 : no response request http ", error.response.data);
+            } else {
+                console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);
+            }
+            console.log("bilan de l'erreur :", error.config);
         });
 
-        //window.alert("Profil créé !");
+
+
+
         // history.push('/admin/dashboard')
 
-        if (response.status === 200) {
-            alert("Message envoyé.");
-            this.resetForm()
-        } else {
-            alert("Echec envoie du Message.")
-        }
+
     }
 
     resetForm() {
@@ -57,7 +76,7 @@ class QuestionForm extends React.Component {
                         <input type="text" className="form-control" id="titre" value={this.state.titre} onChange={this.onSubjectChange.bind(this)} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="texte">Message</label>
+                        <label htmlFor="texte">Question</label>
                         <textarea className="form-control" rows="5" id="message" value={this.state.texte} onChange={this.onTextChange.bind(this)} />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>

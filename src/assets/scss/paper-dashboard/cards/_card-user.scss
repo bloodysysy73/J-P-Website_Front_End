@@ -18,8 +18,11 @@
     }
 
     .avatar{
-        width: 124px;
-        height: 124px;
+    //ICI MODIFICATION
+        width: 30%;
+        height: auto;
+        // width: 124px;
+        // height: 124px;
         border: 1px solid $white-color;
         position: relative;
     }

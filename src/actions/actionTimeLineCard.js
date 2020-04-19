@@ -5,7 +5,8 @@ import {
   FETCH_TIMELINECARD,
   CREATE_TIMELINECARD,
   SORT_BY_TITLE_TIMELINECARD,
-  SORT_BY_DATE_TIMELINECARD
+  SORT_BY_DATE_TIMELINECARD,
+  EDIT_TIMELINECARD_IMG
 } from "./types";
 
 import history from "../history";
@@ -55,6 +56,24 @@ export const createTimeLineCard = formValues => async dispatch => {
   history.push('/admin/administration')
 
 };
+
+export const editTimeLineCardImgBlob = (timeLineCard) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/timelinecard/updateBlobImg`, timeLineCard)
+
+  dispatch({ type: EDIT_TIMELINECARD_IMG, payload: response.data })
+  window.alert("Photo évènement modifiée");
+  document.location.reload(true);
+}
+
+export const setimageTimeLineCard = (URL, timeLineCard) => {
+  console.log("action timeline URL ", URL)
+  timeLineCard = { ...timeLineCard, URL: URL }
+
+  return {
+    type: EDIT_TIMELINECARD_IMG,
+    payload: timeLineCard
+  }
+}
 
 export const sortList = (wtd, timeLineCardList) => {
 

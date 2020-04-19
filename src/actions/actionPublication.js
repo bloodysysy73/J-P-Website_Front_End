@@ -5,7 +5,8 @@ import {
   FETCH_PUBLICATIONLINECARD,
   CREATE_PUBLICATIONLINECARD,
   SORT_BY_DATE_PUBLICATIONLINECARD,
-  SORT_BY_TITLE_PUBLICATIONLINECARD
+  SORT_BY_TITLE_PUBLICATIONLINECARD,
+  EDIT_PUBLICATION_IMG
 } from "./types";
 
 import history from "../history";
@@ -56,6 +57,24 @@ export const createPublicationLineCard = formValues => async dispatch => {
   history.push('/admin/administration')
 
 };
+
+export const editPublicationCardImgBlob = (publication) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/publication/updateBlobImg`, publication)
+
+  dispatch({ type: EDIT_PUBLICATION_IMG, payload: response.data })
+  window.alert("Photo de publication modifiée");
+  document.location.reload(true);
+}
+
+export const setimagePublication = (URL, publication) => {
+
+  publication = { ...publication, URL: URL }
+
+  return {
+    type: EDIT_PUBLICATION_IMG,
+    payload: publication
+  }
+}
 
 export const sortList = (wtd, publicationList) => {
 

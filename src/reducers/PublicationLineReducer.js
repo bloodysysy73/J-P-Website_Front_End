@@ -6,7 +6,8 @@ import {
     DELETE_PUBLICATIONLINECARD,
     EDIT_PUBLICATIONLINECARD,
     SORT_BY_DATE_PUBLICATIONLINECARD,
-    SORT_BY_TITLE_PUBLICATIONLINECARD
+    SORT_BY_TITLE_PUBLICATIONLINECARD,
+    EDIT_PUBLICATION_IMG
 } from "../actions/types";
 
 
@@ -28,6 +29,8 @@ export default (state = {}, action) => {
             return { ..._.mapKeys(action.payload, 'title') }
         case SORT_BY_DATE_PUBLICATIONLINECARD:
             return { ..._.mapKeys(action.payload, 'id') }
+        case EDIT_PUBLICATION_IMG:
+            return { ...state, [action.payload.id]: action.payload }
         default:
             return state
     }

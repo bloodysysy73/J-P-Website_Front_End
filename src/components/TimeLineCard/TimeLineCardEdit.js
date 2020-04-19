@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTimeLineCard, editTimeLineCard } from '../../actions/actionTimeLineCard'
+import { fetchTimeLineCard, editTimeLineCard, editTimeLineCardImgBlob, setimageTimeLineCard } from '../../actions/actionTimeLineCard'
 import TimeLineCardForm from './TimeLineCardForm'
 
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
@@ -24,9 +24,22 @@ class TimeLineCardEdit extends React.Component {
     }
 
     onSubmit = formValues => {
-        console.log("formvalues : ", formValues);
+        //console.log("formvalues : ", formValues);
         this.props.editTimeLineCard(formValues)
     }
+
+    onSubmit3 = (formValues, id) => {
+        //console.log("id 3 : ", id);
+        //console.log("data 3 : ", formValues);
+        let timelinecard = {
+            id: id,
+            imgBlob: formValues.dataURL,
+            imageName: formValues.file.name
+        }
+        //console.log("timeline card final upload : ", timelinecard);
+        this.props.editTimeLineCardImgBlob(timelinecard);
+    }
+
 
     render() {
         // if (!this.props.timeLineCard) return <div>Loading...</div>
@@ -42,6 +55,7 @@ class TimeLineCardEdit extends React.Component {
                                     <TimeLineCardForm
                                         initialValues={(this.props.timeLineCard)}
                                         onSubmit={this.onSubmit}
+                                        onSubmit3={this.onSubmit3}
                                     />
                                 </CardHeader>
                                 <CardFooter>
@@ -63,7 +77,10 @@ class TimeLineCardEdit extends React.Component {
                             >
 
                                 <TimeLineCard
+                                    setimageTimeLineCard={(URL) => this.props.setimageTimeLineCard(URL, this.props.timeLineCard)}
                                     title={this.props.timeLineCard.title}
+                                    imgBlob={this.props.timeLineCard.imgBlob}
+                                    imageName={this.props.timeLineCard.image}
                                     date={this.props.timeLineCard.date}
                                     description={this.props.timeLineCard.description}
                                     horaire={this.props.timeLineCard.heure} >
@@ -84,5 +101,5 @@ const mapStateToProps = (state, ownProps) => {
 }
 export default connect(
     mapStateToProps,
-    { fetchTimeLineCard, editTimeLineCard }
+    { fetchTimeLineCard, editTimeLineCard, editTimeLineCardImgBlob, setimageTimeLineCard }
 )(TimeLineCardEdit)

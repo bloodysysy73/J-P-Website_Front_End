@@ -3,6 +3,13 @@ import { Field, reduxForm } from 'redux-form'
 import MyUploader from 'components/other/MyUploader'
 import history from '../../history'
 
+import {
+  Card,
+  CardHeader,
+  Row,
+  Col,
+  CardFooter
+} from "reactstrap";
 
 class PublicationLineCardForm extends React.Component {
   renderError = ({ error, touched }) => {
@@ -27,11 +34,15 @@ class PublicationLineCardForm extends React.Component {
     )
   }
 
-  renderInputImage = ({ input, label, meta, disabled }) => {
+  onSubmitHandler = () => {
+    //handler pour l'image
+  }
+
+  renderInputImage = ({ input, label }) => {
     return (
       <div className="field">
         <label>{label}</label>
-        <MyUploader></MyUploader>
+        <MyUploader onSubmitImg={this.onSubmit3}></MyUploader>
       </div>
     )
   }
@@ -72,25 +83,47 @@ class PublicationLineCardForm extends React.Component {
     this.props.onSubmit(formValues)
   }
 
+  onSubmit3 = imageURL => {
+    //console.log("onsubmit 3 image value : ", imageURL)
+    this.props.onSubmit3(imageURL, this.props.initialValues.id)
+  }
+
   render() {
     // console.log("props du form : ", this.props)
     // console.log("la value que j'envoie : ", this.props.initialValues.adherent)
     return (
-      <form
-        onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form error"
-      >
-        <Field name="id" component={this.renderInput} label="id de la publication" disabled />
-        <Field name="title" component={this.renderInput} label="Titre (obligatoire)" required />
-        <Field name="description" component={this.renderInput} label="Description" />
-        <Field name="title2" component={this.renderInput} label="Titre 2" />
-        <Field name="description2" component={this.renderInput} label="Description2" />
-        <Field name="imageName" component={this.renderInput} label="image" />
-        <Field name="poste_le" component={this.renderInput} label="Publication posté le" disabled />
+      <>
+        <hr />
+        <form onSubmit={this.props.handleSubmit(this.onSubmitHandler)}
+          className="ui form error">
+          <Card>
+            <CardHeader></CardHeader>
+            <CardFooter>
+              <Row>
+                <Col>
+                  <label>Modifier l'image de l'evenement (2Mo maximum) </label>
+                  <Field name="image" component={this.renderInputImage} />
+                </Col>
+              </Row><br />
+            </CardFooter>
+          </Card>
+        </form>
+        <form
+          onSubmit={this.props.handleSubmit(this.onSubmit)}
+          className="ui form error"
+        >
+          <Field name="id" component={this.renderInput} label="id de la publication" disabled />
+          <Field name="title" component={this.renderInput} label="Titre (obligatoire)" required />
+          <Field name="description" component={this.renderInput} label="Description" />
+          <Field name="title2" component={this.renderInput} label="Titre 2" />
+          <Field name="description2" component={this.renderInput} label="Description2" />
+          <Field name="imageName" component={this.renderInput} label="image" />
+          <Field name="poste_le" component={this.renderInput} label="Publication posté le" disabled />
 
-        <button className="ui button primary" onClick={() => history.push('/admin/administration')}>Retour </button>
-        <button className="ui button primary">Valider</button>
-      </form>
+          <button className="ui button primary" onClick={() => history.push('/admin/administration')}>Retour </button>
+          <button className="ui button primary">Valider</button>
+        </form>
+      </>
     )
   }
 }

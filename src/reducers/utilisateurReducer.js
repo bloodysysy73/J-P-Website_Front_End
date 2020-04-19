@@ -8,7 +8,8 @@ import {
     SORT_BY_LOGIN_USER,
     SORT_BY_DATE_USER,
     FETCH_UTILISATEUR_LOGIN,
-    EDIT_UTILISATEURIMG
+    EDIT_UTILISATEURIMG,
+    EDIT_UTILISATEURURLIMG
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -31,6 +32,8 @@ export default (state = {}, action) => {
             return { ..._.mapKeys(action.payload, 'login') }
         case SORT_BY_DATE_USER:
             return { ..._.mapKeys(action.payload, 'id') }
+        case EDIT_UTILISATEURURLIMG:
+            return { ...state, utilisateur: action.payload }
         default:
             return state
     }

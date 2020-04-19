@@ -7,7 +7,8 @@ import {
   FETCH_UTILISATEUR,
   SORT_BY_LOGIN_USER,
   SORT_BY_DATE_USER,
-  FETCH_UTILISATEUR_LOGIN
+  FETCH_UTILISATEUR_LOGIN,
+  EDIT_UTILISATEURURLIMG
 } from "./types";
 
 import history from "../history";
@@ -51,12 +52,22 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
   document.location.reload(true);
 }
 
-export const editUtilisateurImg = (user) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/user/updateImg`, user)
+export const editUtilisateurImgBlob = (user) => async dispatch => {
+  const response = await axios.put(`http://localhost:8080/user/updateBlobImg`, user)
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
   window.alert("Photo de profile modifiée !");
   document.location.reload(true);
+}
+
+export const setimageProfil = (URL, user) => {
+
+  user = { ...user, URL: URL }
+
+  return {
+    type: EDIT_UTILISATEURURLIMG,
+    payload: user
+  }
 }
 
 export const deleteUtilisateur = id => async dispatch => {

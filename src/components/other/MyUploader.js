@@ -20,7 +20,7 @@ class MyUploader extends React.Component {
                 onChange={this.onChange}
                 maxNumber={maxNumber}
                 maxFileSize={maxMbFileSize}
-                acceptType={["jpg", "gif", "png"]}
+                acceptType={["jpg", "gif", "png", "jpeg"]}
             >
                 {({ imageList, onImageUpload, onImageRemoveAll }) => (
 

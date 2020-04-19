@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchPublicationLineCard, editPublicationLineCard } from '../../actions/actionPublication'
+import { fetchPublicationLineCard, editPublicationLineCard, editPublicationCardImgBlob, setimagePublication } from '../../actions/actionPublication'
 import PublicationLineCardForm from './PublicationLineCardForm'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import PublicationLineCard from './PublicationLineCard';
@@ -28,6 +28,18 @@ class PublicationLineCardEdit extends React.Component {
         this.props.editPublicationLineCard(formValues)
     }
 
+    onSubmit3 = (formValues, id) => {
+        //console.log("id 3 : ", id);
+        //console.log("data 3 : ", formValues);
+        let publication = {
+            id: id,
+            imgBlob: formValues.dataURL,
+            imageName: formValues.file.name
+        }
+        //console.log("timeline card final upload : ", timelinecard);
+        this.props.editPublicationCardImgBlob(publication);
+    }
+
     render() {
         if (this.props.publicationLineCard) {
             return (
@@ -41,6 +53,7 @@ class PublicationLineCardEdit extends React.Component {
                                     <PublicationLineCardForm
                                         initialValues={(this.props.publicationLineCard)}
                                         onSubmit={this.onSubmit}
+                                        onSubmit3={this.onSubmit3}
                                     />
                                 </CardHeader>
                                 <CardFooter></CardFooter>
@@ -60,7 +73,11 @@ class PublicationLineCardEdit extends React.Component {
                             >
 
                                 <PublicationLineCard
+                                    setimageTimeLineCard={(URL) => this.props.setimagePublication(URL, this.props.publicationLineCard)}
                                     title={this.props.publicationLineCard.title}
+                                    id={this.props.publicationLineCard.id}
+                                    imgBlob={this.props.publicationLineCard.imgBlob}
+                                    imageName={this.props.publicationLineCard.image}
                                     title2={this.props.publicationLineCard.title2}
                                     description={this.props.publicationLineCard.description}
                                     description2={this.props.publicationLineCard.description2} >
@@ -82,5 +99,5 @@ const mapStateToProps = (state, ownProps) => {
 }
 export default connect(
     mapStateToProps,
-    { fetchPublicationLineCard, editPublicationLineCard }
+    { fetchPublicationLineCard, editPublicationLineCard, editPublicationCardImgBlob, setimagePublication }
 )(PublicationLineCardEdit)

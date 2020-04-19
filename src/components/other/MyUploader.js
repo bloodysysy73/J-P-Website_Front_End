@@ -3,7 +3,7 @@ import * as React from "react";
 import ImageUploading from "react-images-uploading";
 
 const maxNumber = 1;
-const maxMbFileSize = 5;
+const maxMbFileSize = 2;
 
 class MyUploader extends React.Component {
     onChange = (imageList) => {

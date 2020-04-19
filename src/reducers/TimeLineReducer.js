@@ -6,7 +6,8 @@ import {
     DELETE_TIMELINECARD,
     EDIT_TIMELINECARD,
     SORT_BY_TITLE_TIMELINECARD,
-    SORT_BY_DATE_TIMELINECARD
+    SORT_BY_DATE_TIMELINECARD,
+    EDIT_TIMELINECARD_IMG
 } from "../actions/types";
 
 
@@ -28,6 +29,8 @@ export default (state = {}, action) => {
             return { ..._.mapKeys(action.payload, 'title') }
         case SORT_BY_DATE_TIMELINECARD:
             return { ..._.mapKeys(action.payload, 'id') }
+        case EDIT_TIMELINECARD_IMG:
+            return { ...state, [action.payload.id]: action.payload }
         default:
             return state
     }

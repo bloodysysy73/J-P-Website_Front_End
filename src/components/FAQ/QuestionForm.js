@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { fetchQuestions } from "../../actions/actionQuestions";
+
 
 const axios = require("axios").default;
 var formeValue;
@@ -38,6 +41,8 @@ class QuestionForm extends React.Component {
             if (response.status === 200) {
                 alert("Votre question a été postée.");
                 this.resetForm()
+                //ce fetch est pour remettre le state à jour et re render la liste
+                this.props.fetchQuestions();
             } else {
                 alert("Echec du post, veuillez rééssayer plus tard.")
             }
@@ -94,4 +99,9 @@ class QuestionForm extends React.Component {
     }
 }
 
-export default QuestionForm;
+const mapStateToProps = state => { }
+
+export default connect(
+    mapStateToProps,
+    { fetchQuestions }
+)(QuestionForm);

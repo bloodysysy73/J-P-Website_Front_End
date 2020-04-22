@@ -22,7 +22,7 @@ class LoginEmailForm extends React.Component {
     return (
       <div>
         <AuthentificationForm
-          initialValues={_.pick(this.props.user, "login", "password")}
+          // initialValues={_.pick(this.props.user, "login", "password")}
           onSubmit={this.onSubmit2}
           buttonName="se connecter"
         ></AuthentificationForm>

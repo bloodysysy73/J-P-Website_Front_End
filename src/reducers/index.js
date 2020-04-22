@@ -5,6 +5,8 @@ import authReducer from "./authReducer";
 import timeLineReducer from "./TimeLineReducer";
 import publicationLineReducer from "./PublicationLineReducer";
 import utilisateurReducer from "./utilisateurReducer";
+import questionReducer from "./QuestionReducer";
+
 
 
 
@@ -14,4 +16,5 @@ export default combineReducers({
   timeLineCards: timeLineReducer,
   publicationLineCards: publicationLineReducer,
   utilisateurs: utilisateurReducer,
+  questions: questionReducer
 });

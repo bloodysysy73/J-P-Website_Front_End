@@ -78,13 +78,13 @@ class QuestionForm extends React.Component {
                 <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
                     <div className="form-group">
                         <label htmlFor="titre">Objet</label>
-                        <input type="text" className="form-control" id="titre" value={this.state.titre} onChange={this.onSubjectChange.bind(this)} />
+                        <input type="text" className="form-control" id="titre" value={this.state.titre} onChange={this.onSubjectChange.bind(this)} required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="texte">Question</label>
-                        <textarea className="form-control" rows="5" id="message" value={this.state.texte} onChange={this.onTextChange.bind(this)} />
+                        <textarea className="form-control" rows="5" id="message" value={this.state.texte} onChange={this.onTextChange.bind(this)} required />
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Poser</button>
                 </form>
             </div>
         );
@@ -99,7 +99,9 @@ class QuestionForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => { }
+const mapStateToProps = (state) => {
+    return {}
+}
 
 export default connect(
     mapStateToProps,

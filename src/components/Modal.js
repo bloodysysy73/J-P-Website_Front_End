@@ -5,7 +5,8 @@ const Modal = props => {
   return ReactDOM.createPortal(
     <div onClick={props.onDismiss} className="ui dimmer mdssui visible active">
       <div onClick={(e) => e.stopPropagation()} className="ui standard modalsui visible active">  {/* attention modal style */}
-        <div className="header">{props.title}</div>
+        <div className="header">{props.title} <br />{props.question}</div>
+
         <div className="content">{props.content}</div>
         <div className="actions">{props.actions}</div>
       </div>

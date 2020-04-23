@@ -44,7 +44,7 @@ class TimeLineCardList extends React.Component {
       return (
         <div className="item" key={timeLineCard.id}>
           {this.renderButton(timeLineCard)}
-          <i className="large middle aligned icon camera" />
+          <i className="large middle aligned" />
           <div className="content">
             <div className="description">titre : {timeLineCard.title}</div>
             <p className="header">

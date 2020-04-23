@@ -49,7 +49,9 @@ class Liens extends React.Component {
                 </CardFooter>
               </Card>
             </CardHeader>
-            <CardBody> <ButtonLink></ButtonLink></CardBody>
+            <CardBody>
+              <div className="container"><ButtonLink></ButtonLink></div>
+            </CardBody>
           </Card>
         </div>
       </>

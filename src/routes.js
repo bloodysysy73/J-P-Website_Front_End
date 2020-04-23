@@ -20,7 +20,7 @@ import publicationLineCardEdit from "components/PublicationLineCard/PublicationL
 import publicationLineCardCreate from "components/PublicationLineCard/PublicationLineCardCreate";
 
 import SignUpForm from './components/authentification/SignUpForm'
-
+import ReponseList from "components/FAQ/ReponseList"
 
 var routes = [
   {
@@ -84,77 +84,95 @@ var routes = [
     name: "Administration",
     icon: "nc-icon nc-bell-55",
     component: Administration,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/utilisateurdelete/:id",
     name: "UtilisateurDelete",
     icon: "nc-icon nc-bell-55",
     component: UtilisateurDelete,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
+  },
+  {
+    path: "/reponsequestion/:id",
+    name: "ReponseList",
+    component: ReponseList,
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/utilisateuredit/:id",
     name: "UtilisateurEdit",
     icon: "nc-icon nc-bell-55",
     component: UtilisateurEdit,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/utilisateurcreate",
     name: "UtilisateurCreate",
     icon: "nc-icon nc-bell-55",
     component: UtilisateurCreate,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/timelinecarddelete/:id",
     name: "TimeLineCardDelete",
     icon: "nc-icon nc-bell-55",
     component: TimeLineCardDelete,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/timelinecardedit/:id",
     name: "TimeLineCardEdit",
     icon: "nc-icon nc-bell-55",
     component: TimeLineCardEdit,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/timelinecardcreate",
     name: "TimeLineCardCreate",
     icon: "nc-icon nc-bell-55",
     component: TimeLineCardCreate,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/publicationdelete/:id",
     name: "PublicationLineCardDelete",
     icon: "nc-icon nc-bell-55",
     component: publicationLineCardDelete,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/publicationedit/:id",
     name: "PublicationLineCardEdit",
     icon: "nc-icon nc-bell-55",
     component: publicationLineCardEdit,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/publicationcreate",
     name: "PublicationLineCardCreate",
     icon: "nc-icon nc-bell-55",
     component: publicationLineCardCreate,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     path: "/signupform",
     name: "SignUpForm",
     icon: "nc-icon nc-bell-55",
     component: SignUpForm,
-    layout: "/admin"
+    layout: "/admin",
+    affiche: false
   },
   {
     pro: true,

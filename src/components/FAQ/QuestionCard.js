@@ -15,9 +15,12 @@ import {
 class QuestionCard extends React.Component {
 
     renderButtonSuppress() {
+        let question = this.props.question;
+        let login;
+        (question.user ? login = question.user.login : login = '')
 
-        if (localStorage.getItem("isAdmin")) {
-            return (<div className="text-center" ><button onClick={() => this.props.deletequestion(this.props.question.id)} className="btn btn-danger">supprimer question</button></div>)
+        if (localStorage.getItem("isAdmin") || localStorage.getItem("login") === login) {
+            return (<div className="text-center" ><button onClick={() => this.props.deletequestion(question.id)} className="btn btn-danger">supprimer question</button></div>)
         }
     }
 

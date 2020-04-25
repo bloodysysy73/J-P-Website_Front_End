@@ -3,8 +3,8 @@ import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL } from "./t
 import jwt from "jwt-decode";
 import history from "../history";
 
-
 const axios = require("axios").default;
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 //se connecter avec google
 export const signIn = userId => {

@@ -42,7 +42,7 @@ class PublicationLineCardList extends React.Component {
       return (
         <div className="item" key={publicationLineCard.id}>
           {this.renderButton(publicationLineCard)}
-          <i className="large middle aligned icon camera" />
+          <i className="large middle aligned" />
           <div className="content">
             <div className="description">titre : {publicationLineCard.title}</div>
             <p className="header">

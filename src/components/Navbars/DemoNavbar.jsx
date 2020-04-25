@@ -54,7 +54,7 @@ class Header extends React.Component {
     });
   }
   getBrand() {
-    let brandName = "Default Brand";
+    let brandName = "Jumeaux & Plus";
     routes.map((prop, key) => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
         brandName = prop.name;
@@ -158,7 +158,7 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  {localStorage.getItem("pseudo")}
+                  {localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (localStorage.getItem("login") ? localStorage.getItem("login") : 'connection')}
                   <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>

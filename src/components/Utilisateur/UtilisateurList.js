@@ -42,7 +42,7 @@ class UtilisateurList extends React.Component {
       return (
         <div className="item" key={utilisateur.id}>
           {this.renderButton(utilisateur)}
-          <i className="large middle aligned icon camera" />
+          <i className="large middle aligned" />
           <div className="content">
             <div className="description">login : {utilisateur.login}</div>
             <p className="header">

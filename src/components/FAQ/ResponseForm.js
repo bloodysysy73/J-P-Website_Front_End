@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { fetchQuestions } from "../../actions/actionQuestions";
 
 
 const axios = require("axios").default;
 var formeValue;
 
-class QuestionForm extends React.Component {
+class ReponseForm extends React.Component {
 
     componentDidMount() {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
@@ -15,7 +13,6 @@ class QuestionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            titre: "",
             texte: ""
         }
     }
@@ -26,30 +23,33 @@ class QuestionForm extends React.Component {
 
         formeValue = {
             ...this.state,
-            user: {
-                'login': localStorage.getItem('login')
-            }
+            'loginUser': localStorage.getItem('login'),
+            'pseudo': localStorage.getItem('pseudo'),
+            'idQuestion': this.props.idQuestion
         };
+
         console.log("FORMEVALUE", formeValue);
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/question/save",
+            url: "http://localhost:8080/reponse/save",
             data: formeValue,
         }).then((response) => {
             console.log(response)
             if (response.status === 200) {
-                alert("Votre question a été postée.");
+                alert("Votre réponse a été postée.");
                 this.resetForm()
                 //ce fetch est pour remettre le state à jour et re render la liste
-                this.props.fetchQuestions();
+                //this.props.fetchQuestions();
+                document.location.reload(true);
+
             } else {
                 alert("Echec du post, veuillez rééssayer plus tard.")
             }
         }).catch((error) => {
             // Error 😨
             if (error.response.status === 403) {
-                alert("Vous devez être connecté pour poster une question.");
+                alert("Vous devez être connecté pour poster une réponse.");
             } else if (error.response) {
                 console.log("error 1 : request ", error.response.data, "cacth1 ", error.response.status);
             } else if (error.request) {
@@ -60,38 +60,24 @@ class QuestionForm extends React.Component {
             console.log("bilan de l'erreur :", error.config);
         });
 
-
-
-
-        // history.push('/admin/dashboard')
-
-
     }
 
     resetForm() {
-        this.setState({ titre: '', texte: '' })
+        this.setState({ texte: '' })
     }
 
     render() {
         return (
-            <div className="App">
+            <div className="App container">
                 <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
                     <div className="form-group">
-                        <label htmlFor="titre">Objet</label>
-                        <input type="text" className="form-control" id="titre" value={this.state.titre} onChange={this.onSubjectChange.bind(this)} required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="texte">Question</label>
+                        <label htmlFor="texte">Répondez à {this.props.asker}</label>
                         <textarea className="form-control" rows="5" id="message" value={this.state.texte} onChange={this.onTextChange.bind(this)} required />
                     </div>
-                    <button type="submit" className="btn btn-primary">Poser</button>
+                    <button type="submit" className="btn btn-primary">Répondre</button>
                 </form>
             </div>
         );
-    }
-
-    onSubjectChange(event) {
-        this.setState({ titre: event.target.value })
     }
 
     onTextChange(event) {
@@ -99,11 +85,6 @@ class QuestionForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {}
-}
 
-export default connect(
-    mapStateToProps,
-    { fetchQuestions }
-)(QuestionForm);
+
+export default ReponseForm;

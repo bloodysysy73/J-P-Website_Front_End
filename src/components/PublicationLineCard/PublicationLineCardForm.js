@@ -89,12 +89,13 @@ class PublicationLineCardForm extends React.Component {
   }
 
   render() {
-    // console.log("props du form : ", this.props)
-    // console.log("la value que j'envoie : ", this.props.initialValues.adherent)
+
+    let display = this.props.isCreation ? 'none' : '';
+
     return (
       <>
         <hr />
-        <form onSubmit={this.props.handleSubmit(this.onSubmitHandler)}
+        <form style={{ display: display }} onSubmit={this.props.handleSubmit(this.onSubmitHandler)}
           className="ui form error">
           <Card>
             <CardHeader></CardHeader>

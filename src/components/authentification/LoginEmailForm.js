@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { connexionEmail } from "../../actions/actionLogin";
 import AuthentificationForm from "./AutentificationForm";
-import _ from "lodash";
+//import _ from "lodash";
 import history from "../../history";
 
 

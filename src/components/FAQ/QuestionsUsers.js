@@ -19,8 +19,6 @@ import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
-
-
 const icons = [
     'brightness3OutlinedIcon',
     'filterVintageOutlinedIcon',

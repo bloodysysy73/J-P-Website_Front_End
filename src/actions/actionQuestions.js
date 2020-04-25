@@ -2,7 +2,7 @@ import {
   FETCH_QUESTIONS,
   FETCH_QUESTION,
   DELETE_QUESTION,
-  DELETE_REPONSE
+  //DELETE_REPONSE
 } from "./types";
 
 

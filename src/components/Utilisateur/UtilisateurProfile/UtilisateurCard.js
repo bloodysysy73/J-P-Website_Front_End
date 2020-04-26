@@ -17,7 +17,7 @@ class UtilisateurCard extends React.Component {
     componentDidMount() {
         // console.log("img fil : ", this.props.imgBlob)
         this.myImg = this.props.imgBlob;
-        console.log("Base 64: ", this.myImg)
+        //console.log("Base 64: ", this.myImg)
 
         // créer URL img
         if (this.myImg) {

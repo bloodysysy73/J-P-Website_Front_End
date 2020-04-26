@@ -12,6 +12,7 @@ var ithappend = false;
 
 class GoogleAuth extends React.Component {
 
+  googleId;
 
   componentDidMount() {
     ithappend = false;
@@ -19,25 +20,31 @@ class GoogleAuth extends React.Component {
       window.gapi.client
         .init({
           clientId:
-            "78258291645-b6663pugl7qru27d0aka9dfof54fe5cr.apps.googleusercontent.com",
+            "479915262149-5mfpd5lv59q93scecehcbdtin9ovie1c.apps.googleusercontent.com",
           scope: "email"
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
           this.onAuthChange(this.auth.isSignedIn.get());
           this.auth.isSignedIn.listen(this.onAuthChange);
+          this.googleId = this.auth.currentUser.get().getId();
         });
     });
   }
 
   onAuthChange = isSignedIn => {
+    let googleId = this.auth.currentUser.get().getId();
+
     if (isSignedIn) {
-      let googleId = this.auth.currentUser.get().getId();
-      //let googleLogin = this.auth.currentUser.get().getBasicProfile().getEmail();
-      //let id_token = this.auth.currentUser.get().getAuthResponse().id_token;
+
+      let user = {
+        'googleId': googleId,
+        'googleLogin': this.auth.currentUser.get().getBasicProfile().getEmail(),
+        'googleIdToken': this.auth.currentUser.get().getAuthResponse().id_token
+      }
 
       this.props.signIn(googleId);
-      //this.checkIfExistAndConnect(googleLogin);
+      this.checkIfExistAndConnect(user);
 
     } else {
       this.props.signOut();
@@ -45,20 +52,19 @@ class GoogleAuth extends React.Component {
   };
 
   //TODO : CREER UEN FONCTION : HTTPS avec le token google vers le backend pour verification
-  checkIfExistAndConnect = (login) => {
+  checkIfExistAndConnect = (user) => {
     //checkif googleId existe dans les logins
-    axios.get(`http://localhost:8080/user/loginexist/${login}`).then(res => {
+    axios.get(`http://localhost:8080/user/loginexist/${user.googleLogin}`).then(res => {
       //console.log("response in auth change", res);
       if (res.data === true) {
-        console.log('le login existe §§ CONNECTE');
-        //TODO: se connecter avec le login gmail  
-        //this.props.connexionEmailGoogle();
+        //console.log('le login existe §§ CONNECTE');
+        this.props.connexionEmailGoogle(user);
       } else if (res.data !== true) {
         //si le login exist pas dans la BDD on créé un compte. ithappen pour éviter double request
-        console.log('le login existe pas §§ CREATE');
+
         if (ithappend !== true) {
           ithappend = true;
-          this.props.createUserGoogle(login);
+          this.props.createUserGoogle(user.googleLogin);
         }
 
       } else {
@@ -80,11 +86,13 @@ class GoogleAuth extends React.Component {
 
   onSignInClick = () => {
     this.auth.signIn();
+    this.props.signIn(this.googleId);
     history.push("/");
   };
 
   onSignOutClick = () => {
     this.auth.signOut();
+    this.props.signOut();
     history.push("/");
   };
 

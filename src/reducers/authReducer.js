@@ -3,7 +3,8 @@ import {
   SIGN_OUT,
   SIGN_UP_EMAIL,
   LOGIN_EMAIL,
-  LOGOUT_EMAIL
+  LOGOUT_EMAIL,
+  SIGN_IN_GOOGLE_MAIL
 } from "../actions/types";
 
 const INITIAL_STATE = { isSignedIn: null, userId: null };
@@ -16,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSignedIn: true,
-        userId: action.payload
+        userId: action.payload,
       };
     //se déconnecter avec google
     case SIGN_OUT:
@@ -24,7 +25,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isSignedIn: false,
         userId: null,
-        role: null
+        role: null,
+        isSignedInEmail: false,
+        login: null,
+        token: null,
+        pseudo: null
       };
     //s'inscrire avec email
     case SIGN_UP_EMAIL:
@@ -52,6 +57,16 @@ export default (state = INITIAL_STATE, action) => {
         isSignedInEmail: false,
         login: null,
         token: null
+      };
+    //se connecter avec google + email
+    case SIGN_IN_GOOGLE_MAIL:
+      return {
+        ...state,
+        isSignedIn: true,
+        isSignedInEmail: true,
+        login: action.login,
+        token: action.token,
+        pseudo: action.pseudo
       };
     default:
       return state;

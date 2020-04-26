@@ -56,7 +56,7 @@ class Sidebar extends React.Component {
           <Nav>
             {this.props.routes.map((prop, key) => {
 
-              if (prop.affiche !== false && (localStorage.getItem("isSignedInEmail") || prop.name !== "UserProfile")
+              if (prop.affiche !== false && (localStorage.getItem("isSignedInEmail") || localStorage.getItem("isSignedIn") || prop.name !== "UserProfile")
               ) {
 
                 return (

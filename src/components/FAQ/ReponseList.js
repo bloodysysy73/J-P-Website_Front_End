@@ -27,19 +27,27 @@ class ReponseListe extends React.Component {
   renderList = () => {
 
     if (this.props.question) {
-      return this.props.question.reponses.map(reponse => {
-        return (
-          <div className="item" key={reponse.id}>
-            <div className="content">
-              <p className="header">
-                réponse : {reponse.texte}
-              </p>
-              <div className="description">de : {reponse.pseudo ? reponse.pseudo : reponse.loginUser ? reponse.loginUser : 'iconnu'}</div>
-              <div className="description">le : {reponse.date}</div>
-            </div>{this.renderButtonSuppress(reponse.id)}<hr />
-          </div >
-        )
-      })
+
+      let reponses = [this.props.question.reponses]
+
+      if (reponses.length > 0) {
+        return this.props.question.reponses.map(reponse => {
+          return (
+            <div className="item" key={reponse.id}>
+              <div className="content">
+                <p className="header">
+                  réponse : {reponse.texte}
+                </p>
+                <div className="description">de : {reponse.pseudo ? reponse.pseudo : reponse.loginUser ? reponse.loginUser : 'iconnu'}</div>
+                <div className="description">le : {reponse.date}</div>
+              </div>{this.renderButtonSuppress(reponse.id)}<hr />
+            </div >
+          )
+        })
+      } else {
+        return <div>Ancune réponse, soyez le premier à répondre !</div>
+      }
+
     } else { return <div>erreur</div> }
 
   }

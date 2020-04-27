@@ -65,7 +65,7 @@ class Sidebar extends React.Component {
                       this.activeRoute(prop.path) +
                       (prop.pro ? " active-pro" : "")
                     }
-                    key={key}
+                    key={prop.name}
                   >
                     <NavLink
                       to={prop.layout + prop.path}
@@ -85,7 +85,7 @@ class Sidebar extends React.Component {
                       this.activeRoute(prop.path) +
                       (prop.pro ? " active-pro" : "")
                     }
-                    key={key}
+                    key={prop.name}
                   >
                     <NavLink
                       to={prop.layout + prop.path}
@@ -97,7 +97,7 @@ class Sidebar extends React.Component {
                     </NavLink>
                   </li>
                 );
-              } else { return <div></div> }
+              } else { return <div key={prop.name} ></div> }
 
 
 

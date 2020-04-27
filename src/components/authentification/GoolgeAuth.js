@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { signIn, signOut, createUserGoogle, connexionEmailGoogle } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 
 import history from "../../history";
 
@@ -100,13 +100,13 @@ class GoogleAuth extends React.Component {
     if (this.props.isSignedIn) {
       return (
         <button onClick={this.onSignOutClick} className="ui red google button">
-          <FontAwesomeIcon icon={faGoogle} /> déconnexion
+          <FontAwesomeIcon icon={faGooglePlusG} /> déconnexion
         </button>
       );
     } else {
       return (
         <button onClick={this.onSignInClick} className="ui red google button">
-          <FontAwesomeIcon icon={faGoogle} /> connexion google
+          <FontAwesomeIcon icon={faGooglePlusG} /> connexion google
         </button>
       );
     }

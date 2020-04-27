@@ -27,7 +27,7 @@ class AuthentificationForm extends React.Component {
             <input placeholder="Login" type="email" className="form-control" autoComplete="off" id="login" aria-describedby="emailHelp" value={this.state.login} required onChange={this.onEmailChange.bind(this)} />
           </div>
           <div className="field">
-            <input type="password" placeholder="password" className="form-control" rows="5" id="password" value={this.state.password} required onChange={this.onPasswordChange.bind(this)} />
+            <input minLength="5" type="password" placeholder="password" className="form-control" rows="5" id="password" value={this.state.password} required onChange={this.onPasswordChange.bind(this)} />
           </div>
           <button type="submit" className="ui button">connexion</button>
         </form>

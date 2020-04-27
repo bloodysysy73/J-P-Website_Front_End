@@ -7,7 +7,7 @@ const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 //se connecter avec google
-export const signIn = userId => {
+export const signIn = (userId) => {
   localStorage.setItem("isSignedIn", true);
   return {
     type: SIGN_IN,
@@ -166,6 +166,7 @@ export const connexionEmailGoogle = user => async dispatch => {
   }).finally(() => {
 
     dispatch({ type: SIGN_IN_GOOGLE_MAIL, login, pseudo, token });
+    //history.push('/admin/dashboard')
 
   });
 };

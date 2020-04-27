@@ -48,11 +48,12 @@ class QuestionForm extends React.Component {
             }
         }).catch((error) => {
             // Error 😨
-            if (error.response.status === 403) {
+
+            if (error.response ? true : false && error.response.status === 403) {
                 alert("Vous devez être connecté pour poster une question.");
             } else if (error.response) {
                 console.log("error 1 : request ", error.response.data, "cacth1 ", error.response.status);
-            } else if (error.request) {
+            } else if (error.request && error.response) {
                 console.log("error 2 : no response request http ", error.response.data);
             } else {
                 console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);

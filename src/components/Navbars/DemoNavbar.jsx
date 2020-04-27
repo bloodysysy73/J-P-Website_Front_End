@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import GoolgeAuth from "components/authentification/GoolgeAuth";
+import GoolgeAuth from "components/authentification/GoolgeAuth";
 import {
   Collapse,
   Navbar,
@@ -165,7 +165,7 @@ class Header extends React.Component {
                   <DropdownItem header>Connexion</DropdownItem>
                   {localStorage.getItem("isSignedInEmail") === "true" ? null : (
                     <DropdownItem header toggle={false}>
-                      {/* <GoolgeAuth></GoolgeAuth> */}
+                      <GoolgeAuth></GoolgeAuth>
                     </DropdownItem>
                   )}
                   <DropdownItem divider />

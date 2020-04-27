@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL } from "./types";
+import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL, SIGN_IN_GOOGLE_MAIL } from "./types";
 
 import jwt from "jwt-decode";
 import history from "../history";
@@ -7,11 +7,11 @@ const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 //se connecter avec google
-export const signIn = userId => {
+export const signIn = (userId) => {
   localStorage.setItem("isSignedIn", true);
   return {
     type: SIGN_IN,
-    payload: userId
+    payload: userId,
   };
 };
 
@@ -122,27 +122,22 @@ export const createUserGoogle = login => async dispatch => {
 
 };
 
-// CONNEXION EMAIL + GOOGLE 
-export const connexionEmailGoogle = formValues => async dispatch => {
-  const response = await axios.post("http://localhost:8080/login", {
-    ...formValues
-  });
-
-  const token = response.headers.authorization;
-
-  localStorage.setItem("token", token);
-  localStorage.setItem("isSignedInEmail", true);
-
-  const user = jwt(token);
-
-  if (user.roles[0].authority === "ROLE_ADMIN") {
-    localStorage.setItem("isAdmin", "true");
-  }
-
-  localStorage.setItem("login", user.sub);
-
+export const connexionEmailGoogle = user => async dispatch => {
   let pseudo;
-  let login = user.sub;
+  let token;
+  let login = user.googleLogin;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:8080/user/googletoken');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function () {
+    if (localStorage.getItem("isSignedIn")) {
+      token = xhr.responseText;
+      localStorage.setItem("token", token);
+      localStorage.setItem("login", login);
+    }
+  };
+  xhr.send(user.googleIdToken);
 
   // axios pour récuperer le pseudo de l'tilisateur, le finnaly assure qu'on dispatch no matter what
   axios.get(`http://localhost:8080/user/retrievepseudo/${login}`).then(res => {
@@ -150,7 +145,10 @@ export const connexionEmailGoogle = formValues => async dispatch => {
     if (res.status === 200) {
       //console.log(" réponse 200, la le pseudo est :", res.data)
       pseudo = res.data;
-      localStorage.setItem("pseudo", pseudo);
+
+      if (localStorage.getItem("isSignedIn")) {
+        localStorage.setItem("pseudo", pseudo);
+      }
 
     }
 
@@ -167,12 +165,8 @@ export const connexionEmailGoogle = formValues => async dispatch => {
     console.log("bilan de l'erreur :", error.config);
   }).finally(() => {
 
-    //console.log("la 2 pseudo est : ", pseudo);
-    dispatch({ type: LOGIN_EMAIL, payload: response, user, pseudo });
+    dispatch({ type: SIGN_IN_GOOGLE_MAIL, login, pseudo, token });
+    //history.push('/admin/dashboard')
 
-    history.push('/admin/dashboard')
   });
 };
-
-
-

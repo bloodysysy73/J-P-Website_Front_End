@@ -56,7 +56,7 @@ class Sidebar extends React.Component {
           <Nav>
             {this.props.routes.map((prop, key) => {
 
-              if (prop.affiche !== false && (localStorage.getItem("isSignedInEmail") || prop.name !== "UserProfile")
+              if (prop.affiche !== false && (localStorage.getItem("isSignedInEmail") || localStorage.getItem("isSignedIn") || prop.name !== "UserProfile")
               ) {
 
                 return (
@@ -65,7 +65,7 @@ class Sidebar extends React.Component {
                       this.activeRoute(prop.path) +
                       (prop.pro ? " active-pro" : "")
                     }
-                    key={key}
+                    key={prop.name}
                   >
                     <NavLink
                       to={prop.layout + prop.path}
@@ -85,7 +85,7 @@ class Sidebar extends React.Component {
                       this.activeRoute(prop.path) +
                       (prop.pro ? " active-pro" : "")
                     }
-                    key={key}
+                    key={prop.name}
                   >
                     <NavLink
                       to={prop.layout + prop.path}
@@ -97,7 +97,7 @@ class Sidebar extends React.Component {
                     </NavLink>
                   </li>
                 );
-              } else { return <div></div> }
+              } else { return <div key={prop.name} ></div> }
 
 
 

@@ -26,8 +26,15 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <Router history={history}>
+      <div>
+        <Switch>
+          <Route path="/admin" render={props => <AdminLayout {...props} />} />
+          <Redirect to="/admin/dashboard" />
+        </Switch>
+      </div>
+    </Router>
+  </Provider>,
+  document.getElementById("root")
 );

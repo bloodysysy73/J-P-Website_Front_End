@@ -47,7 +47,7 @@ export const fetchTimeLineCard = id => async dispatch => {
 }
 
 export const createTimeLineCard = formValues => async dispatch => {
-  const response = await axios.post("`${ElasticBeanStalk}/timelinecard/save", {
+  const response = await axios.post(`${ElasticBeanStalk}/timelinecard/save`, {
     ...formValues
   });
 

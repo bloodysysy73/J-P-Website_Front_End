@@ -2,7 +2,7 @@
   "name": "paper-dashboard-react",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://feature-testprod.d3axjdong065kx.amplifyapp.com/paper-dashboard-react/#/dashboard",
+  "homepage": "https://feature-testprod.d3axjdong065kx.amplifyapp.com/paper-dashboard-react/",
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.12.18",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",

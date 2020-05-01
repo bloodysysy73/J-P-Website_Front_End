@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { signIn, signOut, createUserGoogle, connexionEmailGoogle } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
+import { ElasticBeanStalk } from "../../variables/general";
+
 
 import history from "../../history";
 
@@ -54,7 +56,7 @@ class GoogleAuth extends React.Component {
   //TODO : CREER UEN FONCTION : HTTPS avec le token google vers le backend pour verification
   checkIfExistAndConnect = (user) => {
     //checkif googleId existe dans les logins
-    axios.get(`http://localhost:8080/user/loginexist/${user.googleLogin}`).then(res => {
+    axios.get(`${ElasticBeanStalk}/user/loginexist/${user.googleLogin}`).then(res => {
       //console.log("response in auth change", res);
       if (res.data === true) {
         //console.log('le login existe §§ CONNECTE');

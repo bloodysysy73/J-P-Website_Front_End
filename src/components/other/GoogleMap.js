@@ -9,15 +9,14 @@ class GoogleMap extends React.Component {
 
     render() {
         return (
-            <div>MAP</div>
-            // <Map
-            //     google={this.props.google}
-            //     zoom={15}
-            //     initialCenter={{ lat: 45.590759, lng: 5.917466 }}
-            //     options={this.MAP_OPTIONS}
-            // >
-            //     <Marker position={{ lat: 45.590759, lng: 5.917466 }} />
-            // </Map>
+            <Map
+                google={this.props.google}
+                zoom={15}
+                initialCenter={{ lat: 45.590759, lng: 5.917466 }}
+                options={this.MAP_OPTIONS}
+            >
+                <Marker position={{ lat: 45.590759, lng: 5.917466 }} />
+            </Map>
         );
     }
 

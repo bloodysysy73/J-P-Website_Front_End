@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ElasticBeanStalk } from "../../variables/general";
 
 const axios = require("axios").default;
 var formeValue;
@@ -32,7 +32,7 @@ class ReponseForm extends React.Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/reponse/save",
+            url: `${ElasticBeanStalk}/reponse/save`,
             data: formeValue,
         }).then((response) => {
             console.log(response)

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { ElasticBeanStalk } from "../../variables/general";
+
 
 class ContactForm extends React.Component {
 
@@ -17,7 +19,7 @@ class ContactForm extends React.Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/message/mail",
+            url: `${ElasticBeanStalk}/message/mail`,
             data: this.state,
         }).then((response) => {
             console.log(response)

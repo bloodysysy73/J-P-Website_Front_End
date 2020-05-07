@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { fetchQuestions } from "../../actions/actionQuestions";
+import { ElasticBeanStalk } from "../../variables/general";
 
 
 const axios = require("axios").default;
@@ -34,7 +35,7 @@ class QuestionForm extends React.Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/question/save",
+            url: `${ElasticBeanStalk}/question/save`,
             data: formeValue,
         }).then((response) => {
             console.log(response)

@@ -4,6 +4,8 @@ import jwt from "jwt-decode";
 import { fetchUtilisateurbylogin, editUtilisateurpage, editUtilisateurImgBlob, setimageProfil } from 'actions/actionUsers';
 import { connect } from 'react-redux'
 import history from "../../../history";
+import { ElasticBeanStalk } from "../../../variables/general";
+
 
 
 // reactstrap components
@@ -58,7 +60,7 @@ class UtilisateurProfileEdit extends React.Component {
         let password = formValues.former_password;
 
         //Test si le mot de passe rentré est le bon
-        axios.post("http://localhost:8080/login", {
+        axios.post(`${ElasticBeanStalk}/login`, {
             login, password
         }).then(res => {
 

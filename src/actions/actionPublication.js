@@ -10,19 +10,20 @@ import {
 } from "./types";
 
 import history from "../history";
+import { ElasticBeanStalk } from "../variables/general";
 
 
 const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 export const fetchPublicationLineCards = () => async dispatch => {
-  const response = await axios.get('http://localhost:8080/publication/list')
+  const response = await axios.get(`${ElasticBeanStalk}/publication/list`)
 
   dispatch({ type: FETCH_PUBLICATIONLINECARDS, payload: response.data })
 }
 
 export const editPublicationLineCard = (formValues) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/publication/edit`, formValues)
+  const response = await axios.put(`${ElasticBeanStalk}/publication/edit`, formValues)
 
   dispatch({ type: EDIT_PUBLICATIONLINECARD, payload: response.data })
   window.alert("Publication modifié !");
@@ -31,7 +32,7 @@ export const editPublicationLineCard = (formValues) => async dispatch => {
 }
 
 export const deletePublicationLineCard = id => async dispatch => {
-  await axios.get(`http://localhost:8080/publication/delete/${id}`)
+  await axios.get(`${ElasticBeanStalk}/publication/delete/${id}`)
 
   dispatch({ type: DELETE_PUBLICATIONLINECARD, payload: id })
   window.alert("Publication supprimé !");
@@ -41,13 +42,13 @@ export const deletePublicationLineCard = id => async dispatch => {
 }
 
 export const fetchPublicationLineCard = id => async dispatch => {
-  const response = await axios.get(`http://localhost:8080/publication/findbyid/${id}`)
+  const response = await axios.get(`${ElasticBeanStalk}/publication/findbyid/${id}`)
 
   dispatch({ type: FETCH_PUBLICATIONLINECARD, payload: response.data })
 }
 
 export const createPublicationLineCard = formValues => async dispatch => {
-  const response = await axios.post("http://localhost:8080/publication/save", {
+  const response = await axios.post(`${ElasticBeanStalk}/publication/save`, {
     ...formValues
   });
 
@@ -59,7 +60,7 @@ export const createPublicationLineCard = formValues => async dispatch => {
 };
 
 export const editPublicationCardImgBlob = (publication) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/publication/updateBlobImg`, publication)
+  const response = await axios.put(`${ElasticBeanStalk}/publication/updateBlobImg`, publication)
 
   dispatch({ type: EDIT_PUBLICATION_IMG, payload: response.data })
   window.alert("Photo de publication modifiée");

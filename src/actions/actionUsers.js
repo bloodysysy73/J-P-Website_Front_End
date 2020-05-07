@@ -12,6 +12,7 @@ import {
 } from "./types";
 
 import history from "../history";
+import { ElasticBeanStalk } from "../variables/general";
 
 const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
@@ -20,7 +21,7 @@ export const getAll = () => { };
 
 //se créer un compte avec email
 export const createUser = formValues => async dispatch => {
-  const response = await axios.post("http://localhost:8080/user/save", {
+  const response = await axios.post(`${ElasticBeanStalk}/user/save`, {
     ...formValues
   });
 
@@ -31,13 +32,13 @@ export const createUser = formValues => async dispatch => {
 };
 
 export const fetchUtilisateurs = () => async dispatch => {
-  const response = await axios.get('http://localhost:8080/user/list')
+  const response = await axios.get(`${ElasticBeanStalk}/user/list`)
 
   dispatch({ type: FETCH_UTILISATEURS, payload: response.data })
 }
 
 export const editUtilisateur = (formValues) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/user/edit`, formValues)
+  const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   history.push('/admin/administration')
@@ -45,7 +46,7 @@ export const editUtilisateur = (formValues) => async dispatch => {
 }
 
 export const editUtilisateurpage = (formValues) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/user/edit`, formValues)
+  const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   window.alert("Profil modifié !");
@@ -53,7 +54,7 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
 }
 
 export const editUtilisateurImgBlob = (user) => async dispatch => {
-  const response = await axios.put(`http://localhost:8080/user/updateBlobImg`, user)
+  const response = await axios.put(`${ElasticBeanStalk}/user/updateBlobImg`, user)
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
   window.alert("Photo de profile modifiée !");
@@ -72,7 +73,7 @@ export const setimageProfil = (URL, user) => {
 
 export const deleteUtilisateur = id => async dispatch => {
 
-  await axios.get(`http://localhost:8080/user/delete/${id}`)
+  await axios.get(`${ElasticBeanStalk}/user/delete/${id}`)
   dispatch({ type: DELETE_UTILISATEUR, payload: id })
   history.push('/admin/administration')
   window.alert("utilisateur supprimé !");
@@ -80,13 +81,13 @@ export const deleteUtilisateur = id => async dispatch => {
 }
 
 export const fetchUtilisateur = id => async dispatch => {
-  const response = await axios.get(`http://localhost:8080/user/findbyid/${id}`)
+  const response = await axios.get(`${ElasticBeanStalk}/user/findbyid/${id}`)
 
   dispatch({ type: FETCH_UTILISATEUR, payload: response.data })
 }
 
 export const fetchUtilisateurbylogin = login => async dispatch => {
-  const response = await axios.get(`http://localhost:8080/user/findbylogin/${login}`)
+  const response = await axios.get(`${ElasticBeanStalk}/user/findbylogin/${login}`)
 
   dispatch({ type: FETCH_UTILISATEUR_LOGIN, payload: response.data })
 }

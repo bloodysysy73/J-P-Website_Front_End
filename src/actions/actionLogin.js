@@ -167,7 +167,6 @@ export const connexionEmailGoogle = user => async dispatch => {
   }).finally(() => {
 
     dispatch({ type: SIGN_IN_GOOGLE_MAIL, login, pseudo, token });
-    //history.push('/admin/dashboard')
 
   });
 };

@@ -53,7 +53,7 @@ class UtilisateurCard extends React.Component {
                             <img id="imgProfil"
                                 alt="..."
                                 className="avatar border-gray"
-                                src={this.imageUrl || require("../../../assets/img/logojp.jpg")}
+                                src={this.imageUrl || require("../../../assets/img/avatar.jpg")}
                             //src={require("/home/sysy/Documents/projets/projet_JP/back/J-P-Website_Back_End/Back_End/grossesse.png")}
                             />
                             <h5 className="title">{this.props.pseudo}</h5>

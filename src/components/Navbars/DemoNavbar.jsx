@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
 import GoolgeAuth from "components/authentification/GoolgeAuth";
 import {
   Collapse,
@@ -158,14 +159,15 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  {localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (localStorage.getItem("login") ? localStorage.getItem("login") : 'connection')}
+                  {this.props.render ? "" : ""}
+                  {this.props.pseudo ? this.props.pseudo : (this.props.login ? this.props.login : "Connexion")}
                   <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem header>Connexion</DropdownItem>
                   {localStorage.getItem("isSignedInEmail") === "true" ? null : (
                     <DropdownItem header toggle={false}>
-                      <GoolgeAuth></GoolgeAuth>
+                      <GoolgeAuth ></GoolgeAuth>
                     </DropdownItem>
                   )}
                   <DropdownItem divider />
@@ -207,4 +209,16 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+
+const mapStateToProps = state => {
+  return {
+    pseudo: state.auth.pseudo,
+    login: state.auth.login,
+    render: state.auth.isSignedIn
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Header)

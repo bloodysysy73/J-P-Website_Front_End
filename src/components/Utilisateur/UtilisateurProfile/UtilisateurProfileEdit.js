@@ -5,7 +5,7 @@ import { fetchUtilisateurbylogin, editUtilisateurpage, editUtilisateurImgBlob, s
 import { connect } from 'react-redux'
 import history from "../../../history";
 import { ElasticBeanStalk } from "../../../variables/general";
-
+import { NotificationManager } from 'react-notifications';
 
 
 // reactstrap components
@@ -88,10 +88,11 @@ class UtilisateurProfileEdit extends React.Component {
                  * status code that falls out of the range of 2xx
                  */
                 console.log("error 1 : request http ", error.response.data, "cacth1 ", error.response.status);
-                window.alert("Votre mot de passe est erroné. Veuillez réessayer");
+                NotificationManager.error('', 'Votre mot de passe est erroné. Veuillez réessayer!', 4000)
+
             } else if (error.request) {
                 console.log("error 2 : no response request http ", error.response.data);
-                window.alert("Une erreur est survenue. Veuillez réessayer plus tard");
+                NotificationManager.error('', 'Une erreur est survenue. Veuillez réessayer plus tard', 4000)
 
                 /*
                  * The request was made but no response was received, `error.request`

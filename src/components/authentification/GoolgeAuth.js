@@ -4,6 +4,10 @@ import { signIn, signOut, createUserGoogle, connexionEmailGoogle } from "../../a
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { ElasticBeanStalk } from "../../variables/general";
+import { NotificationManager } from 'react-notifications';
+
+import history from "../../history";
+
 
 const axios = require("axios").default;
 
@@ -91,6 +95,8 @@ class GoogleAuth extends React.Component {
   onSignOutClick = () => {
     this.auth.signOut();
     this.props.signOut();
+    NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
+    history.push("/admin/dashboard");
 
   };
 

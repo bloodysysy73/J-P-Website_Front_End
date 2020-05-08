@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import GoolgeAuth from "components/authentification/GoolgeAuth";
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import {
   Collapse,
   Navbar,
@@ -108,6 +110,8 @@ class Header extends React.Component {
             (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
+        <NotificationContainer />
+
         <Container fluid>
           <div className="navbar-wrapper">
             <div className="navbar-toggle">
@@ -160,7 +164,7 @@ class Header extends React.Component {
               >
                 <DropdownToggle caret nav>
                   {this.props.render ? "" : ""}
-                  {this.props.pseudo ? this.props.pseudo : (this.props.login ? this.props.login : "Connexion")}
+                  {this.props.pseudo ? this.props.pseudo : (localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (this.props.login ? this.props.login : (localStorage.getItem("login") ? localStorage.getItem("login") : "Connexion")))}
                   <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>

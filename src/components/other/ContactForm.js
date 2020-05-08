@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { ElasticBeanStalk } from "../../variables/general";
+import { NotificationManager } from 'react-notifications';
 
 
 class ContactForm extends React.Component {
@@ -24,10 +25,10 @@ class ContactForm extends React.Component {
         }).then((response) => {
             console.log(response)
             if (response.status === 200) {
-                alert("Message envoyé.");
+                NotificationManager.success('Nous vous répondrons dans les meilleurs délais', 'Message envoyé', 5000);
                 this.resetForm()
             } else {
-                alert("Echec envoie du Message.")
+                NotificationManager.error('Nous vous répondrons dans les meilleurs délais', 'échec de l\'envoie du message', 5000);
             }
         })
     }

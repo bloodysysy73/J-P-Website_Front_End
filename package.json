@@ -34,6 +34,7 @@
     "react-images-upload": "^1.2.8",
     "react-images-uploading": "^2.1.0",
     "react-notification-alert": "0.0.12",
+    "react-notifications": "^1.6.0",
     "react-redux": "^7.2.0",
     "react-responsive-carousel": "^3.2.3",
     "react-router": "5.0.0",

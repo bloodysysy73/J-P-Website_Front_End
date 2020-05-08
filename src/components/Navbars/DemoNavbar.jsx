@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
 import GoolgeAuth from "components/authentification/GoolgeAuth";
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import {
   Collapse,
   Navbar,
@@ -107,6 +110,8 @@ class Header extends React.Component {
             (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
+        <NotificationContainer />
+
         <Container fluid>
           <div className="navbar-wrapper">
             <div className="navbar-toggle">
@@ -158,14 +163,15 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  {localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (localStorage.getItem("login") ? localStorage.getItem("login") : 'connection')}
+                  {this.props.render ? "" : ""}
+                  {this.props.pseudo ? this.props.pseudo : (localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (this.props.login ? this.props.login : (localStorage.getItem("login") ? localStorage.getItem("login") : "Connexion")))}
                   <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem header>Connexion</DropdownItem>
                   {localStorage.getItem("isSignedInEmail") === "true" ? null : (
                     <DropdownItem header toggle={false}>
-                      <GoolgeAuth></GoolgeAuth>
+                      <GoolgeAuth ></GoolgeAuth>
                     </DropdownItem>
                   )}
                   <DropdownItem divider />
@@ -207,4 +213,16 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+
+const mapStateToProps = state => {
+  return {
+    pseudo: state.auth.pseudo,
+    login: state.auth.login,
+    render: state.auth.isSignedIn
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Header)

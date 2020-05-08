@@ -1,4 +1,6 @@
 import { SIGN_UP_EMAIL } from "./types";
+import { NotificationManager } from 'react-notifications';
+
 import {
   FETCH_UTILISATEURS,
   EDIT_UTILISATEUR,
@@ -27,8 +29,10 @@ export const createUser = formValues => async dispatch => {
 
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
-  window.alert("Profil créé !");
-  history.push('/admin/dashboard')
+  NotificationManager.success('nous somme heureux de vous compter parmis nous', 'Profil créé', 4000, () => {
+    history.push('/admin/dashboard')
+  });
+
 };
 
 export const fetchUtilisateurs = () => async dispatch => {
@@ -41,24 +45,26 @@ export const editUtilisateur = (formValues) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
-  history.push('/admin/administration')
-  window.alert("Profil modifié !");
+
+  NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => {
+    history.push('/admin/administration')
+  });
 }
 
 export const editUtilisateurpage = (formValues) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
-  window.alert("Profil modifié !");
-  document.location.reload(true);
+  NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => { document.location.reload(true); })
+
 }
 
 export const editUtilisateurImgBlob = (user) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/updateBlobImg`, user)
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
-  window.alert("Photo de profile modifiée !");
-  document.location.reload(true);
+  dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => { document.location.reload(true); })
 }
 
 export const setimageProfil = (URL, user) => {

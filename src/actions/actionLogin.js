@@ -1,5 +1,7 @@
 import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL, SIGN_IN_GOOGLE_MAIL } from "./types";
 import { ElasticBeanStalk } from "../variables/general";
+import { NotificationManager } from 'react-notifications';
+
 
 import jwt from "jwt-decode";
 import history from "../history";
@@ -78,9 +80,10 @@ export const connexionEmail = formValues => async dispatch => {
     //console.log("la 2 pseudo est : ", pseudo);
     dispatch({ type: LOGIN_EMAIL, payload: response, user, pseudo });
 
-    alert("vous etes connecté");
+    NotificationManager.info('Bonjour =)', 'Vous êtes connecté', 3000, () => {
+      history.push("/admin/dashboard");
+    });
 
-    history.push('/admin/dashboard')
   });
 };
 
@@ -93,7 +96,8 @@ export const logoutEmail = () => {
   localStorage.removeItem("login");
   localStorage.removeItem("pseudo");
 
-  alert("vous etes déconnecté");
+  NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
+  history.push("/admin/dashboard");
   return {
     type: LOGOUT_EMAIL
   };
@@ -167,7 +171,6 @@ export const connexionEmailGoogle = user => async dispatch => {
   }).finally(() => {
 
     dispatch({ type: SIGN_IN_GOOGLE_MAIL, login, pseudo, token });
-    //history.push('/admin/dashboard')
 
   });
 };

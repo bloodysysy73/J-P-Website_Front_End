@@ -4,9 +4,10 @@ import { signIn, signOut, createUserGoogle, connexionEmailGoogle } from "../../a
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { ElasticBeanStalk } from "../../variables/general";
-
+import { NotificationManager } from 'react-notifications';
 
 import history from "../../history";
+
 
 const axios = require("axios").default;
 
@@ -78,7 +79,7 @@ class GoogleAuth extends React.Component {
       if (error.res) {
         console.log("error 1 : request http recup pseudo", error.res.data, "cacth1 ", error.res.status);
       } else if (error.request) {
-        console.log("error 2 : no response request http ", error.res.data);
+        console.log("error 2 : no response request http ", error.request.data);
       } else {
         console.log('Error  http request Something happened in setting up the request and triggered an Error ', error.message);
       }
@@ -88,14 +89,15 @@ class GoogleAuth extends React.Component {
 
   onSignInClick = () => {
     this.auth.signIn();
-    this.props.signIn(this.googleId);
-    history.push("/");
+    //this.props.signIn(this.googleId);
   };
 
   onSignOutClick = () => {
     this.auth.signOut();
     this.props.signOut();
-    history.push("/");
+    NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
+    history.push("/admin/dashboard");
+
   };
 
   renderAuthButton() {

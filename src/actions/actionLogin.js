@@ -80,9 +80,7 @@ export const connexionEmail = formValues => async dispatch => {
     //console.log("la 2 pseudo est : ", pseudo);
     dispatch({ type: LOGIN_EMAIL, payload: response, user, pseudo });
 
-    NotificationManager.info('Bonjour =)', 'Vous êtes connecté', 3000, () => {
-      history.push("/admin/dashboard");
-    });
+    NotificationManager.info('Bonjour =)', 'Vous êtes connecté', 3000);
 
   });
 };
@@ -97,7 +95,11 @@ export const logoutEmail = () => {
   localStorage.removeItem("pseudo");
 
   NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
+
   history.push("/admin/dashboard");
+  //document.location.reload(true);
+
+
   return {
     type: LOGOUT_EMAIL
   };

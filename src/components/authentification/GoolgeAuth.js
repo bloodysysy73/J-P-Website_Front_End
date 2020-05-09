@@ -68,6 +68,7 @@ class GoogleAuth extends React.Component {
         if (ithappend !== true) {
           ithappend = true;
           this.props.createUserGoogle(user.googleLogin);
+          document.location.reload(true);
         }
 
       } else {
@@ -95,8 +96,11 @@ class GoogleAuth extends React.Component {
   onSignOutClick = () => {
     this.auth.signOut();
     this.props.signOut();
+
+    //TODO faire marcher la notif avec realod ou custom alert
     NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
     history.push("/admin/dashboard");
+    document.location.reload(true);
 
   };
 

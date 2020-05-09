@@ -29,9 +29,8 @@ export const createUser = formValues => async dispatch => {
 
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
-  NotificationManager.success('nous somme heureux de vous compter parmis nous', 'Profil créé', 4000, () => {
-    history.push('/admin/dashboard')
-  });
+  NotificationManager.success('nous somme heureux de vous compter parmis nous', 'Profil créé', 4000);
+  history.push('/admin/dashboard')
 
 };
 
@@ -51,12 +50,13 @@ export const editUtilisateur = (formValues) => async dispatch => {
   });
 }
 
+//TODO faire marcher les realod et la notif en meme temps ou mettre custom alert
 export const editUtilisateurpage = (formValues) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
-  NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => { document.location.reload(true); })
-
+  alert();
+  reaload();
 }
 
 export const editUtilisateurImgBlob = (user) => async dispatch => {
@@ -64,7 +64,17 @@ export const editUtilisateurImgBlob = (user) => async dispatch => {
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
-  NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => { document.location.reload(true); })
+
+  alert();
+  reaload();
+}
+
+const reaload = () => {
+  document.location.reload(true);
+}
+
+const alert = () => {
+  window.alert("profil modifié")
 }
 
 export const setimageProfil = (URL, user) => {

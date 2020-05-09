@@ -170,7 +170,7 @@ class Header extends React.Component {
                 <DropdownMenu right>
                   <DropdownItem header>Connexion</DropdownItem>
                   {localStorage.getItem("isSignedInEmail") === "true" ? null : (
-                    <DropdownItem header toggle={false}>
+                    <DropdownItem  >
                       <GoolgeAuth ></GoolgeAuth>
                     </DropdownItem>
                   )}

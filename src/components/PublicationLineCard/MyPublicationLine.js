@@ -106,7 +106,7 @@ class MyPublicationLine extends React.Component {
                             icon={randomicon}
                         >
 
-                            <PublicationLineCard id={publicationLineCard.id} description2={publicationLineCard.description2} description={publicationLineCard.description} title={publicationLineCard.title} title2={publicationLineCard.title2} date={publicationLineCard.date} horaire={publicationLineCard.heure} imgBlob={timeLineCard.imgBlob} imageName={publicationLineCard.imageName}>
+                            <PublicationLineCard id={publicationLineCard.id} description2={publicationLineCard.description2} description={publicationLineCard.description} title={publicationLineCard.title} title2={publicationLineCard.title2} date={publicationLineCard.date} horaire={publicationLineCard.heure} imgBlob={publicationLineCard.imgBlob} imageName={publicationLineCard.imageName}>
                             </PublicationLineCard>
 
                         </VerticalTimelineElement>

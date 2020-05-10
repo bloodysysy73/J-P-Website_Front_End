@@ -1,4 +1,6 @@
-export const ElasticBeanStalk = "http://localhost:8080"
+export const ElasticBeanStalk = "https://jumeauxetplusapp-env-2.eba-3umrdymy.eu-west-3.elasticbeanstalk.com/"
 
-//pour prod
+//"http://localhost:8080"
+
+//pour prod 1 coretto
 //"https://jumeauxetplusapp-env.eba-3umrdymy.eu-west-3.elasticbeanstalk.com"

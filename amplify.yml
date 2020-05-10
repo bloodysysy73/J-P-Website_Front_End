@@ -19,11 +19,23 @@ frontend:
      headers:
      - key: 'Access-Control-Allow-Origin'
        value: '*'
-   - pattern: '*.json*'
-         headers:
-         - key: 'Access-Control-Allow-Origin'
-           value: '*'
-   - pattern: '*.js*'
-         headers:
-         - key: 'Access-Control-Allow-Origin'
-           value: '*'
+     - key: 'Access-Control-Allow-Credentials'
+       value: 'true'
+     - key: 'Access-Control-Allow-Methods'
+       value: 'GET,HEAD,OPTIONS,POST,PUT'
+   - pattern: '*.json'
+     headers:
+     - key: 'Access-Control-Allow-Origin'
+       value: '*'
+     - key: 'Access-Control-Allow-Credentials'
+       value: 'true'
+     - key: 'Access-Control-Allow-Methods'
+       value: 'GET,HEAD,OPTIONS,POST,PUT'
+   - pattern: '*.js'
+     headers:
+     - key: 'Access-Control-Allow-Origin'
+       value: '*'
+     - key: 'Access-Control-Allow-Credentials'
+       value: 'true'
+     - key: 'Access-Control-Allow-Methods'
+       value: 'GET,HEAD,OPTIONS,POST,PUT'

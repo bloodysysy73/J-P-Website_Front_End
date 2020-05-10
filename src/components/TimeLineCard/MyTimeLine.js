@@ -107,7 +107,7 @@ class MytimeLine extends React.Component {
                             icon={randomicon}
                         >
 
-                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imgBlob={timeLineCard.imgBlob} imageName={timeLineCard.imageName}>
+                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imageName={timeLineCard.imageName}>
                             </TimeLineCard>
 
                         </VerticalTimelineElement>

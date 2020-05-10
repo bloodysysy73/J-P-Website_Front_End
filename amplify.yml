@@ -19,3 +19,11 @@ frontend:
      headers:
      - key: 'Access-Control-Allow-Origin'
        value: '*'
+   - pattern: '*.json*'
+         headers:
+         - key: 'Access-Control-Allow-Origin'
+           value: '*'
+   - pattern: '*.js*'
+         headers:
+         - key: 'Access-Control-Allow-Origin'
+           value: '*'

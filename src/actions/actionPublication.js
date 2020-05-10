@@ -16,11 +16,13 @@ import { ElasticBeanStalk } from "../variables/general";
 const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
-// const header = new Headers();
-// header.append('Access-Control-Allow-Origin', '*');
+const header = new Headers();
+header.append('Access-Control-Allow-Origin', '*');
+header.append('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS')
+header.append('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With')
 
 export const fetchPublicationLineCards = () => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/publication/list`)
+  const response = await axios.get(`${ElasticBeanStalk}/publication/list`, header)
 
   dispatch({ type: FETCH_PUBLICATIONLINECARDS, payload: response.data })
 }

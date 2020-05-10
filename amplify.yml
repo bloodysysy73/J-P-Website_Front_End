@@ -8,14 +8,14 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: /dist/
+    baseDirectory: dist
     files:
       - '**/*'
-  customHeaders:
-    - pattern: '*'
-      headers:
-      - key: 'Access-Control-Allow-Origin'
-        value: '*'
   cache:
     paths:
       - node_modules/**/*
+  customHeaders:
+    - pattern: '*.js'
+      headers:
+      - key: 'Access-Control-Allow-Origin'
+        value: '*'

@@ -73,7 +73,7 @@ class PublicationLineCardEdit extends React.Component {
                             >
 
                                 <PublicationLineCard
-                                    setimageTimeLineCard={(URL) => this.props.setimagePublication(URL, this.props.publicationLineCard)}
+                                    setimagePublicationLineCard={(URL) => this.props.setimagePublication(URL, this.props.publicationLineCard)}
                                     title={this.props.publicationLineCard.title}
                                     id={this.props.publicationLineCard.id}
                                     imgBlob={this.props.publicationLineCard.imgBlob}

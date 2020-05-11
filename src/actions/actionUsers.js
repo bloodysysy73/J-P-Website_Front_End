@@ -10,7 +10,8 @@ import {
   SORT_BY_LOGIN_USER,
   SORT_BY_DATE_USER,
   FETCH_UTILISATEUR_LOGIN,
-  EDIT_UTILISATEURURLIMG
+  EDIT_UTILISATEURURLIMG,
+  EDIT_UTILISATEUR2
 } from "./types";
 
 import history from "../history";
@@ -44,6 +45,7 @@ export const editUtilisateur = (formValues) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  dispatch({ type: EDIT_UTILISATEUR2, payload: response.data })
 
   NotificationManager.success(' =) ', 'Profil modifié !', 4000, () => {
     history.push('/admin/administration')
@@ -55,8 +57,8 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
   const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  dispatch({ type: EDIT_UTILISATEUR2, payload: response.data })
   alert();
-  reaload();
 }
 
 export const editUtilisateurImgBlob = (user) => async dispatch => {
@@ -64,17 +66,14 @@ export const editUtilisateurImgBlob = (user) => async dispatch => {
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
+  dispatch({ type: EDIT_UTILISATEUR2, payload: response.data })
 
   alert();
-  reaload();
-}
-
-const reaload = () => {
-  document.location.reload(true);
 }
 
 const alert = () => {
-  window.alert("profil modifié")
+  NotificationManager.success(' =) ', 'Profil modifié !', 4000)
+  history.push('/admin/user-page')
 }
 
 export const setimageProfil = (URL, user) => {
@@ -92,7 +91,7 @@ export const deleteUtilisateur = id => async dispatch => {
   await axios.get(`${ElasticBeanStalk}/user/delete/${id}`)
   dispatch({ type: DELETE_UTILISATEUR, payload: id })
   history.push('/admin/administration')
-  window.alert("utilisateur supprimé !");
+  NotificationManager.warning('Utilisateur supprimé !', 4000);
 
 }
 

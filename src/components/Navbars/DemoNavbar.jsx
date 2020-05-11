@@ -164,7 +164,7 @@ class Header extends React.Component {
               >
                 <DropdownToggle caret nav>
                   {this.props.render ? "" : ""}
-                  {this.props.pseudo ? this.props.pseudo : (localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (this.props.login ? this.props.login : (localStorage.getItem("login") ? localStorage.getItem("login") : "Connexion")))}
+                  {this.props.pseudo2 ? this.props.pseudo2 : this.props.pseudo ? this.props.pseudo : ((localStorage.getItem("pseudo") ? localStorage.getItem("pseudo") : (this.props.login ? this.props.login : (localStorage.getItem("login") ? localStorage.getItem("login") : "Connexion"))))}
                   <i className="nc-icon nc-button-power" />
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -178,8 +178,8 @@ class Header extends React.Component {
 
                   {(localStorage.getItem("isSignedIn") !== "true") &
                     (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                      <DropdownItem toggle={false}>
-                        <LoginEmailForm></LoginEmailForm>
+                      <DropdownItem toggle={false} >
+                        <LoginEmailForm ></LoginEmailForm>
                       </DropdownItem>
                     ) : null}
                   <DropdownItem divider />
@@ -189,7 +189,7 @@ class Header extends React.Component {
                     ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
                     (localStorage.getItem("isSignedInEmail") !== "true") ? (
-                      <DropdownItem header toggle={false}>
+                      <DropdownItem>
                         <div className="right floated content">
                           <div className="ui buttons">
                             <Link to="/admin/signupform/" className="ui button">inscription</Link>
@@ -199,7 +199,7 @@ class Header extends React.Component {
                     ) : null}
                   {(localStorage.getItem("isSignedIn") !== "true") &
                     (localStorage.getItem("isSignedInEmail") === "true") ? (
-                      <DropdownItem header toggle={false}>
+                      <DropdownItem >
                         <MyButton></MyButton>
                       </DropdownItem>
                     ) : null}
@@ -217,6 +217,7 @@ class Header extends React.Component {
 const mapStateToProps = state => {
   return {
     pseudo: state.auth.pseudo,
+    pseudo2: (state.utilisateurs ? (state.utilisateurs.utilisateur ? state.utilisateurs.utilisateur.pseudo : null) : null),
     login: state.auth.login,
     render: state.auth.isSignedIn
   }

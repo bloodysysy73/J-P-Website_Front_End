@@ -21,6 +21,7 @@ class SignUpForm extends React.Component {
           initialValues={_.pick(this.props.user, "login", "password")}
           onSubmit={this.onSubmit2}
           buttonName="inscription"
+          inscription
         ></AuthentificationForm>
       </div>
     );

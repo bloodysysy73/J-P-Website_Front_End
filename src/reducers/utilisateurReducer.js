@@ -9,7 +9,8 @@ import {
     SORT_BY_DATE_USER,
     FETCH_UTILISATEUR_LOGIN,
     EDIT_UTILISATEURIMG,
-    EDIT_UTILISATEURURLIMG
+    EDIT_UTILISATEURURLIMG,
+    EDIT_UTILISATEUR2
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -24,6 +25,8 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_UTILISATEUR:
             return { ...state, [action.payload.id]: action.payload }
+        case EDIT_UTILISATEUR2:
+            return { ...state, utilisateur: action.payload }
         case EDIT_UTILISATEURIMG:
             return { ...state, [action.payload.id]: action.payload }
         case DELETE_UTILISATEUR:

@@ -31,17 +31,12 @@ class UtilisateurCard extends React.Component {
 
             let image = new Blob([byteArray], { type: 'image/jpeg' });
             this.imageUrl = URL.createObjectURL(image);
-            //console.log("URL : ", this.imageUrl);
-            //this.relativeUrl = this.imageUrl.split("3000")[1];
-            //console.log("relative URL : ", this.relativeUrl);
-
             this.props.setimageProfil(this.imageUrl, this.props.id);
         }
 
     }
 
     render() {
-        // if (this.imageUrl) {
         return (< div >
             <Card className="card-user">
                 <div className="image">
@@ -54,7 +49,6 @@ class UtilisateurCard extends React.Component {
                                 alt="..."
                                 className="avatar border-gray"
                                 src={this.imageUrl || require("../../../assets/img/avatar.jpg")}
-                            //src={require("/home/sysy/Documents/projets/projet_JP/back/J-P-Website_Back_End/Back_End/grossesse.png")}
                             />
                             <h5 className="title">{this.props.pseudo}</h5>
                         </a>
@@ -90,7 +84,6 @@ class UtilisateurCard extends React.Component {
                 </CardFooter>
             </Card>
         </div >);
-        // } else { return <div>loading...</div> }
     }
 }
 

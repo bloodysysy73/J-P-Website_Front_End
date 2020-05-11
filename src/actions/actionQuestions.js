@@ -36,6 +36,6 @@ export const deletereponse = (id, idquestion) => async dispatch => {
 
   //dispatch({ type: DELETE_REPONSE, payload: id, idquestion })
   window.alert("Reponse supprimée !");
-  document.location.reload(true);
+  //document.location.reload(true);
 
 }

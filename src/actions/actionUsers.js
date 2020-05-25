@@ -11,11 +11,12 @@ import {
   SORT_BY_DATE_USER,
   FETCH_UTILISATEUR_LOGIN,
   EDIT_UTILISATEURURLIMG,
-  EDIT_UTILISATEUR2
+  EDIT_UTILISATEUR2,
+  DISCONNECT_UTILISATEUR
 } from "./types";
 
 import history from "../history";
-import { ElasticBeanStalk } from "../variables/general";
+import { URL } from "../variables/general";
 
 const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
@@ -24,7 +25,7 @@ export const getAll = () => { };
 
 //se créer un compte avec email
 export const createUser = formValues => async dispatch => {
-  const response = await axios.post(`${ElasticBeanStalk}/user/save`, {
+  const response = await axios.post(`${URL}/user/save`, {
     ...formValues
   });
 
@@ -36,13 +37,13 @@ export const createUser = formValues => async dispatch => {
 };
 
 export const fetchUtilisateurs = () => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/user/list`)
+  const response = await axios.get(`${URL}/user/list`)
 
   dispatch({ type: FETCH_UTILISATEURS, payload: response.data })
 }
 
 export const editUtilisateur = (formValues) => async dispatch => {
-  const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
+  const response = await axios.put(`${URL}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   dispatch({ type: EDIT_UTILISATEUR2, payload: response.data })
@@ -54,7 +55,7 @@ export const editUtilisateur = (formValues) => async dispatch => {
 
 //TODO faire marcher les realod et la notif en meme temps ou mettre custom alert
 export const editUtilisateurpage = (formValues) => async dispatch => {
-  const response = await axios.put(`${ElasticBeanStalk}/user/edit`, formValues)
+  const response = await axios.put(`${URL}/user/edit`, formValues)
 
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
   dispatch({ type: EDIT_UTILISATEUR2, payload: response.data })
@@ -62,7 +63,7 @@ export const editUtilisateurpage = (formValues) => async dispatch => {
 }
 
 export const editUtilisateurImgBlob = (user) => async dispatch => {
-  const response = await axios.put(`${ElasticBeanStalk}/user/updateBlobImg`, user)
+  const response = await axios.put(`${URL}/user/updateBlobImg`, user)
 
   dispatch({ type: EDIT_UTILISATEURIMG, payload: response.data })
   dispatch({ type: EDIT_UTILISATEUR, payload: response.data })
@@ -88,7 +89,7 @@ export const setimageProfil = (URL, user) => {
 
 export const deleteUtilisateur = id => async dispatch => {
 
-  await axios.get(`${ElasticBeanStalk}/user/delete/${id}`)
+  await axios.get(`${URL}/user/delete/${id}`)
   dispatch({ type: DELETE_UTILISATEUR, payload: id })
   history.push('/admin/administration')
   NotificationManager.warning('Utilisateur supprimé !', 4000);
@@ -96,15 +97,19 @@ export const deleteUtilisateur = id => async dispatch => {
 }
 
 export const fetchUtilisateur = id => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/user/findbyid/${id}`)
+  const response = await axios.get(`${URL}/user/findbyid/${id}`)
 
   dispatch({ type: FETCH_UTILISATEUR, payload: response.data })
 }
 
 export const fetchUtilisateurbylogin = login => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/user/findbylogin/${login}`)
+  const response = await axios.get(`${URL}/user/findbylogin/${login}`)
 
   dispatch({ type: FETCH_UTILISATEUR_LOGIN, payload: response.data })
+}
+
+export const disconnectUser = () => {
+  return { type: DISCONNECT_UTILISATEUR }
 }
 
 export const sortList = (wtd, userList) => {

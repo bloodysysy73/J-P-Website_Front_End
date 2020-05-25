@@ -63,21 +63,20 @@ class UtilisateurCard extends React.Component {
                         <Row>
                             <Col className="ml-auto" lg="3" md="6" xs="6">
                                 <h5>
-                                    {this.props.nbEnfant} <br />
+                                    <small>{this.props.nbEnfant}</small> <br />
                                     <small>Enfants</small>
                                 </h5>
                             </Col>
                             <Col className="ml-auto mr-auto" lg="4" md="6" xs="6">
                                 <h5>
-                                    {this.props.dateInscription}<br />
+                                    <small>{this.props.dateInscription}</small><br />
                                     <small>Date d'inscription</small>
                                 </h5>
                             </Col>
                             <Col className="mr-auto" lg="3">
-                                <h5>
-                                    {this.props.prenom}<br />
-                                    <small>Prenom</small>
-                                </h5>
+                                <small> {this.props.prenom}</small> <br />
+                                <h5><small>  Prenom</small></h5>
+
                             </Col>
                         </Row>
                     </div>

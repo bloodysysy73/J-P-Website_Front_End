@@ -10,7 +10,8 @@ import {
     FETCH_UTILISATEUR_LOGIN,
     EDIT_UTILISATEURIMG,
     EDIT_UTILISATEURURLIMG,
-    EDIT_UTILISATEUR2
+    EDIT_UTILISATEUR2,
+    DISCONNECT_UTILISATEUR
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -37,6 +38,8 @@ export default (state = {}, action) => {
             return { ..._.mapKeys(action.payload, 'id') }
         case EDIT_UTILISATEURURLIMG:
             return { ...state, utilisateur: action.payload }
+        case DISCONNECT_UTILISATEUR:
+            return { ...state, utilisateur: null }
         default:
             return state
     }

@@ -1,5 +1,5 @@
 import { SIGN_IN, SIGN_OUT, LOGIN_EMAIL, LOGOUT_EMAIL, SIGN_UP_EMAIL, SIGN_IN_GOOGLE_MAIL } from "./types";
-import { ElasticBeanStalk } from "../variables/general";
+import { URL } from "../variables/general";
 import { NotificationManager } from 'react-notifications';
 
 
@@ -34,7 +34,7 @@ export const signOut = () => {
 
 //se connecter avec email
 export const connexionEmail = formValues => async dispatch => {
-  await axios.post(`${ElasticBeanStalk}/login`, {
+  await axios.post(`${URL}/login`, {
     ...formValues
   }).then(res => {
 
@@ -57,7 +57,7 @@ export const connexionEmail = formValues => async dispatch => {
       let login = user.sub;
 
       // axios pour récuperer le pseudo de l'tilisateur, le finnaly assure qu'on dispatch no matter what
-      axios.get(`${ElasticBeanStalk}/user/retrievepseudo/${login}`).then(res => {
+      axios.get(`${URL}/user/retrievepseudo/${login}`).then(res => {
 
         if (res.status === 200) {
           //console.log(" réponse 200, la le pseudo est :", res.data)
@@ -125,7 +125,7 @@ export const logoutEmail = () => {
 //action de création via une connexion google
 export const createUserGoogle = login => async dispatch => {
   let password = null;
-  await axios.post(`${ElasticBeanStalk}/user/save`, {
+  await axios.post(`${URL}/user/save`, {
     login, password
   }).then(response => {
 
@@ -152,7 +152,7 @@ export const connexionEmailGoogle = user => async dispatch => {
   let login = user.googleLogin;
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', `${ElasticBeanStalk}/user/googletoken`);
+  xhr.open('POST', `${URL}/user/googletoken`);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
     if (localStorage.getItem("isSignedIn")) {
@@ -164,7 +164,7 @@ export const connexionEmailGoogle = user => async dispatch => {
   xhr.send(user.googleIdToken);
 
   // axios pour récuperer le pseudo de l'tilisateur, le finnaly assure qu'on dispatch no matter what
-  axios.get(`${ElasticBeanStalk}/user/retrievepseudo/${login}`).then(res => {
+  axios.get(`${URL}/user/retrievepseudo/${login}`).then(res => {
 
     if (res.status === 200) {
       //console.log(" réponse 200, la le pseudo est :", res.data)

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { fetchQuestions } from "../../actions/actionQuestions";
-import { ElasticBeanStalk } from "../../variables/general";
+import { URL } from "../../variables/general";
+import { NotificationManager } from 'react-notifications';
 
 
 const axios = require("axios").default;
@@ -35,23 +36,23 @@ class QuestionForm extends React.Component {
 
         axios({
             method: "POST",
-            url: `${ElasticBeanStalk}/question/save`,
+            url: `${URL}/question/save`,
             data: formeValue,
         }).then((response) => {
             console.log(response)
             if (response.status === 200) {
-                alert("Votre question a été postée.");
+                NotificationManager.success("Votre question a été postée.", 3000);
                 this.resetForm()
                 //ce fetch est pour remettre le state à jour et re render la liste
                 this.props.fetchQuestions();
             } else {
-                alert("Echec du post, veuillez rééssayer plus tard.")
+                NotificationManager.warning("Echec du post, veuillez rééssayer plus tard.", 3000);
             }
         }).catch((error) => {
             // Error 😨
 
             if (error.response ? true : false && error.response.status === 403) {
-                alert("Vous devez être connecté pour poster une question.");
+                NotificationManager.warning('Vous devez être connecté pour poser une question', 3000);
             } else if (error.response) {
                 console.log("error 1 : request ", error.response.data, "cacth1 ", error.response.status);
             } else if (error.request && error.response) {

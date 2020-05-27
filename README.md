@@ -173,47 +173,17 @@ cliquez droit sur votre projet : run as spring boot App
 Maintenant que l'application est lancée, vous pouvez vous connecter avec votre compte google ou créer un compte.
 Se connecter avec google vous créera automatique un compte dans la base de donnée. Le protocole de sécurité et d'obtention du token sera identique dans les 2 cas (jwt token).
 
-<!-- ROADMAP -->
-## Roadmap
+Vous pouvez changer vos informations, votre photo de profile et votre pseudo ainsi que poser des questions aux utilisateurs ou y répondre.
 
-See the [open issues](https://github.com/github_username/repo/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
+Si vous vous connecté en tant qu'administrateur, pous pourrez créer des publications ou des évènements dans l'onglet de gestion. vous pourrez également supprimer les utilisateurs ou les modifier.
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo](https://github.com/github_username/repo)
+Sylvain GUEHRIA   - sylvain.guehria@gmail.com - 06 64 39 70 53
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

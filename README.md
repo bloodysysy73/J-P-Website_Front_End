@@ -179,6 +179,8 @@ Si vous vous connecté en tant qu'administrateur, pous pourrez créer des public
 
 Sylvain GUEHRIA   - sylvain.guehria@gmail.com - 06 64 39 70 53
 
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

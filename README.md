@@ -39,7 +39,7 @@
   <p align="center">
     Ce repo contient le code de la partie front de mon application web "jumeau et plus 73". Cette application web est un site hybride administrateur/forum qui pourrait permettre (si il était déployé) à l'association jumeaux et plus 73 de gérer leurs adhérents, de les informer des évènements passés et à venir et de créer une communauté d'entraide en mettants les membres en relation direct.
     <br />
-    <a href="https://github.com/bloodysysy73/J-P-Website_Front_End"><strong>Arborescence</strong></a>
+    <a href="https://github.com/bloodysysy73/J-P-Website_Front_End"><strong>Arborescence des fichiers</strong></a>
     <br />
 </p>
 
@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Principe de l'application
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -161,4 +161,4 @@ Project Link: [https://github.com/github_username/repo](https://github.com/githu
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sylvain-guehria-ab9737134/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: public/images/capture1.png

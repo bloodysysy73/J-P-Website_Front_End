@@ -67,9 +67,17 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+Ceci est la page d'accueil du site internet tel que le vois un utilisateur lambda. Il est possible de se connecter avec son compte gmail ou via un email et un mot de passe.
+
+Un adminitrateur aura un onglet en plus : "administration".
+
+L'administrateur peux ajouter des publications et des évènements qui apparaitront sur le mur les un à la suites des autres. les publication sont sur la page d'accueil et les évènements sur la page évènement.
+
+L'onglet FAC/Question contient des questions par defaut que l'ont peut dérouler. Mais chaque utilisateur peut également poster une question à laquelle n'importe quel utilisateur connecté peut répondre après avoir cliqué sur "voir réponses" . 
+
+[![Capture question][capture-question]]
+
+[![Capture question 2][capture-question-2]]
 
 
 ### Built With
@@ -162,3 +170,5 @@ Project Link: [https://github.com/github_username/repo](https://github.com/githu
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sylvain-guehria-ab9737134/
 [product-screenshot]: public/images/capture1.png
+[capture-question]: public/images/capture2.png
+[capture-question-2]: public/images/capture3.png

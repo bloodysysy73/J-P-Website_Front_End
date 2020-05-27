@@ -91,13 +91,16 @@ l'un des onglets principaux de cette application est l'onglet "user profil". Ici
 
 [![Capture profile][capture-profile]]
 
+L'onglet administration
+
+[![Capture profile][capture-profile]]
+
 ### Built With
 
-* []()
-* []()
-* []()
-
-
+* []() javascript ES6 : React JS 16.8 pour la partie frontend
+* []() java 8: framework Spring pour la partie backend (projet spring boot)
+* []() maven 4.0 pour la gestion des dépendences 
+* []() hibernate pour la persistance des données
 
 <!-- GETTING STARTED -->
 ## Getting Started

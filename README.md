@@ -105,28 +105,50 @@ L'onglet administration
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+Pour obtenir un copie locale de cette application veuillez suivre ces étapes. 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+installer node, java et lampp avec mySql:
 * npm
 ```sh
 npm install npm@latest -g
 ```
+* lampp (ici avec ubuntu)
+```sh
+sudo apt install apache2 php libapache2-mod-php mysql-server php-mysql
+```
+* java 8
 
 ### Installation
+Pour la partie front : 
  
-1. Clone the repo
+1. Cloner le repo du front dans un dossier
 ```sh
-git clone https://github.com/github_username/repo.git
+git clone git@github.com:bloodysysy73/J-P-Website_Front_End.git
 ```
-2. Install NPM packages
+2. Installer NPM packages
 ```sh
 npm install
 ```
+3. Lancer l'application 
+```sh
+npm start
+```
+3. Lancer l'interface avec votre client (automatique avec VS code)
+```sh
+http://localhost:3000
+```
+Pour la partie back : 
 
-
+1. Cloner le repo du back dans un autre dossier
+```sh
+git clone https://github.com/bloodysysy73/J-P-Website_Back_End
+```
+2. Ouvrir le projet spring boot avec votre IDE (idéalement eclipse avec l'extension spring tools 3.9.12 et l'addon 4.3.9)
+```sh
+cliquez sur run as spring boot project
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage

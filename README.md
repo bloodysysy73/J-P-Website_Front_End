@@ -31,31 +31,24 @@
 <br />
 <p align="center">
   <a href="https://github.com/bloodysysy73/J-P-Website_Front_End">
-    <img src="public/images/logojp.jpg" alt="Logo" width="80" height="80">
+    <img src="public/images/logojp.jpg" alt="Logo" width="auto" height="80">
   </a>
 
   <h3 align="center">Simulation site web de l'Association Jumeaux & plus 73 : Front end</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    Ce repo contient le code de la partie front de mon application web "jumeau et plus 73". Cette application web est un site hybride administrateur/forum qui pourrait permettre (si il était déployé) à l'association jumeaux et plus 73 de gérer leurs adhérents, de les informer des évènements passés et à venir et de créer une communauté d'entraide en mettants les membres en relation direct.
     <br />
-    <a href="https://github.com/github_username/repo"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/bloodysysy73/J-P-Website_Front_End"><strong>Arborescence</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/github_username/repo">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo/issues">Request Feature</a>
-  </p>
 </p>
 
 
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+## Sommaire
 
-* [About the Project](#about-the-project)
+* [Principe de l'application](#principe-de-lapplication)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -70,7 +63,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Principe de l'application
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 

@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo">
+  <a href="https://github.com/bloodysysy73/J-P-Website_Front_End">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 

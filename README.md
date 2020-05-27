@@ -138,6 +138,7 @@ npm start
 3. Lancer l'interface avec votre client (se lance toute seule avec VS code)
 ```sh
 http://localhost:3000
+```
 
 Pour la base de donnée : 
 ```

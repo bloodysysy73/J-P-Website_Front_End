@@ -16,9 +16,14 @@ class Administration extends React.Component {
     const axios = require("axios").default;
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
     let token = localStorage.getItem("token");
-    const user = jwt(token);
+    let user;
+    try {
+      user = jwt(token);
+    } catch (error) {
+      // invalid token format
+    }
 
-    if (user.roles[0].authority !== "ROLE_ADMIN") {
+    if (user && user.roles[0].authority !== "ROLE_ADMIN") {
       history.push('/admin/dashboard')
     }
 

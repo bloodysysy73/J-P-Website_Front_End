@@ -64,7 +64,7 @@ export const editPublicationCardImgBlob = (publication) => async dispatch => {
 
   dispatch({ type: EDIT_PUBLICATION_IMG, payload: response.data })
   window.alert("Photo de publication modifiée");
-  //document.location.reload(true);
+  document.location.reload(true);
 }
 
 export const setimagePublication = (URL, publication) => {

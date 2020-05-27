@@ -63,7 +63,7 @@ export const editTimeLineCardImgBlob = (timeLineCard) => async dispatch => {
 
   dispatch({ type: EDIT_TIMELINECARD_IMG, payload: response.data })
   window.alert("Photo évènement modifiée");
-  //document.location.reload(true);
+  document.location.reload(true);
 }
 
 export const setimageTimeLineCard = (URL, timeLineCard) => {

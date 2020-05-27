@@ -32,7 +32,7 @@ export const createUser = formValues => async dispatch => {
   dispatch({ type: SIGN_UP_EMAIL, payload: response.data });
 
   NotificationManager.success('nous somme heureux de vous compter parmis nous', 'Profil créé', 4000);
-  history.push('/admin/dashboard')
+  history.push('/admin/administration')
 
 };
 

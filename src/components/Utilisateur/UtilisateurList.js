@@ -39,21 +39,26 @@ class UtilisateurList extends React.Component {
 
   renderList = () => {
     return this.props.utilisateurs.map(utilisateur => {
-      return (
-        <div className="item" key={utilisateur.id}>
-          {this.renderButton(utilisateur)}
-          <i className="large middle aligned" />
-          <div className="content">
-            <div className="description">login : {utilisateur.login}</div>
-            <p className="header">
-              inscrit le : {utilisateur.dateInscription}
-            </p>
-            <div className="description">Pseudo : {utilisateur.pseudo}</div>
+      if (utilisateur) {
+        return (
+          <div className="item" key={utilisateur.id}>
+            {this.renderButton(utilisateur)}
+            <i className="large middle aligned" />
+            <div className="content">
+              <div className="description">login : {utilisateur.login}</div>
+              <p className="header">
+                inscrit le : {utilisateur.dateInscription}
+              </p>
+              <div className="description">Pseudo : {utilisateur.pseudo}</div>
+            </div>
           </div>
-        </div>
-      )
+        );
+      } else {
+        return <div></div>
+      }
     })
   }
+
 
   renderCreate = () => {
     return (

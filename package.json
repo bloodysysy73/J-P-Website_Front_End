@@ -2,7 +2,7 @@
   "name": "paper-dashboard-react",
   "version": "1.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://www.jumeaux-et-plus-73.fr/#/dashboard",
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.12.18",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",

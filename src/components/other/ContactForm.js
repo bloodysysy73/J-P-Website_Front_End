@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { ElasticBeanStalk } from "../../variables/general";
+import { URL } from "../../variables/general";
 import { NotificationManager } from 'react-notifications';
 
 
@@ -20,7 +20,7 @@ class ContactForm extends React.Component {
 
         axios({
             method: "POST",
-            url: `${ElasticBeanStalk}/message/mail`,
+            url: `${URL}/message/mail`,
             data: this.state,
         }).then((response) => {
             console.log(response)

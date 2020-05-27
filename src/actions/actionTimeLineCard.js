@@ -10,20 +10,20 @@ import {
 } from "./types";
 
 import history from "../history";
-import { ElasticBeanStalk } from "../variables/general";
+import { URL } from "../variables/general";
 
 
 const axios = require("axios").default;
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 export const fetchTimeLineCards = () => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/timelinecard/list`)
+  const response = await axios.get(`${URL}/timelinecard/list`)
 
   dispatch({ type: FETCH_TIMELINECARDS, payload: response.data })
 }
 
 export const editTimeLineCard = (formValues) => async dispatch => {
-  const response = await axios.put(`${ElasticBeanStalk}/timelinecard/edit`, formValues)
+  const response = await axios.put(`${URL}/timelinecard/edit`, formValues)
 
   dispatch({ type: EDIT_TIMELINECARD, payload: response.data })
   window.alert("Evenement modifié !");
@@ -31,7 +31,7 @@ export const editTimeLineCard = (formValues) => async dispatch => {
 }
 
 export const deleteTimeLineCard = id => async dispatch => {
-  await axios.get(`${ElasticBeanStalk}/timelinecard/delete/${id}`)
+  await axios.get(`${URL}/timelinecard/delete/${id}`)
 
   dispatch({ type: DELETE_TIMELINECARD, payload: id })
   window.alert("Evenement supprimé !");
@@ -41,13 +41,13 @@ export const deleteTimeLineCard = id => async dispatch => {
 }
 
 export const fetchTimeLineCard = id => async dispatch => {
-  const response = await axios.get(`${ElasticBeanStalk}/timelinecard/findbyid/${id}`)
+  const response = await axios.get(`${URL}/timelinecard/findbyid/${id}`)
 
   dispatch({ type: FETCH_TIMELINECARD, payload: response.data })
 }
 
 export const createTimeLineCard = formValues => async dispatch => {
-  const response = await axios.post(`${ElasticBeanStalk}/timelinecard/save`, {
+  const response = await axios.post(`${URL}/timelinecard/save`, {
     ...formValues
   });
 
@@ -59,7 +59,7 @@ export const createTimeLineCard = formValues => async dispatch => {
 };
 
 export const editTimeLineCardImgBlob = (timeLineCard) => async dispatch => {
-  const response = await axios.put(`${ElasticBeanStalk}/timelinecard/updateBlobImg`, timeLineCard)
+  const response = await axios.put(`${URL}/timelinecard/updateBlobImg`, timeLineCard)
 
   dispatch({ type: EDIT_TIMELINECARD_IMG, payload: response.data })
   window.alert("Photo évènement modifiée");

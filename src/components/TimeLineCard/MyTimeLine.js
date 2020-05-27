@@ -22,7 +22,7 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 
 import TimeLineCard from "./TimeLineCard";
 
-import { fetchTimeLineCards } from "../../actions/actionTimeLineCard";
+import { fetchTimeLineCards, setimageTimeLineCard } from "../../actions/actionTimeLineCard";
 
 import { connect } from 'react-redux'
 
@@ -107,7 +107,14 @@ class MytimeLine extends React.Component {
                             icon={randomicon}
                         >
 
-                            <TimeLineCard key={timeLineCard.id} description={timeLineCard.description} title={timeLineCard.title} date={timeLineCard.date} horaire={timeLineCard.heure} imageName={timeLineCard.imageName}>
+                            <TimeLineCard
+                                key={timeLineCard.id}
+                                description={timeLineCard.description}
+                                title={timeLineCard.title}
+                                date={timeLineCard.date}
+                                horaire={timeLineCard.heure}
+                                imgBlobTimeLine={timeLineCard.imgBlob}
+                                setimage={(URL) => this.props.setimageTimeLineCard(URL, this.props.timeLineCard)} >
                             </TimeLineCard>
 
                         </VerticalTimelineElement>
@@ -139,5 +146,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchTimeLineCards }
+    { fetchTimeLineCards, setimageTimeLineCard }
 )(MytimeLine)

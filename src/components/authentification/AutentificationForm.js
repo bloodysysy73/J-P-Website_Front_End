@@ -29,7 +29,7 @@ class AuthentificationForm extends React.Component {
           <div className="field">
             <input minLength="5" type="password" placeholder="password" className="form-control" rows="5" id="password" value={this.state.password} required onChange={this.onPasswordChange.bind(this)} />
           </div>
-          <button type="submit" className="ui button">connexion</button>
+          <button type="submit" className="ui button">{this.props.inscription ? "s'inscrire" : "connexion"}</button>
         </form>
       </div>
     );

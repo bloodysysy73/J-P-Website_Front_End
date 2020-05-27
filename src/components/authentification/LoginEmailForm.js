@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { connexionEmail } from "../../actions/actionLogin";
 import AuthentificationForm from "./AutentificationForm";
 //import _ from "lodash";
-import history from "../../history";
+//import history from "../../history";
 
 
 class LoginEmailForm extends React.Component {
@@ -15,7 +15,7 @@ class LoginEmailForm extends React.Component {
 
   onSubmit2 = formValues => {
     this.props.connexionEmail(formValues);
-    history.push("/");
+    //history.push("/");
   };
 
   render() {

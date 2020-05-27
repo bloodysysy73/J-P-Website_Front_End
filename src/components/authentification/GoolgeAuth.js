@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { signIn, signOut, createUserGoogle, connexionEmailGoogle } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
-import { ElasticBeanStalk } from "../../variables/general";
-import { NotificationManager } from 'react-notifications';
-
-import history from "../../history";
+import { URL } from "../../variables/general";
+// import { NotificationManager } from 'react-notifications';
+// import history from "../../history";
 
 
 const axios = require("axios").default;
@@ -57,7 +56,7 @@ class GoogleAuth extends React.Component {
   //TODO : CREER UEN FONCTION : HTTPS avec le token google vers le backend pour verification
   checkIfExistAndConnect = (user) => {
     //checkif googleId existe dans les logins
-    axios.get(`${ElasticBeanStalk}/user/loginexist/${user.googleLogin}`).then(res => {
+    axios.get(`${URL}/user/loginexist/${user.googleLogin}`).then(res => {
       //console.log("response in auth change", res);
       if (res.data === true) {
         //console.log('le login existe §§ CONNECTE');
@@ -68,6 +67,7 @@ class GoogleAuth extends React.Component {
         if (ithappend !== true) {
           ithappend = true;
           this.props.createUserGoogle(user.googleLogin);
+          document.location.reload(true);
         }
 
       } else {
@@ -95,8 +95,8 @@ class GoogleAuth extends React.Component {
   onSignOutClick = () => {
     this.auth.signOut();
     this.props.signOut();
-    NotificationManager.warning('à bientôt =)', 'Vous êtes déconnecté', 3000);
-    history.push("/admin/dashboard");
+
+    document.location.reload(true);
 
   };
 

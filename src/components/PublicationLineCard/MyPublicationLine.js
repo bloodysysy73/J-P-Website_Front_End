@@ -20,7 +20,7 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 
 import PublicationLineCard from "./PublicationLineCard";
 
-import { fetchPublicationLineCards } from "../../actions/actionPublication";
+import { fetchPublicationLineCards, setimagePublication } from "../../actions/actionPublication";
 
 import { connect } from 'react-redux'
 
@@ -106,7 +106,18 @@ class MyPublicationLine extends React.Component {
                             icon={randomicon}
                         >
 
-                            <PublicationLineCard id={publicationLineCard.id} description2={publicationLineCard.description2} description={publicationLineCard.description} title={publicationLineCard.title} title2={publicationLineCard.title2} date={publicationLineCard.date} horaire={publicationLineCard.heure} imageName={publicationLineCard.imageName}>
+                            <PublicationLineCard
+                                id={publicationLineCard.id}
+                                description2={publicationLineCard.description2}
+                                description={publicationLineCard.description}
+                                title={publicationLineCard.title}
+                                title2={publicationLineCard.title2}
+                                date={publicationLineCard.date}
+                                horaire={publicationLineCard.heure}
+                                imageName={publicationLineCard.imageName}
+                                imgBlobPublicationLine={publicationLineCard.imgBlob}
+                                setimage={(URL) => this.props.setimagePublication(URL, this.props.publicationLineCard)} >
+                                >
                             </PublicationLineCard>
 
                         </VerticalTimelineElement>
@@ -119,7 +130,7 @@ class MyPublicationLine extends React.Component {
     render() {
         return (
             <div>
-                {/* <h2 align="center" >TimeLine</h2> */}
+                {/* <h2 align="center" >PublicationLine</h2> */}
                 <div>{this.renderPublicationLine()}</div>
             </div>)
     }
@@ -139,6 +150,6 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchPublicationLineCards }
+    { fetchPublicationLineCards, setimagePublication }
 )(MyPublicationLine)
 

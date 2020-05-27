@@ -14,12 +14,15 @@ class PublicationLineCard extends React.Component {
     imageUrl;
     relativeUrl;
 
-    componentDidMount() {
-        // console.log("img fil : ", this.props.imgBlob)
-        this.myImg = this.props.imgBlob;
-        //console.log("Base 64: ", this.myImg)
+    myImgPublicationLine;
+    imageUrlPublicationLine;
 
-        // créer URL img
+    componentDidMount() {
+
+        this.myImg = this.props.imgBlob;
+        this.myImgPublicationLine = this.props.imgBlobPublicationLine
+
+        // créer URL img pour edition
         if (this.myImg) {
             let base64Data = this.myImg.split(",")[1];
             const byteCharacters = atob(base64Data);
@@ -31,11 +34,23 @@ class PublicationLineCard extends React.Component {
 
             let image = new Blob([byteArray], { type: 'image/jpeg' });
             this.imageUrl = URL.createObjectURL(image);
-            //console.log("URL : ", this.imageUrl);
-            //this.relativeUrl = this.imageUrl.split("3000")[1];
-            //console.log("relative URL : ", this.relativeUrl);
+            this.props.setimagePublicationLineCard(this.imageUrl, this.props.id);
+        }
 
-            this.props.setimageTimeLineCard(this.imageUrl, this.props.id);
+        // créer URL img pour affichage publicationLine
+        if (this.myImgPublicationLine) {
+            let base64Data = this.myImgPublicationLine.split(",")[1];
+            const byteCharacters = atob(base64Data);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+
+            let image = new Blob([byteArray], { type: 'image/jpeg' });
+            this.imageUrlPublicationLine = URL.createObjectURL(image);
+            this.props.setimage(this.imageUrl, this.props.id);
+
         }
     }
 
@@ -46,7 +61,7 @@ class PublicationLineCard extends React.Component {
 
                     <CardHeader className="text-center">
                         <div className="image"> {/*enlever classname pour image complete  */}
-                            <img alt="" src={this.imageUrl || require("../../assets/img/logojp.jpg")} width="auto" />
+                            <img alt="" src={this.imageUrlPublicationLine || this.imageUrl || require("../../assets/img/logojp.jpg")} width="auto" />
                         </div>
                         <CardTitle tag="h4"> {this.props.title}</CardTitle>
                         <p className="card-category">

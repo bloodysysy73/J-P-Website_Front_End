@@ -4,7 +4,7 @@ import jwt from "jwt-decode";
 import { fetchUtilisateurbylogin, editUtilisateurpage, editUtilisateurImgBlob, setimageProfil } from 'actions/actionUsers';
 import { connect } from 'react-redux'
 import history from "../../../history";
-import { ElasticBeanStalk } from "../../../variables/general";
+import { URL } from "../../../variables/general";
 import { NotificationManager } from 'react-notifications';
 
 
@@ -52,6 +52,7 @@ class UtilisateurProfileEdit extends React.Component {
         }
         console.log("user 3 : ", user);
         this.props.editUtilisateurImgBlob(user);
+        document.location.reload(true);
     }
 
     onSubmit2 = formValues => {
@@ -60,7 +61,7 @@ class UtilisateurProfileEdit extends React.Component {
         let password = formValues.former_password;
 
         //Test si le mot de passe rentré est le bon
-        axios.post(`${ElasticBeanStalk}/login`, {
+        axios.post(`${URL}/login`, {
             login, password
         }).then(res => {
 
@@ -68,16 +69,14 @@ class UtilisateurProfileEdit extends React.Component {
 
 
             if (res.status === 200) {
-                console.log("bon code");
                 let userupdate = this.props.utilisateur;
 
                 userupdate = {
                     ...userupdate,
                     password: formValues.new_password2
                 }
-                console.log("j'édit ");
                 this.props.editUtilisateurpage(userupdate);
-
+                history.push('/admin/dashboard')
             }
 
         }).catch((error) => {

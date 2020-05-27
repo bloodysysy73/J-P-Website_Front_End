@@ -9,7 +9,9 @@ import {
     SORT_BY_DATE_USER,
     FETCH_UTILISATEUR_LOGIN,
     EDIT_UTILISATEURIMG,
-    EDIT_UTILISATEURURLIMG
+    EDIT_UTILISATEURURLIMG,
+    EDIT_UTILISATEUR2,
+    DISCONNECT_UTILISATEUR
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -24,6 +26,8 @@ export default (state = {}, action) => {
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_UTILISATEUR:
             return { ...state, [action.payload.id]: action.payload }
+        case EDIT_UTILISATEUR2:
+            return { ...state, utilisateur: action.payload }
         case EDIT_UTILISATEURIMG:
             return { ...state, [action.payload.id]: action.payload }
         case DELETE_UTILISATEUR:
@@ -34,6 +38,8 @@ export default (state = {}, action) => {
             return { ..._.mapKeys(action.payload, 'id') }
         case EDIT_UTILISATEURURLIMG:
             return { ...state, utilisateur: action.payload }
+        case DISCONNECT_UTILISATEUR:
+            return { ...state, utilisateur: null }
         default:
             return state
     }

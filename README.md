@@ -150,8 +150,8 @@ sudo lampp start
 1. importer la base de donnée MyProject.sql présente dans public/BDD
 (vous pouvez aussi la laisser se créer toute seule en lancant le projet spring boot mais celle ci sera vide. Vous devrez ajouter les champs suivant :
 
-description_role : ROLE_ADMIN, id_role : 1, nom_role : ROLE_ADMIN
-description_role : ROLE_USER, id_role : 2, nom_role : ROLE_USER
+* description_role : ROLE_ADMIN, id_role : 1, nom_role : ROLE_ADMIN
+* description_role : ROLE_USER, id_role : 2, nom_role : ROLE_USER
 
 puis ajouter un admin à la main dans la table utilisateur_role (id de l'admin + id du role admin : 1)
 

@@ -171,4 +171,4 @@ Project Link: [https://github.com/github_username/repo](https://github.com/githu
 [linkedin-url]: https://www.linkedin.com/in/sylvain-guehria-ab9737134/
 [product-screenshot]: public/images/capture1.png
 [capture-question]: public/images/capture2.png
-[capture-question-2]: public/images/capture3.png
+[capture-question-2]: public/images/Capture3.png

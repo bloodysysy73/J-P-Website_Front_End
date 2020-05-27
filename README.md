@@ -141,8 +141,9 @@ http://localhost:3000
 ```
 
 Pour la base de donnée : 
-```
+
 1. lancer lampp
+
 ```sh
 sudo lampp start
 ```

@@ -79,6 +79,11 @@ L'onglet FAC/Question contient des questions par defaut que l'ont peut dérouler
 
 [![Capture question 2][capture-question-2]]
 
+L'utilisateur peut contacter les gérants de l'association via l'onglet "nous contacter" qui envoie le message dans la boite mail de l'association.
+
+l'un des onglets principaux de cette application est l'onglet "user profil". Ici un utlisateur peut changer son mot de passe, son pseudo, ses informations générales et sa photo de profile. 
+
+[![Capture profile][capture-profile]]
 
 ### Built With
 
@@ -172,3 +177,5 @@ Project Link: [https://github.com/github_username/repo](https://github.com/githu
 [product-screenshot]: public/images/capture1.png
 [capture-question]: public/images/capture2.png
 [capture-question-2]: public/images/Capture3.png
+[capture-profile]: public/images/Capture5.png
+

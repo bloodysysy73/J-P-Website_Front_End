@@ -97,8 +97,8 @@ L'onglet administration
 
 ### Built With
 
-* []() javascript ES6 : React JS 16.8 pour la partie frontend
-* []() java 8: framework Spring pour la partie backend (projet spring boot)
+* []() ReactJS 16.8 (javascript ES6) pour la partie frontend
+* []() Framework Spring (JAVA 8) pour la partie backend (projet spring boot)
 * []() maven 4.0 pour la gestion des dépendences 
 * []() hibernate pour la persistance des données
 
@@ -135,10 +135,24 @@ npm install
 ```sh
 npm start
 ```
-3. Lancer l'interface avec votre client (automatique avec VS code)
+3. Lancer l'interface avec votre client (se lance toute seule avec VS code)
 ```sh
 http://localhost:3000
+
+Pour la base de donnée : 
 ```
+1. lancer lampp
+```sh
+sudo lampp start
+```
+1. importer la base de donnée MyProject.sql présente dans public/BDD
+(vous pouvez aussi la laisser se créer toute seule en lancant le projet spring boot mais celle ci sera vide. Vous devrez ajouter les champs suivant :
+
+description_role : ROLE_ADMIN, id_role : 1, nom_role : ROLE_ADMIN
+description_role : ROLE_USER, id_role : 2, nom_role : ROLE_USER
+
+puis ajouter un admin à la main dans la table utilisateur_role (id de l'admin + id du role admin : 1)
+
 Pour la partie back : 
 
 1. Cloner le repo du back dans un autre dossier
@@ -147,17 +161,15 @@ git clone https://github.com/bloodysysy73/J-P-Website_Back_End
 ```
 2. Ouvrir le projet spring boot avec votre IDE (idéalement eclipse avec l'extension spring tools 3.9.12 et l'addon 4.3.9)
 ```sh
-cliquez sur run as spring boot project
+cliquez droit sur votre projet : run as spring boot App
 ```
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+Maintenant que l'application est lancée, vous pouvez vous connecter avec votre compte google ou créer un compte.
+Se connecter avec google vous créera automatique un compte dans la base de donnée. Le protocole de sécurité et d'obtention du token sera identique dans les 2 cas (jwt token).
 
 <!-- ROADMAP -->
 ## Roadmap

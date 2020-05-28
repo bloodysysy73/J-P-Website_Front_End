@@ -91,6 +91,8 @@ L'onglet administration
 
 [![Capture admin][capture-admin]]
 
+Sur cette page, l'admistrateur a accès à plusieurs menu déroulants pour modifier, supprimer ou effacer les utlisateurs, les évènements et les publications. Lors de la modification, il y a un visuel de prévisualisation.
+
 ### Built With
 
 * []() ReactJS 16.8 (javascript ES6) pour la partie frontend

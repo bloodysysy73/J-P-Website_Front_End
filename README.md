@@ -75,6 +75,8 @@ Un adminitrateur aura un onglet en plus : "administration".
 
 L'administrateur peux ajouter des publications et des évènements qui apparaitront sur le mur les un à la suites des autres. les publication sont sur la page d'accueil et les évènements sur la page évènement.
 
+* L'onglet FAC/Question
+
 L'onglet FAC/Question contient des questions par defaut que l'ont peut dérouler. Mais chaque utilisateur peut également poster une question à laquelle n'importe quel utilisateur connecté peut répondre après avoir cliqué sur "voir réponses" . 
 
 [![Capture question][capture-question]]
@@ -83,11 +85,13 @@ L'onglet FAC/Question contient des questions par defaut que l'ont peut dérouler
 
 L'utilisateur peut contacter les gérants de l'association via l'onglet "nous contacter" qui envoie le message dans la boite mail de l'association.
 
-l'un des onglets principaux de cette application est l'onglet "user profil". Ici un utlisateur peut changer son mot de passe, son pseudo, ses informations générales et sa photo de profile. 
+* L'onglet user profile
+
+l'un des onglets principaux de cette application est l'onglet "user profile". Ici un utlisateur peut changer son mot de passe, son pseudo, ses informations générales et sa photo de profile. 
 
 [![Capture profile][capture-profile]]
 
-L'onglet administration
+* L'onglet administration
 
 [![Capture admin][capture-admin]]
 

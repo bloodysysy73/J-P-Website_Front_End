@@ -149,7 +149,7 @@ Pour la base de donnée :
 ```sh
 sudo lampp start
 ```
-1. importer la base de donnée MyProject.sql présente dans public/BDD
+1. importer la base de donnée MyProject.sql présente dans public/BDD (username="root", password="" )
 (vous pouvez aussi la laisser se créer toute seule en lancant le projet spring boot mais celle ci sera vide. Vous devrez ajouter les champs suivant :
 
 * description_role : ROLE_ADMIN, id_role : 1, nom_role : ROLE_ADMIN
@@ -173,6 +173,8 @@ cliquez droit sur votre projet : run as spring boot App
 ## Usage
 
 Maintenant que l'application est lancée, vous pouvez vous connecter avec votre compte google ou créer un compte.
+(l'utilisateur admin par defaut dans la base de donnée fournie : admin@gmail.com, password= admin
+utilisateur simple : user01@gmail.com, password= user01)
 Se connecter avec google vous créera automatique un compte dans la base de donnée. Le protocole de sécurité et d'obtention du token sera identique dans les 2 cas (jwt token).
 
 Vous pouvez changer vos informations, votre photo de profile et votre pseudo ainsi que poser des questions aux utilisateurs ou y répondre.

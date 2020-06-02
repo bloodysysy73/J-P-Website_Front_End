@@ -20,7 +20,7 @@
     <br />
   
   <br />
-  La partie frontend à été réalisée en javascript avec le framework React JS, la partie backend en JAVA avec le framework spring. Les données sont persistées dans une base de donnée relationelle MySql avec l'ORM hibernate.<br /><br />
+  La partie frontend a été réalisée en javascript avec le framework React JS, la partie backend en JAVA avec le framework spring. Les données sont persistées dans une base de donnée relationelle MySql avec l'ORM hibernate.<br /><br />
     <a href="https://github.com/bloodysysy73/J-P-Website_Back_End"><strong>Cliquez ici pour accéder au back-end de l'application</strong></a>
     <br />
 </p>

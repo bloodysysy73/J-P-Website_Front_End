@@ -13,7 +13,7 @@
   <h3 align="center">Simulation site web de l'Association Jumeaux & plus 73 : Front end</h3>
 
   <p align="center">
-    Ce repo contient le code de la partie front de mon application web "jumeau et plus 73". Cette application web est un site hybride administrateur/forum qui pourrait permettre (si il était déployé) à l'association jumeaux et plus 73 de gérer leurs adhérents, de les informer des évènements passés et à venir et de créer une communauté d'entraide en mettant les membres en relation direct.
+    Ce repository contient le code de la partie front de mon application web "jumeau et plus 73". Cette application web est un site hybride administrateur/forum qui pourrait permettre (s'il était déployé) à l'association jumeaux et plus 73 de gérer leurs adhérents, de les informer des évènements passés et à venir et de créer une communauté d'entraide en mettant les membres en relation direct.
    <br />
     <br />
     <a href="https://github.com/bloodysysy73/J-P-Website_Front_End"><strong>Arborescence des fichiers</strong></a>
@@ -45,11 +45,11 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Ceci est la page d'accueil du site internet tel que le vois un utilisateur lambda. Il est possible de se connecter avec son compte gmail ou via un email et un mot de passe.
+Ceci est la page d'accueil du site internet telle qu'un utilisateur lambda la voit. Il est possible de se connecter avec son compte gmail ou via un email et un mot de passe.
 
 Un adminitrateur aura un onglet en plus : "administration".
 
-L'administrateur peux ajouter des publications et des évènements qui apparaitront sur le mur les un à la suites des autres. les publication sont sur la page d'accueil et les évènements sur la page évènement.
+L'administrateur peut ajouter des publications et des évènements qui apparaitront sur le mur les uns à la suites des autres. Les publications sont sur la page d'accueil et les évènements sur la page évènement.
 
 * L'onglet FAC/Question
 
@@ -63,7 +63,7 @@ L'utilisateur peut contacter les gérants de l'association via l'onglet "nous co
 
 * L'onglet user profile
 
-l'un des onglets principaux de cette application est l'onglet "user profile". Ici un utlisateur peut changer son mot de passe, son pseudo, ses informations générales et sa photo de profile. 
+L'un des onglets principaux de cette application est l'onglet "user profile". Ici un utlisateur peut changer son mot de passe, son pseudo, ses informations générales et sa photo de profil. 
 
 [![Capture profile][capture-profile]]
 
@@ -71,7 +71,7 @@ l'un des onglets principaux de cette application est l'onglet "user profile". Ic
 
 [![Capture admin][capture-admin]]
 
-Sur cette page, l'admistrateur a accès à plusieurs menu déroulants pour modifier, supprimer ou effacer les utlisateurs, les évènements et les publications. Lors de la modification, il y a un visuel de prévisualisation.
+Sur cette page, l'admistrateur a accès à plusieurs menus déroulants pour modifier, supprimer ou effacer les utlisateurs, les évènements et les publications. Lors de la modification, il y a un visuel de prévisualisation.
 
 ### Built With
 
@@ -135,7 +135,7 @@ puis ajouter un admin à la main dans la table utilisateur_role (id de l'admin +
 
 Pour la partie back : 
 
-1. Cloner le repo du back dans un autre dossier
+1. Cloner le repository du backend dans un autre dossier
 ```sh
 git clone https://github.com/bloodysysy73/J-P-Website_Back_End
 ```
@@ -153,9 +153,9 @@ Maintenant que l'application est lancée, vous pouvez vous connecter avec votre 
 utilisateur simple : user01@gmail.com, password= user01)
 Se connecter avec google vous créera automatique un compte dans la base de donnée. Le protocole de sécurité et d'obtention du token sera identique dans les 2 cas (jwt token).
 
-Vous pouvez changer vos informations, votre photo de profile et votre pseudo ainsi que poser des questions aux utilisateurs ou y répondre.
+Vous pouvez changer vos informations, votre photo de profil et votre pseudo ainsi que poser des questions aux utilisateurs ou y répondre.
 
-Si vous vous connecté en tant qu'administrateur, pous pourrez créer des publications ou des évènements dans l'onglet de gestion. vous pourrez également supprimer les utilisateurs ou les modifier.
+Si vous vous connectez en tant qu'administrateur, pous pourrez créer des publications ou des évènements dans l'onglet de gestion. Vous pourrez également supprimer les utilisateurs ou les modifier.
 
 
 <!-- CONTACT -->

@@ -14,7 +14,7 @@
     "axios": "^0.19.2",
     "base64-img": "^1.0.4",
     "bootstrap": "4.3.1",
-    "chart.js": "2.8.0",
+    "chart.js": "2.9.4",
     "file-system": "^2.2.2",
     "flat-carousel": "0.0.1",
     "google-maps-react": "^2.0.2",
